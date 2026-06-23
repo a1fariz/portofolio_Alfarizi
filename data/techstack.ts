@@ -19,7 +19,7 @@ export const techCategories: TechCategory[] = [
   },
   {
     name: "AI & ML",
-    items: ["LangChain", "LLM Integration", "Prompt Engineering", "RAG"],
+    items: ["LangChain", "LLM Integration", "RAG"],
   },
   {
     name: "Cloud & Tools",

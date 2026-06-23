@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, ChevronDown, Download } from "lucide-react";
+import { Mail, ChevronDown, Download, Briefcase } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 
 const socialLinks = [
@@ -14,6 +14,11 @@ const socialLinks = [
     label: "LinkedIn",
     href: "https://linkedin.com/in/alfa-rizi",
     icon: LinkedinIcon,
+  },
+  {
+    label: "Jobstreet",
+    href: "https://id.jobstreet.com/id/profiles/alfa-rizi-1lxtyz97xN",
+    icon: Briefcase,
   },
   {
     label: "Email",

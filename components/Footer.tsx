@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, Briefcase } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 
 const footerLinks = {
@@ -18,6 +18,11 @@ const footerLinks = {
       label: "LinkedIn",
       href: "https://linkedin.com/in/alfa-rizi",
       icon: LinkedinIcon,
+    },
+    {
+      label: "Jobstreet",
+      href: "https://id.jobstreet.com/id/profiles/alfa-rizi-1lxtyz97xN",
+      icon: Briefcase,
     },
     {
       label: "Email",

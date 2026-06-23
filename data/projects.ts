@@ -39,6 +39,7 @@ export const projects: Project[] = [
     tags: ["HTML5", "CSS3", "JavaScript", "Astronomy API", "Animation Libraries"],
     status: "Completed",
     github: "https://github.com/a1fariz/projek-website-your-age-other-planet",
+    demo: "https://solar-explorer.alfarizi.my.id",
     highlight: "Interactive animation + API integration",
   },
 ];

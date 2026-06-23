@@ -22,6 +22,26 @@ export const projects: Project[] = [
     highlight: "RAG pipeline + AI integration + CI/CD",
   },
   {
+    id: "finance-feasibility",
+    title: "Finance Feasibility — AI-Powered Investment Analysis Platform",
+    description:
+      "Full-stack AI-powered web application for conducting financial feasibility studies and investment analysis. Automatically calculates critical investment metrics (NPV, IRR, ROI, Payback Period) and integrates with Gemini 3.5 Flash for professional strategic insights. Features secure Firebase authentication, PDF export capabilities, and a Supabase PostgreSQL database managed via Drizzle ORM.",
+    tags: [
+      "React 19",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Firebase Auth",
+      "Gemini AI",
+      "TailwindCSS",
+    ],
+    status: "Completed",
+    github: "https://github.com/a1fariz/finance-feasibility",
+    demo: "https://finance-feasibility.alfarizi.my.id/",
+    highlight: "Automatic NPV/IRR engine + Gemini AI strategic analysis",
+  },
+  {
     id: "finance-management",
     title: "Finance Management System",
     description:

@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Claude Editorial Design System ===== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-canvas text-body font-sans;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-canvas;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-hairline rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-soft;
+  }
+}
+
+@layer components {
+  /* Primary button — coral */
+  .btn-primary {
+    @apply inline-flex items-center justify-center
+           bg-primary text-on-primary
+           font-sans text-sm font-medium
+           px-5 py-3 h-10
+           rounded-md
+           transition-colors duration-200
+           hover:bg-primary-active
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+  }
+
+  /* Secondary button — outlined */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center
+           bg-canvas text-ink
+           font-sans text-sm font-medium
+           px-5 py-3 h-10
+           rounded-md
+           border border-hairline
+           transition-colors duration-200
+           hover:bg-surface-card
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+  }
+
+  /* Secondary on dark */
+  .btn-secondary-dark {
+    @apply inline-flex items-center justify-center
+           bg-surface-dark-elevated text-on-dark
+           font-sans text-sm font-medium
+           px-5 py-3 h-10
+           rounded-md
+           transition-colors duration-200
+           hover:bg-surface-dark-soft
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40;
+  }
+
+  /* Text link — coral */
+  .text-link {
+    @apply text-primary font-sans text-base font-normal
+           transition-colors duration-200
+           hover:text-primary-active
+           underline-offset-4 hover:underline;
+  }
+
+  /* Badge pill */
+  .badge-pill {
+    @apply inline-flex items-center
+           bg-surface-card text-ink
+           font-sans text-[13px] font-medium
+           px-3 py-1 rounded-pill;
+  }
+
+  /* Badge coral */
+  .badge-coral {
+    @apply inline-flex items-center
+           bg-primary text-on-primary
+           font-sans text-xs font-medium
+           px-3 py-1 rounded-pill
+           uppercase tracking-[1.5px];
+  }
+
+  /* Text input */
+  .text-input {
+    @apply w-full
+           bg-canvas text-ink
+           font-sans text-base font-normal
+           px-3.5 py-2.5 h-10
+           rounded-md
+           border border-hairline
+           transition-all duration-200
+           placeholder:text-muted-soft
+           focus:outline-none focus:border-primary focus:ring-[3px] focus:ring-primary/15;
+  }
+
+  /* Textarea */
+  .textarea-input {
+    @apply w-full
+           bg-canvas text-ink
+           font-sans text-base font-normal
+           px-3.5 py-3
+           rounded-md
+           border border-hairline
+           transition-all duration-200
+           placeholder:text-muted-soft
+           focus:outline-none focus:border-primary focus:ring-[3px] focus:ring-primary/15
+           resize-y min-h-[120px];
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-content mx-auto px-6 lg:px-8;
+  }
+
+  /* Grid pattern background */
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(20,20,19,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(20,20,19,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+/* Skip to content */
+.skip-to-content {
+  @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50
+         focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded-md;
+}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../cv-styles.css";
-import CVPrintBar from "../CVPrintBar";
+import CVPrintBar from "@/app/cv/CVPrintBar";
 import {
   Rocket,
   Briefcase,

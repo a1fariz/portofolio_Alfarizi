@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Building2 } from "lucide-react";
 import { Experience } from "@/lib/types";
 
 interface ExperienceCardProps {
@@ -44,8 +45,9 @@ export default function ExperienceCard({
           </div>
 
           {/* Company */}
-          <p className="font-sans text-sm text-primary font-medium">
-            🏢 {experience.company}
+          <p className="font-sans text-sm text-primary font-medium flex items-center gap-1.5">
+            <Building2 size={14} />
+            <span>{experience.company}</span>
           </p>
 
           {/* Highlights */}

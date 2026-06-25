@@ -9,7 +9,7 @@ export default function About() {
     <section id="about" className="py-section bg-canvas">
       <div className="section-container">
         <ScrollReveal>
-          <h2 className="font-serif text-display-lg text-ink text-center mb-16">
+          <h2 className="font-serif text-display-md md:text-display-lg text-ink text-center mb-16">
             About Me
           </h2>
         </ScrollReveal>
@@ -46,10 +46,10 @@ export default function About() {
             <div className="space-y-8">
               {/* Name & Role */}
               <div>
-                <h3 className="font-serif text-display-md text-ink mb-2">
+                <h3 className="font-serif text-title-lg md:text-display-md text-ink mb-2">
                   Alfa Rizi
                 </h3>
-                <p className="font-sans text-title-lg text-body-strong">
+                <p className="font-sans text-title-md md:text-title-lg text-body-strong">
                   Junior Backend Developer · Software Engineer
                 </p>
               </div>
@@ -94,12 +94,11 @@ export default function About() {
               {/* CTAs */}
               <div className="flex flex-wrap gap-4 pt-2">
                 <a
-                  href="/cv/AlfaRizi_CV_English.pdf"
-                  download
+                  href="/cv/en"
                   className="btn-primary gap-2"
                 >
                   <Download size={16} />
-                  Download CV
+                  View CV
                 </a>
                 <a
                   href="https://github.com/a1fariz"

@@ -3,7 +3,7 @@ import { TechCategory } from "@/lib/types";
 export const techCategories: TechCategory[] = [
   {
     name: "Languages",
-    items: ["Java", "Python", "JavaScript"],
+    items: ["Java", "Python", "JavaScript", "C", "C++"],
   },
   {
     name: "Backend",

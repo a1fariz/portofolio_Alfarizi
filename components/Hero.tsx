@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, ChevronDown, Download, Briefcase } from "lucide-react";
+import { Mail, ChevronDown, Download, Briefcase, MapPin, Unlock, Clock } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 
 const socialLinks = [
@@ -28,10 +28,29 @@ const socialLinks = [
 ];
 
 const badges = [
-  { emoji: "📍", text: "West Bandung, Indonesia" },
-  { emoji: "🔓", text: "Open to Remote / Jakarta" },
-  { emoji: "⏰", text: "Available Immediately" },
+  { icon: MapPin, text: "West Bandung, Indonesia" },
+  { icon: Unlock, text: "Open to Remote / Jakarta" },
+  { icon: Clock, text: "Available Immediately" },
 ];
+
+const WavingHand = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="inline-block w-8 h-8 md:w-10 lg:w-12 ml-2 text-primary animate-bounce-slow align-middle"
+    style={{ transformOrigin: "bottom right" }}
+  >
+    <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5" />
+    <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6" />
+    <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8" />
+    <path d="M6 14a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-3" />
+  </svg>
+);
 
 export default function Hero() {
   return (
@@ -45,20 +64,20 @@ export default function Hero() {
         <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-surface-card/40 rounded-full blur-3xl" />
       </div>
 
-      <div className="section-container relative z-10 text-center max-w-3xl mx-auto py-section">
+      <div className="section-container relative z-10 text-center max-w-3xl mx-auto py-12 md:py-20">
         {/* Headline */}
         <motion.h1
-          className="font-serif text-display-xl text-ink mb-6"
+          className="font-serif text-display-md md:text-display-lg lg:text-display-xl text-ink mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Hi, I&apos;m Alfa Rizi 👋
+          Hi, I&apos;m Alfa Rizi <WavingHand />
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
-          className="font-sans text-title-lg text-body-strong mb-4"
+          className="font-sans text-title-md md:text-title-lg text-body-strong mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -91,7 +110,7 @@ export default function Hero() {
               key={badge.text}
               className="inline-flex items-center gap-2 bg-surface-card text-ink font-sans text-sm font-medium px-4 py-2 rounded-pill"
             >
-              <span>{badge.emoji}</span>
+              <badge.icon size={14} className="text-primary" />
               <span>{badge.text}</span>
             </span>
           ))}
@@ -107,9 +126,9 @@ export default function Hero() {
           <a href="#projects" className="btn-primary">
             View Projects
           </a>
-          <a href="/cv/AlfaRizi_CV_English.pdf" download className="btn-secondary gap-2">
+          <a href="/cv/en" className="btn-secondary gap-2">
             <Download size={16} />
-            Download CV
+            View CV
           </a>
         </motion.div>
 

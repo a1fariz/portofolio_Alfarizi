@@ -40,11 +40,11 @@ export default function Contact() {
   return (
     <>
       {/* Coral CTA Band */}
-      <section className="bg-primary py-16 lg:py-2xl">
+      <section className="bg-primary py-12 md:py-16 lg:py-20">
         <div className="section-container text-center">
           <ScrollReveal>
-            <h2 className="font-serif text-display-sm text-on-primary mb-4">
-              Get In Touch 📩
+            <h2 className="font-serif text-title-lg md:text-display-sm text-on-primary mb-4">
+              Get In Touch
             </h2>
             <p className="font-sans text-base text-on-primary/90 mb-8 max-w-lg mx-auto">
               Have a project in mind or just want to chat? I&apos;d love to hear
@@ -58,11 +58,11 @@ export default function Contact() {
       </section>
 
       {/* Contact Form */}
-      <section id="contact" className="py-section bg-canvas">
+      <section id="contact" className="py-16 md:py-24 bg-canvas">
         <div className="section-container">
           <div className="max-w-xl mx-auto">
             <ScrollReveal>
-              <h2 className="font-serif text-display-md text-ink text-center mb-4">
+              <h2 className="font-serif text-display-sm md:text-display-md text-ink text-center mb-4">
                 Contact Me
               </h2>
               <p className="font-sans text-sm text-muted text-center mb-10">

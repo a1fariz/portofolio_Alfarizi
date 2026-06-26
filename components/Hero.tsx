@@ -126,9 +126,25 @@ export default function Hero() {
           <a href="#projects" className="btn-primary">
             View Projects
           </a>
-          <a href="/cv/en" className="btn-secondary gap-2">
+          <a
+            href="/cv/AlfaRizi_CV_English.pdf"
+            download="AlfaRizi_CV_English.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary gap-2"
+          >
             <Download size={16} />
-            View CV
+            CV (EN)
+          </a>
+          <a
+            href="/cv/AlfaRizi_CV_Indonesia.pdf"
+            download="AlfaRizi_CV_Indonesia.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary gap-2"
+          >
+            <Download size={16} />
+            CV (ID)
           </a>
         </motion.div>
 

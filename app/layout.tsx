@@ -42,11 +42,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Alfa Rizi" }],
   creator: "Alfa Rizi",
-  metadataBase: new URL("https://alfariz.vercel.app"),
+  metadataBase: new URL("https://alfarizi.my.id"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://alfariz.vercel.app",
+    url: "https://alfarizi.my.id",
     title: "Alfa Rizi — Junior Backend Developer & Software Engineer",
     description:
       "Portfolio of Alfa Rizi — Informatics Management student focused on Backend Development & Software Engineering with Java Spring Boot, React, and microservices architecture.",
@@ -74,7 +74,7 @@ const jsonLd = {
   name: "Alfa Rizi",
   jobTitle: "Junior Backend Developer",
   email: "alfarizi.developer@gmail.com",
-  url: "https://alfariz.vercel.app",
+  url: "https://alfarizi.my.id",
   sameAs: [
     "https://github.com/a1fariz",
     "https://linkedin.com/in/alfa-rizi",

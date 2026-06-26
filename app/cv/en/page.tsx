@@ -18,6 +18,8 @@ import {
   Lock,
   Clock,
   Unlock,
+  BookOpen,
+  Users,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -302,6 +304,30 @@ export default function CVEnglish() {
               <span className="cv-tag">Astronomy API</span>
             </div>
           </div>
+
+          {/* E-Wallet Console */}
+          <div className="cv-project">
+            <div className="cv-project-header">
+              <h3 className="cv-project-title">
+                Console-Based E-Wallet System
+              </h3>
+              <div className="cv-project-links">
+              </div>
+            </div>
+            <span className="cv-project-status">Completed</span>
+            <p className="cv-project-desc">
+              Developed a terminal-based e-wallet application using C with a two-role RBAC system (Admin &amp; User), completed within 10 days without external database dependencies. Implemented core digital wallet transaction flows including balance transfer, transaction history, top-up, fund withdrawal, and account management using file handling (.txt).
+            </p>
+            <p className="cv-project-highlight">
+              ✦ Digital wallet transactions + RBAC security + File Handling (.txt)
+            </p>
+            <div className="cv-tags">
+              <span className="cv-tag">C</span>
+              <span className="cv-tag">File Handling (.txt)</span>
+              <span className="cv-tag">RBAC</span>
+              <span className="cv-tag">CLI</span>
+            </div>
+          </div>
         </section>
 
         {/* ===== PROFESSIONAL EXPERIENCE ===== */}
@@ -433,6 +459,97 @@ export default function CVEnglish() {
             Universitas Nasional PASIM, Bandung
           </p>
           <p className="cv-edu-gpa">GPA: 3.6 / 4.0</p>
+        </section>
+
+        {/* ===== NON-FORMAL EDUCATION ===== */}
+        <section className="cv-section">
+          <h2 className="cv-section-title">
+            <BookOpen size={14} className="text-primary" />
+            <span>Non-Formal Education</span>
+          </h2>
+          <div className="cv-experience">
+            <div className="cv-exp-header">
+              <h3 className="cv-exp-role">
+                Programming Training — PUB (Pemberdayaan Umat Berkelanjutan)
+              </h3>
+              <span className="cv-exp-period">2024 – Present</span>
+            </div>
+            <p className="cv-exp-company">
+              Universitas Nasional PASIM Bandung
+            </p>
+            <ul className="cv-exp-list">
+              <li>
+                Logic &amp; Basic Programming (C Language) — Sep 2024 – Jan 2025
+              </li>
+              <li>
+                Data Structures &amp; Databases — Jan 2025 – Jun 2025
+              </li>
+              <li>
+                Web Programming (HTML, CSS &amp; JavaScript) — Jun 2025 – Aug 2025
+              </li>
+              <li>
+                Java Fundamental — Aug 2025 – Jan 2026
+              </li>
+              <li>
+                Git &amp; GitHub — Jan 2026 – Feb 2026
+              </li>
+              <li>
+                Java Advanced — Feb 2026 – Present
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* ===== ORGANIZATIONS & COMMITTEES ===== */}
+        <section className="cv-section">
+          <h2 className="cv-section-title">
+            <Users size={14} className="text-primary" />
+            <span>Organizations &amp; Committees</span>
+          </h2>
+          <div className="cv-experience" style={{ marginBottom: "16px" }}>
+            <div className="cv-exp-header">
+              <h3 className="cv-exp-role">
+                Academic Staff — HIMAMI
+              </h3>
+              <span className="cv-exp-period">2024 – Present</span>
+            </div>
+            <p className="cv-exp-company">
+              Informatics Management Student Association, Universitas Nasional PASIM Bandung
+            </p>
+            <ul className="cv-exp-list">
+              <li>
+                Coordinated academic development programs and programming skill enhancement initiatives for Informatics Management students.
+              </li>
+              <li>
+                Organized peer-to-peer study sessions, coding tutorials, and tech discussions to support the academic curriculum.
+              </li>
+              <li>
+                Collaborated with other divisions to ensure the successful execution of all student association work programs.
+              </li>
+            </ul>
+          </div>
+          <div className="cv-experience">
+            <div className="cv-exp-header">
+              <h3 className="cv-exp-role">
+                PKKMB Committee 2025 — Master of Ceremony (MC)
+              </h3>
+              <span className="cv-exp-period">2025</span>
+            </div>
+            <p className="cv-exp-company">
+              Universitas Nasional PASIM Bandung
+            </p>
+            <ul className="cv-exp-list">
+              <li>
+                Served as the main Master of Ceremony (MC), hosting and guiding the opening ceremonies and full sequence of PKKMB 2025 events.
+              </li>
+              <li>
+                Drafted cue cards and coordinated closely with the event organizer division to ensure flawless execution of the rundown.
+              </li>
+              <li>
+                Managed stage dynamics and maintained high audience engagement for hundreds of incoming freshmen throughout the event.
+              </li>
+            </ul>
+          </div>
         </section>
 
         {/* ===== CERTIFICATIONS ===== */}

@@ -62,4 +62,14 @@ export const projects: Project[] = [
     demo: "https://solar-explorer.alfarizi.my.id",
     highlight: "Interactive animation + API integration",
   },
+  {
+    id: "alpay-wallet",
+    title: "ALPAY — Console-Based E-Wallet System",
+    description:
+      "Terminal-based digital e-wallet system developed in C implementing a secure two-role RBAC (Admin & User) system, complete financial transaction flow (balance transfer, top-up, withdrawal, transaction history), and persistent data management using flat files (.txt) without external database dependencies.",
+    tags: ["C", "File Handling", "RBAC", "CLI"],
+    status: "Completed",
+    github: "https://github.com/a1fariz/ALPAY-E-Wallet",
+    highlight: "Digital wallet transactions + RBAC security + File Handling (.txt)",
+  },
 ];

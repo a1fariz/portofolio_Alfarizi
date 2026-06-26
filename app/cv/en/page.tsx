@@ -309,9 +309,16 @@ export default function CVEnglish() {
           <div className="cv-project">
             <div className="cv-project-header">
               <h3 className="cv-project-title">
-                Console-Based E-Wallet System
+                ALPAY — Console-Based E-Wallet System
               </h3>
               <div className="cv-project-links">
+                <a
+                  href="https://github.com/a1fariz/ALPAY-E-Wallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ↗ GitHub
+                </a>
               </div>
             </div>
             <span className="cv-project-status">Completed</span>

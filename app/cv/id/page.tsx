@@ -313,9 +313,16 @@ export default function CVIndonesia() {
           <div className="cv-project">
             <div className="cv-project-header">
               <h3 className="cv-project-title">
-                Sistem E-Wallet Berbasis Console
+                ALPAY — Sistem E-Wallet Berbasis Console
               </h3>
               <div className="cv-project-links">
+                <a
+                  href="https://github.com/a1fariz/ALPAY-E-Wallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ↗ GitHub
+                </a>
               </div>
             </div>
             <span className="cv-project-status">Selesai</span>

@@ -16,7 +16,7 @@ const footerLinks = {
     },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/alfa-rizi",
+      href: "https://www.linkedin.com/in/alfa-rizi-65b483412",
       icon: LinkedinIcon,
     },
     {

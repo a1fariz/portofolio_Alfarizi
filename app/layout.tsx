@@ -77,7 +77,7 @@ const jsonLd = {
   url: "https://alfarizi.my.id",
   sameAs: [
     "https://github.com/a1fariz",
-    "https://linkedin.com/in/alfa-rizi",
+    "https://www.linkedin.com/in/alfa-rizi-65b483412",
   ],
   alumniOf: {
     "@type": "CollegeOrUniversity",

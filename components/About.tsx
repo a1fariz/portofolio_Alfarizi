@@ -123,7 +123,7 @@ export default function About() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/alfa-rizi"
+                  href="https://www.linkedin.com/in/alfa-rizi-65b483412"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary gap-2"

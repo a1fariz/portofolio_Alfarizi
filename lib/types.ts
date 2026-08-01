@@ -1,3 +1,9 @@
+export interface ProjectArchitecture {
+  summary: string;
+  flow: string[];
+  components: { title: string; desc: string }[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -8,12 +14,22 @@ export interface Project {
   demo?: string;
   highlight: string;
   thumbnail?: string;
+  category?: string;
+  architecture?: ProjectArchitecture;
 }
 
 export interface Experience {
   id: string;
   role: string;
   company: string;
+  period: string;
+  highlights: string[];
+}
+
+export interface Organization {
+  id: string;
+  role: string;
+  organization: string;
   period: string;
   highlights: string[];
 }
@@ -29,4 +45,23 @@ export interface Certification {
 export interface TechCategory {
   name: string;
   items: string[];
+}
+
+export interface FormalEducation {
+  degree: string;
+  institution: string;
+  period: string;
+  gpa: string;
+}
+
+export interface NonFormalModule {
+  title: string;
+  period: string;
+}
+
+export interface NonFormalEducation {
+  program: string;
+  institution: string;
+  period: string;
+  modules: NonFormalModule[];
 }

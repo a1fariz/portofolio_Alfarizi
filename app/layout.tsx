@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -51,12 +53,21 @@ export const metadata: Metadata = {
     description:
       "Portfolio of Alfa Rizi — Informatics Management student focused on Backend Development & Software Engineering with Java Spring Boot, React, and microservices architecture.",
     siteName: "Alfa Rizi Portfolio",
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Alfa Rizi — Junior Backend Developer & Software Engineer',
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Alfa Rizi — Junior Backend Developer & Software Engineer",
     description:
       "Portfolio of Alfa Rizi — Informatics Management student focused on Backend Development & Software Engineering.",
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
@@ -64,7 +75,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.svg",
+    apple: "/favicon.svg",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAFA" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0E14" },
+  ],
 };
 
 // JSON-LD Person Schema
@@ -112,6 +131,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -119,6 +140,8 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

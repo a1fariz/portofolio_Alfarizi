@@ -1,0 +1,186 @@
+
+> portfolio@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3001
+
+ ✓ Starting...
+ ✓ Ready in 3.6s
+ ○ Compiling / ...
+ ✓ Compiled / in 8.8s (1522 modules)
+ GET / 200 in 9271ms
+ ○ Compiling /opengraph-image ...
+ ✓ Compiled /opengraph-image in 2.2s (176 modules)
+ GET /opengraph-image 200 in 3533ms
+ ○ Compiling /sitemap.xml ...
+ ✓ Compiled /sitemap.xml in 5.6s (821 modules)
+ GET /sitemap.xml 200 in 6589ms
+ ✓ Compiled /robots.txt in 163ms (824 modules)
+ GET /robots.txt 200 in 218ms
+ GET / 200 in 276ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1021ms (1524 modules)
+ GET /images/projects/apexgrid.png 404 in 1287ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/apexgrid.png 404 in 54ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 50ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET /images/projects/finance-feasibility.png 404 in 45ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-feasibility.png received null
+ GET /images/projects/finance-management.png 404 in 30ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-management.png received null
+ GET /images/projects/universe-interactive.png 404 in 32ms
+ ⨯ The requested resource isn't a valid image for /images/projects/universe-interactive.png received null
+ GET /images/projects/alpay-wallet.png 404 in 39ms
+ ⨯ The requested resource isn't a valid image for /images/projects/alpay-wallet.png received null
+ GET /opengraph-image 200 in 1462ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 510ms (818 modules)
+ GET /favicon.ico 200 in 756ms
+ GET / 200 in 199ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 521ms (1556 modules)
+ GET /images/projects/apexgrid.png 404 in 690ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ ✓ Compiled in 3.1s (1539 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 568ms
+ ✓ Compiled in 1235ms (1539 modules)
+ GET / 200 in 247ms
+ ✓ Compiled in 317ms (751 modules)
+ ✓ Compiled in 506ms (751 modules)
+ ✓ Compiled in 653ms (751 modules)
+ ✓ Compiled in 873ms (1537 modules)
+ ⨯ SyntaxError: Unexpected non-whitespace character after JSON at position 361 (line 19 column 2)
+    at JSON.parse (<anonymous>)
+    at loadManifest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\load-manifest.js:36:25)
+    at loadManifestWithRetries (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\load-components.js:40:51)
+    at async Promise.all (index 0)
+    at async loadComponentsImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\load-components.js:84:100)
+    at async DevServer.findPageComponentsImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\next-server.js:714:36)
+    at async DevServer.findPageComponents (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\dev\next-dev-server.js:577:20)
+    at async DevServer.renderPageComponent (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\dev\next-dev-server.js:336:24) {
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 2.2s (1749 modules)
+ ✓ Compiled in 866ms (1769 modules)
+ ✓ Compiled in 1711ms (1769 modules)
+ ✓ Compiled in 594ms (938 modules)
+ ✓ Compiled in 1326ms (1771 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\alfariz\film\pribadi\project\portfolio\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\alfariz\film\pribadi\project\portfolio\.next\cache\webpack\client-development\0.pack.gz'
+ ✓ Compiled in 2.4s (1811 modules)
+ ✓ Compiled in 956ms (1811 modules)
+ ✓ Compiled in 1089ms (1811 modules)
+ ✓ Compiled in 1411ms (1811 modules)
+ ✓ Compiled in 861ms (1811 modules)
+ ✓ Compiled in 985ms (1811 modules)
+ ✓ Compiled in 732ms (1811 modules)
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at loadManifest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\load-manifest.js:36:25)
+    at DevServer.getNextFontManifest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\next-server.js:750:47)
+    at DevServer.findPageComponents (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\dev\next-dev-server.js:571:43)
+    at async DevServer.renderPageComponent (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:1910:24)
+    at async DevServer.renderToResponseImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:1962:32)
+    at async DevServer.pipeImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\base-server.js:818:17)
+    at async D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\lib\router-server.js:179:21)
+    at async handleRequest (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\lib\router-server.js:359:24)
+    at async requestHandlerImpl (D:\alfariz\film\pribadi\project\portfolio\node_modules\next\dist\server\lib\router-server.js:383:13) {
+  page: '/'
+}
+ ✓ Compiled /_error in 304ms (1799 modules)
+ ✓ Compiled in 335ms (961 modules)
+ ✓ Compiled in 420ms (961 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\alfariz\film\pribadi\project\portfolio\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\alfariz\film\pribadi\project\portfolio\.next\cache\webpack\client-development\0.pack.gz'
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 821ms (1814 modules)
+ GET /images/projects/apexgrid.png 404 in 1146ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 1148ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET / 200 in 371ms
+ GET /_next/static/css/app/layout.css?v=1785577636424 404 in 55ms
+ GET /_next/static/chunks/main-app.js?v=1785577636424 404 in 69ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 70ms
+ GET /_next/static/chunks/app/page.js 404 in 69ms
+ GET /images/projects/apexgrid.png 404 in 71ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 74ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET /images/projects/finance-feasibility.png 404 in 75ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-feasibility.png received null
+ GET /images/projects/finance-management.png 404 in 77ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-management.png received null
+ GET / 200 in 76ms
+ GET /_next/static/css/app/layout.css?v=1785577654751 404 in 69ms
+ GET /_next/static/chunks/main-app.js?v=1785577654751 404 in 49ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 41ms
+ GET /_next/static/chunks/app/page.js 404 in 39ms
+ GET /images/projects/apexgrid.png 404 in 49ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 50ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET / 200 in 90ms
+ GET /_next/static/css/app/layout.css?v=1785577657129 404 in 72ms
+ GET /_next/static/chunks/main-app.js?v=1785577657129 404 in 38ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 38ms
+ GET /_next/static/chunks/app/page.js 404 in 38ms
+ GET /images/projects/apexgrid.png 404 in 70ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 65ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET /images/projects/finance-feasibility.png 404 in 66ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-feasibility.png received null
+ GET /images/projects/finance-management.png 404 in 52ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-management.png received null
+ GET /images/projects/universe-interactive.png 404 in 40ms
+ ⨯ The requested resource isn't a valid image for /images/projects/universe-interactive.png received null
+ GET /images/projects/alpay-wallet.png 404 in 65ms
+ ⨯ The requested resource isn't a valid image for /images/projects/alpay-wallet.png received null
+ GET / 200 in 80ms
+ GET /_next/static/css/app/layout.css?v=1785577724214 404 in 61ms
+ GET /_next/static/chunks/app/page.js 404 in 58ms
+ GET /_next/static/chunks/main-app.js?v=1785577724214 404 in 62ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 59ms
+ GET /images/projects/apexgrid.png 404 in 55ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 35ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET /images/projects/apexgrid.png 404 in 29ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 30ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET /images/projects/apexgrid.png 404 in 40ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 41ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET /images/projects/apexgrid.png 404 in 27ms
+ ⨯ The requested resource isn't a valid image for /images/projects/apexgrid.png received null
+ GET /images/projects/studymate-ai.png 404 in 28ms
+ ⨯ The requested resource isn't a valid image for /images/projects/studymate-ai.png received null
+ GET /images/projects/finance-feasibility.png 404 in 32ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-feasibility.png received null
+ GET /images/projects/finance-management.png 404 in 46ms
+ ⨯ The requested resource isn't a valid image for /images/projects/finance-management.png received null
+ GET /images/projects/universe-interactive.png 404 in 42ms
+ ⨯ The requested resource isn't a valid image for /images/projects/universe-interactive.png received null
+ GET /images/projects/alpay-wallet.png 404 in 58ms
+ ⨯ The requested resource isn't a valid image for /images/projects/alpay-wallet.png received null
+ ✓ Compiled in 5.6s (1811 modules)
+ ✓ Compiled in 1034ms (1811 modules)

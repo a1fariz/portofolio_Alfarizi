@@ -10,6 +10,23 @@ export const projects: Project[] = [
     status: "In Deployment & Maintenance",
     github: "https://github.com/a1fariz/ApexGrid",
     highlight: "Microservices architecture + RBAC + real-time quota system",
+    category: "Java / Backend",
+    thumbnail: "/images/projects/apexgrid.png",
+    architecture: {
+      summary: "Distributed microservices architecture built with Java Spring Boot & Spring Cloud Gateway, featuring real-time quota synchronization and shared RBAC authentication.",
+      flow: [
+        "Client Request (React 18 UI)",
+        "Spring Cloud Gateway (Routing & JWT Filter)",
+        "Microservices (User Service / Race Ticket Service)",
+        "PostgreSQL DB Triggers & 30-min Auto-Expiry Scheduler",
+      ],
+      components: [
+        { title: "API Gateway", desc: "Spring Cloud Gateway handles centralized routing, rate limiting, and JWT token validation." },
+        { title: "User & Auth Service", desc: "Manages BCrypt encrypted password credentials, user profiles, and JWT claim validation." },
+        { title: "Race & Quota Service", desc: "High-concurrency ticket booking engine powered by PostgreSQL triggers for real-time inventory management." },
+        { title: "Analytics & Views", desc: "Complex PostgreSQL DB views feed real-time sales and reservation metrics to the React Admin Panel." },
+      ],
+    },
   },
   {
     id: "studymate-ai",
@@ -20,6 +37,23 @@ export const projects: Project[] = [
     status: "In Deployment & Maintenance",
     github: "https://github.com/a1fariz/StudyMateAI",
     highlight: "RAG pipeline + AI integration + CI/CD",
+    category: "AI & RAG",
+    thumbnail: "/images/projects/studymate-ai.png",
+    architecture: {
+      summary: "Asynchronous Retrieval-Augmented Generation (RAG) system utilizing vector embeddings, semantic search, and LLM orchestration with automated CI/CD deployment.",
+      flow: [
+        "PDF Upload & PyMuPDF Citation Extraction",
+        "Chunking & Embeddings via sentence-transformers",
+        "ChromaDB Vector Store Query & Similarity Retrieval",
+        "Google Gemini 2.0 Flash Context Injection & Response Generation",
+      ],
+      components: [
+        { title: "PyMuPDF Document Ingestion", desc: "Extracts textual content, pages, and metadata from academic PDF textbooks." },
+        { title: "ChromaDB Vector Store", desc: "Indexes document chunks locally for lightning-fast cosine similarity vector searches." },
+        { title: "Gemini 2.0 Flash Engine", desc: "Orchestrates prompts for automated summaries, interactive quizzes, and 3D flashcards." },
+        { title: "DevOps & CI/CD", desc: "Containerized with Docker Compose and deployed automatically via GitHub Actions pipelines." },
+      ],
+    },
   },
   {
     id: "finance-feasibility",
@@ -40,6 +74,8 @@ export const projects: Project[] = [
     github: "https://github.com/a1fariz/finance-feasibility",
     demo: "https://finance-feasibility.alfarizi.my.id/",
     highlight: "Automatic NPV/IRR engine + Gemini AI strategic analysis",
+    category: "Full-Stack Web",
+    thumbnail: "/images/projects/finance-feasibility.png",
   },
   {
     id: "finance-management",
@@ -50,6 +86,8 @@ export const projects: Project[] = [
     status: "Completed",
     github: "https://github.com/a1fariz/financeall_project_java_alfariz",
     highlight: "Full-stack MVC + multi-role auth",
+    category: "Java / Backend",
+    thumbnail: "/images/projects/finance-management.png?v=3",
   },
   {
     id: "universe-interactive",
@@ -61,6 +99,8 @@ export const projects: Project[] = [
     github: "https://github.com/a1fariz/projek-website-your-age-other-planet",
     demo: "https://solar-explorer.alfarizi.my.id",
     highlight: "Interactive animation + API integration",
+    category: "Full-Stack Web",
+    thumbnail: "/images/projects/universe-interactive.png",
   },
   {
     id: "alpay-wallet",
@@ -71,5 +111,7 @@ export const projects: Project[] = [
     status: "Completed",
     github: "https://github.com/a1fariz/ALPAY-E-Wallet",
     highlight: "Digital wallet transactions + RBAC security + File Handling (.txt)",
+    category: "C Systems",
+    thumbnail: "/images/projects/alpay-wallet.png",
   },
 ];

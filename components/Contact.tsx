@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Mail } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
+
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+const CONTACT_EMAIL = "alfarizi.developer@gmail.com";
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
@@ -13,22 +16,56 @@ export default function Contact() {
     email: "",
     subject: "",
     message: "",
+    // Honeypot field — real users leave this empty; bots tend to fill it.
+    company: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Silently drop bot submissions that filled the honeypot.
+    if (formData.company) {
+      setFormStatus("success");
+      return;
+    }
+
+    // No endpoint configured — fall back to a mailto so the form is never a dead end.
+    if (!FORMSPREE_ENDPOINT) {
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+        formData.subject || "Portfolio Contact"
+      )}&body=${body}`;
+      return;
+    }
+
     setFormStatus("submitting");
 
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       });
 
       if (res.ok) {
         setFormStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          company: "",
+        });
       } else {
         setFormStatus("error");
       }
@@ -72,7 +109,26 @@ export default function Contact() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="relative space-y-5">
+                {/* Honeypot — visually hidden, off-screen; not focusable by keyboard. */}
+                <div
+                  aria-hidden="true"
+                  className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden"
+                >
+                  <label htmlFor="company">Company (leave blank)</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.company}
+                    onChange={(e) =>
+                      setFormData({ ...formData, company: e.target.value })
+                    }
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label
@@ -180,13 +236,33 @@ export default function Contact() {
                 >
                   {formStatus === "submitting" ? (
                     "Sending..."
-                  ) : (
+                  ) : FORMSPREE_ENDPOINT ? (
                     <>
                       <Send size={16} />
                       Send Message
                     </>
+                  ) : (
+                    <>
+                      <Mail size={16} />
+                      Send via Email
+                    </>
                   )}
                 </button>
+
+                {!FORMSPREE_ENDPOINT && (
+                  <p className="text-center font-sans text-xs text-muted-soft">
+                    Opens your email client. Prefer a direct form?{" "}
+                    <a
+                      href="https://formspree.io"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-link"
+                    >
+                      Configure Formspree
+                    </a>
+                    .
+                  </p>
+                )}
               </form>
             </ScrollReveal>
           </div>

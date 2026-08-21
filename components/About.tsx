@@ -12,12 +12,18 @@ export default function About() {
 
   return (
     <>
-      <section id="about" className="py-section bg-canvas">
+      <section id="about" className="scroll-mt-24 border-b border-hairline bg-canvas py-24 md:py-32">
         <div className="section-container">
           <ScrollReveal>
-            <h2 className="font-serif text-display-md md:text-display-lg text-ink text-center mb-16">
-              About Me
-            </h2>
+             <div className="mb-14 max-w-2xl">
+               <span className="ornament-line mb-3 max-w-xs font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent-red">
+                 04 / Background
+               </span>
+               <h2 className="mb-5 font-display text-display-sm text-ink md:text-display-md">
+                 A backend developer who cares about the whole system.
+               </h2>
+
+            </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 lg:gap-16 items-start">
@@ -25,23 +31,24 @@ export default function About() {
             <ScrollReveal direction="left">
               <div className="flex flex-col items-center md:items-start gap-6">
                 {/* Avatar circle */}
-                <div className="w-40 h-40 rounded-full bg-surface-card flex items-center justify-center border border-border/50 shadow-inner">
-                  <span className="font-serif text-display-md text-ink">AR</span>
+                <div className="w-36 h-36 rounded-2xl bg-gradient-to-br from-surface-card to-surface-soft flex items-center justify-center border border-hairline shadow-glow-sm relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="font-heading text-display-md text-ink font-bold">AR</span>
                 </div>
 
                 {/* Quick info */}
-                <div className="space-y-3 text-sm font-sans text-muted">
+                <div className="space-y-3 text-xs font-mono text-body">
                   <div className="flex items-center gap-2">
-                    <MapPin size={14} className="text-primary" />
-                    <span>West Bandung, West Java, Indonesia</span>
+                    <MapPin size={13} className="text-accent-cyan" />
+                    <span>West Bandung, Indonesia</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Globe size={14} className="text-primary" />
+                    <Globe size={13} className="text-accent-cyan" />
                     <span>Open to Remote / Jakarta</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Briefcase size={14} className="text-primary" />
-                    <span>Part-time / Contract / Full-time</span>
+                    <Briefcase size={13} className="text-accent-cyan" />
+                    <span>Full-time / Contract / Remote</span>
                   </div>
                 </div>
               </div>
@@ -52,10 +59,10 @@ export default function About() {
               <div className="space-y-8">
                 {/* Name & Role */}
                 <div>
-                  <h3 className="font-serif text-title-lg md:text-display-md text-ink mb-2">
+                  <h3 className="font-heading text-title-lg md:text-display-sm text-ink mb-1 font-bold">
                     Alfa Rizi
                   </h3>
-                  <p className="font-sans text-title-md md:text-title-lg text-body-strong">
+                  <p className="font-sans text-base md:text-title-md text-primary font-semibold">
                     Junior Backend Developer · Software Engineer
                   </p>
                 </div>
@@ -73,7 +80,7 @@ export default function About() {
                 {/* Formal & Non-Formal Education */}
                 <div className="space-y-4">
                   {/* Formal Education Card */}
-                  <div className="bg-surface-card rounded-lg p-6 border border-border/40">
+                  <div className="bg-surface-card rounded-xl p-6 border border-border/40">
                     <div className="flex items-center gap-2 mb-3">
                       <GraduationCap size={18} className="text-primary" />
                       <h4 className="font-sans text-xs font-medium text-muted uppercase tracking-[1.5px]">
@@ -94,7 +101,7 @@ export default function About() {
                   </div>
 
                   {/* Non-Formal Education Card */}
-                  <div className="bg-surface-card rounded-lg p-6 border border-border/40">
+                  <div className="bg-surface-card rounded-xl p-6 border border-border/40">
                     <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
                       <div className="flex items-center gap-2">
                         <BookOpen size={18} className="text-primary" />
@@ -140,7 +147,8 @@ export default function About() {
                   <h4 className="font-sans text-xs font-medium text-muted uppercase tracking-[1.5px] mb-3">
                     Languages
                   </h4>
-                  <div className="flex gap-4">
+                   <div className="flex flex-wrap gap-2">
+
                     <span className="badge-pill">Indonesian (Native)</span>
                     <span className="badge-pill">English (Professional Working)</span>
                   </div>

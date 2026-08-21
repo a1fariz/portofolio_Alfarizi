@@ -6,6 +6,8 @@ import { ArrowLeft, ExternalLink, Layers } from "lucide-react";
 import { projects } from "@/data/projects";
 import { getProjectCover } from "@/lib/projectCover";
 import { GithubIcon } from "@/components/BrandIcons";
+import Navbar from "@/components/Navbar";
+import ScrollProgress from "@/components/ScrollProgress";
 import ArchitectureDetails from "@/components/ArchitectureDetails";
 
 interface PageProps {
@@ -54,24 +56,30 @@ export default function ProjectDetailPage({ params }: PageProps) {
   const CoverIcon = cover.icon;
 
   return (
-    <main className="min-h-screen bg-canvas">
-      <div className="section-container py-16 md:py-24 max-w-3xl">
+<main className="min-h-screen bg-canvas">
+      <ScrollProgress />
+      <Navbar />
+      <div className="section-container max-w-4xl py-28 md:py-36">
+
         {/* Back link */}
         <Link
           href="/#projects"
-          className="text-link inline-flex items-center gap-1.5 text-sm mb-8"
+           className="text-link mb-10 inline-flex items-center gap-1.5 text-sm"
+
         >
           <ArrowLeft size={16} />
           Back to Projects
         </Link>
 
         {/* Cover band */}
-        <div className="relative aspect-video overflow-hidden rounded-xl bg-surface-dark mb-8">
+         <div className="relative mb-10 aspect-video overflow-hidden border border-hairline bg-surface-dark">
+
           {project.thumbnail ? (
             <Image
               src={project.thumbnail}
               alt={`${project.title} preview`}
               fill
+              priority
               sizes="(max-width: 768px) 100vw, 768px"
               className="object-cover"
             />
@@ -93,7 +101,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 strokeWidth={1.5}
                 className="relative text-primary"
               />
-              <span className="absolute bottom-4 left-5 font-mono text-xs uppercase tracking-wider text-on-dark-soft/70">
+              <span className="absolute bottom-4 left-5 font-mono text-xs uppercase tracking-wider text-muted/80">
                 {project.category ?? "Project"}
               </span>
             </div>
@@ -101,7 +109,8 @@ export default function ProjectDetailPage({ params }: PageProps) {
         </div>
 
         {/* Header */}
-        <div className="flex items-center justify-between gap-3 mb-4">
+         <div className="mb-5 flex flex-wrap items-center gap-3">
+
           <span className="badge-coral inline-block">{project.status}</span>
           {project.category && (
             <span className="text-xs font-mono text-muted uppercase tracking-wider">
@@ -110,22 +119,25 @@ export default function ProjectDetailPage({ params }: PageProps) {
           )}
         </div>
 
-        <h1 className="font-serif text-display-sm md:text-display-md text-ink mb-4 leading-tight">
+         <h1 className="mb-5 max-w-3xl font-heading text-display-sm leading-tight text-ink md:text-display-md">
+
           {project.title}
         </h1>
 
-        <p className="font-sans text-base text-body leading-relaxed mb-4">
+         <p className="mb-5 max-w-3xl font-sans text-sm leading-7 text-body md:text-base">
+
           {project.description}
         </p>
 
-        <p className="font-sans text-sm text-primary font-medium mb-6">
-          ✦ {project.highlight}
+         <p className="mb-8 flex items-start gap-2 font-sans text-sm font-medium text-accent-cyan">
+           <span className="font-bold text-primary">↳</span> {project.highlight}
+
         </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-8">
           {project.tags.map((tag) => (
-            <span key={tag} className="badge-pill text-[13px]">
+            <span key={tag} className="badge-pill text-[12px]">
               {tag}
             </span>
           ))}
@@ -159,14 +171,14 @@ export default function ProjectDetailPage({ params }: PageProps) {
         {project.architecture && (
           <section className="border-t border-hairline pt-10">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                <Layers size={22} />
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0 shadow-glow-sm">
+                <Layers size={20} />
               </div>
               <div>
-                <span className="text-xs font-sans uppercase font-medium text-primary tracking-wider">
+                <span className="text-xs font-mono uppercase font-medium text-accent-cyan tracking-wider">
                   System Architecture
                 </span>
-                <h2 className="font-serif text-title-md md:text-title-lg text-ink">
+                <h2 className="font-heading text-title-md md:text-title-lg text-ink font-semibold">
                   Technical Breakdown
                 </h2>
               </div>

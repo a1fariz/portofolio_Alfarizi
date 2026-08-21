@@ -12,15 +12,15 @@ import {
 const categoryCover: Record<string, { icon: LucideIcon; gradient: string }> = {
   "Java / Backend": {
     icon: Server,
-    gradient: "from-orange-500/25 via-primary/10 to-transparent",
+    gradient: "from-amber-500/20 via-primary/10 to-transparent",
   },
   "AI & RAG": {
     icon: Sparkles,
-    gradient: "from-violet-500/25 via-primary/10 to-transparent",
+    gradient: "from-violet-500/25 via-primary/15 to-transparent",
   },
   "Full-Stack Web": {
     icon: Globe,
-    gradient: "from-sky-500/25 via-primary/10 to-transparent",
+    gradient: "from-cyan-500/25 via-primary/15 to-transparent",
   },
   "C Systems": {
     icon: TerminalSquare,
@@ -30,7 +30,7 @@ const categoryCover: Record<string, { icon: LucideIcon; gradient: string }> = {
 
 const fallbackCover = {
   icon: Code2,
-  gradient: "from-primary/20 via-primary/5 to-transparent",
+  gradient: "from-primary/20 via-indigo-500/10 to-transparent",
 };
 
 export function getProjectCover(category?: string) {

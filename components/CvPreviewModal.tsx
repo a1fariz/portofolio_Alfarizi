@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Download, FileText } from "lucide-react";
+import { useModalAccessibility } from "./useModalAccessibility";
 
 interface CvPreviewModalProps {
   isOpen: boolean;
@@ -16,11 +17,18 @@ export default function CvPreviewModal({
   cvPath = "/cv/AlfaRizi_CV_English.pdf",
   cvTitle = "Alfa Rizi — CV (English)",
 }: CvPreviewModalProps) {
+  const dialogRef = useModalAccessibility(isOpen, onClose);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-canvas/80 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/20 backdrop-blur-md">
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cv-preview-title"
+            tabIndex={-1}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -31,7 +39,7 @@ export default function CvPreviewModal({
             <div className="px-6 py-4 bg-surface-card border-b border-border/40 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <FileText size={20} className="text-primary" />
-                <h3 className="font-sans text-title-sm md:text-title-md font-semibold text-ink">
+                <h3 id="cv-preview-title" className="font-sans text-title-sm md:text-title-md font-semibold text-ink">
                   {cvTitle}
                 </h3>
               </div>
@@ -46,7 +54,8 @@ export default function CvPreviewModal({
                 </a>
                 <button
                   onClick={onClose}
-                  className="p-1.5 text-muted hover:text-ink transition-colors rounded-full hover:bg-canvas"
+                  className="min-h-10 min-w-10 inline-flex items-center justify-center p-1.5 text-muted hover:text-ink transition-colors rounded-full hover:bg-canvas focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    data-autofocus
                   aria-label="Close CV Preview"
                 >
                   <X size={18} />

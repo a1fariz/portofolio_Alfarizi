@@ -34,70 +34,80 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-dark py-16 lg:py-2xl">
+    <footer className="border-t border-hairline bg-canvas py-16">
       <div className="section-container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* About Column */}
           <div>
-            <span className="font-serif text-xl font-medium text-on-dark block mb-3">
-              AR
-            </span>
-            <p className="font-sans text-sm text-on-dark-soft leading-relaxed">
+            <div className="flex items-center gap-2 mb-3">
+               <div className="flex h-7 w-7 items-center justify-center rounded-full border border-primary bg-primary text-[10px] font-bold text-on-primary">
+
+                AR
+              </div>
+              <span className="font-heading text-base font-bold text-ink">
+                Alfa Rizi
+              </span>
+            </div>
+            <p className="font-sans text-xs md:text-sm text-muted leading-relaxed">
               Junior Backend Developer &amp; Software Engineer based in West
-              Bandung, Indonesia. Building robust applications with Java Spring
-              Boot, React, and modern web technologies.
+              Bandung, Indonesia. Building resilient distributed systems with Java Spring
+              Boot, PostgreSQL, and modern web architectures.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-sans text-xs font-medium text-on-dark uppercase tracking-[1.5px] mb-4">
-              Quick Links
+            <h4 className="font-mono text-xs font-semibold text-ink uppercase tracking-wider mb-4">
+              Navigation
             </h4>
-            <ul className="space-y-2">
-              {footerLinks.Quick.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="font-sans text-sm text-on-dark-soft hover:text-on-dark transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Footer navigation">
+              <ul className="space-y-1">
+                {footerLinks.Quick.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="inline-flex min-h-11 items-center font-sans text-xs text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-red rounded"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* Connect */}
           <div>
-            <h4 className="font-sans text-xs font-medium text-on-dark uppercase tracking-[1.5px] mb-4">
+            <h4 className="font-mono text-xs font-semibold text-ink uppercase tracking-wider mb-4">
               Connect
             </h4>
-            <ul className="space-y-2">
-              {footerLinks.Connect.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-sans text-sm text-on-dark-soft hover:text-on-dark transition-colors"
-                  >
-                    <link.icon size={14} />
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Social links">
+              <ul className="space-y-1">
+                {footerLinks.Connect.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-11 items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-red rounded"
+                    >
+                      <link.icon size={13} />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-surface-dark-elevated pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-sans text-xs text-on-dark-soft">
-            © 2026 Alfa Rizi · Built with Next.js &amp; Tailwind CSS
+        <div className="border-t border-hairline pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-mono text-xs text-muted">
+            © 2026 Alfa Rizi · All Rights Reserved
           </p>
-          <p className="font-sans text-xs text-on-dark-soft">
-            Made in West Bandung 🇮🇩
+          <p className="font-mono text-xs text-muted">
+            Built with Next.js &amp; Tailwind CSS · West Bandung, Indonesia
           </p>
         </div>
       </div>

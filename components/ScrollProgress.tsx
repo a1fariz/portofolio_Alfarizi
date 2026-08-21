@@ -31,7 +31,7 @@ export default function ScrollProgress() {
       {/* Top Scroll Progress Line */}
       <div className="fixed top-0 left-0 right-0 h-1 z-[60] bg-transparent pointer-events-none">
         <div
-          className="h-full bg-primary transition-all duration-150 ease-out shadow-[0_0_8px_rgba(255,107,74,0.6)]"
+          className="h-full bg-accent-red transition-all duration-150 ease-out shadow-[0_0_8px_rgba(157,63,53,0.5)]"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>

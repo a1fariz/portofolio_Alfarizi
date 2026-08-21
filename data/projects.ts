@@ -56,6 +56,42 @@ export const projects: Project[] = [
     },
   },
   {
+    id: "renshuu",
+    title: "Renshuu — Interactive Japanese Learning Platform",
+    description:
+      "Modern interactive Japanese learning platform covering Phase 0 (Hiragana & Katakana) up to JLPT N4 (Kanji, Vocabulary, Grammar). Features spaced repetition practice (SRS), interactive SVG stroke order animations with KanjiVG, HTML5 canvas handwriting tracing, native Web Speech API audio pronunciation, structured daily reviews, and offline-first JSON progress backup/restore.",
+    tags: [
+      "JavaScript",
+      "HTML5 / Canvas",
+      "CSS3",
+      "Web Speech API",
+      "SVG Animations",
+      "SRS Algorithm",
+      "LocalStorage",
+    ],
+    status: "Completed",
+    github: "https://github.com/a1fariz/renshuu",
+    demo: "https://renshuu.alfarizi.my.id/",
+    highlight: "Spaced repetition (SRS) + Stroke order animations + Web Speech API",
+    category: "Full-Stack Web",
+    thumbnail: "/images/projects/renshuu.png",
+    architecture: {
+      summary: "Client-side interactive educational web application integrating native Web Speech API, HTML5 Canvas/SVG vector animations, and local Spaced Repetition (SRS) state persistence.",
+      flow: [
+        "User Selection & Curriculum Routing (Kana, Kanji, Vocab, Grammar)",
+        "Spaced Repetition (SRS) Scheduling & Daily Review Queue Engine",
+        "Interactive Visualizer (SVG Stroke Animation & Canvas Tracing Pad)",
+        "Native Web Speech Audio Playback (`ja-JP`) & LocalStorage State Sync",
+      ],
+      components: [
+        { title: "Kana & Kanji Stroke Engine", desc: "Vector SVG stroke animations and HTML5 canvas pad for tactile handwriting practice." },
+        { title: "Spaced Repetition (SRS) Engine", desc: "Automated retention algorithm managing intervals, review queues, and mastery levels." },
+        { title: "Speech & Pronunciation Module", desc: "Native browser Web Speech API (`ja-JP`) for instant, serverless Japanese audio synthesis." },
+        { title: "Offline Storage & Backup", desc: "Client-side state persistence with full JSON export/import backup capabilities." },
+      ],
+    },
+  },
+  {
     id: "finance-feasibility",
     title: "Finance Feasibility — AI-Powered Investment Analysis Platform",
     description:

@@ -22,39 +22,55 @@ export default function Projects() {
     : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-canvas">
+    <section id="projects" className="scroll-mt-24 border-b border-hairline bg-canvas py-24 md:py-32">
       <div className="section-container">
         <ScrollReveal>
-          <h2 className="font-serif text-display-md md:text-display-lg text-ink text-center mb-4">
-            Selected Projects
-          </h2>
-          <p className="font-sans text-base text-muted text-center mb-10 max-w-2xl mx-auto">
-            A curated selection of projects showcasing backend architecture,
-            AI integration, and full-stack development.
-          </p>
+           <div className="mb-12 max-w-2xl">
+             <span className="ornament-line mb-3 max-w-xs font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent-red">
+               01 / Selected work
+             </span>
+             <h2 className="mb-5 font-display text-display-sm text-ink md:text-display-md">
+               Systems built to solve real problems.
+             </h2>
+             <p className="max-w-xl font-sans text-sm leading-7 text-muted md:text-base">
+
+              A curated selection of software systems showcasing distributed backend architecture,
+              AI pipelines, and full-stack applications.
+            </p>
+          </div>
 
           {/* Interactive Category Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+           <div className="mb-12 flex flex-wrap gap-2 border-y border-hairline py-3">
+
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
+              const count = cat === "All" ? projects.length : projects.filter((p) => p.category === cat).length;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs md:text-sm font-sans font-medium transition-all duration-300 relative ${
+                  className={`px-4 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 relative border ${
                     isActive
-                      ? "text-on-dark font-semibold shadow-sm"
-                      : "bg-surface-card text-muted hover:text-ink hover:bg-surface-card/80"
+                     ? "border-primary bg-primary text-on-primary font-semibold"
+                     : "border-hairline bg-transparent text-muted hover:border-hairline-strong hover:text-ink"
+
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeProjectTab"
-                      className="absolute inset-0 bg-primary rounded-full -z-10"
+                       className="absolute inset-0 rounded-md bg-primary -z-10"
+
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
-                  {cat}
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    {cat}
+                     <span className={`text-[10px] px-1.5 py-0.5 rounded ${isActive ? "bg-on-primary/10 text-on-primary" : "bg-surface-soft text-muted"}`}>
+
+                      {count}
+                    </span>
+                  </span>
                 </button>
               );
             })}

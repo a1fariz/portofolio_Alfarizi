@@ -1,204 +1,134 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, ChevronDown, Briefcase, MapPin, Unlock, Clock, Copy, Check, Eye, Terminal } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDownRight, ArrowUpRight, Briefcase, Check, Copy, Eye, Mail, Terminal } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import CvPreviewModal from "./CvPreviewModal";
 import TerminalModal from "./TerminalModal";
 
 const socialLinks = [
-  {
-    label: "GitHub",
-    href: "https://github.com/a1fariz",
-    icon: GithubIcon,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/alfa-rizi-65b483412",
-    icon: LinkedinIcon,
-  },
-  {
-    label: "Jobstreet",
-    href: "https://id.jobstreet.com/id/profiles/alfa-rizi-1lxtyz97xN",
-    icon: Briefcase,
-  },
-  {
-    label: "Email",
-    href: "mailto:alfarizi.developer@gmail.com",
-    icon: Mail,
-  },
+  { label: "GitHub", href: "https://github.com/a1fariz", icon: GithubIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/alfa-rizi-65b483412", icon: LinkedinIcon },
+  { label: "Jobstreet", href: "https://id.jobstreet.com/id/profiles/alfa-rizi-1lxtyz97xN", icon: Briefcase },
+  { label: "Email", href: "mailto:alfarizi.developer@gmail.com", icon: Mail },
 ];
 
-const badges = [
-  { icon: MapPin, text: "West Bandung, Indonesia" },
-  { icon: Unlock, text: "Open to Remote / Jakarta" },
-  { icon: Clock, text: "Available Immediately" },
+const focusAreas = [
+  { number: "01", title: "Reliable services", detail: "Secure APIs and clear microservice boundaries." },
+  { number: "02", title: "Useful AI", detail: "RAG pipelines that turn data into practical tools." },
+  { number: "03", title: "Built for people", detail: "Thoughtful interfaces around complex systems." },
 ];
 
-const WavingHand = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="inline-block w-8 h-8 md:w-10 lg:w-12 ml-2 text-primary animate-bounce-slow align-middle"
-    style={{ transformOrigin: "bottom right" }}
-  >
-    <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v5" />
-    <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6" />
-    <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8" />
-    <path d="M6 14a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-3" />
-  </svg>
-);
+const reveal = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
   const [cvModalOpen, setCvModalOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText("alfarizi.developer@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("alfarizi.developer@gmail.com");
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
     <>
-      <section
-        id="home"
-        className="relative min-h-screen flex items-center justify-center pt-24 pb-16 grid-pattern overflow-hidden"
-      >
-        {/* Subtle gradient glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-surface-card/40 rounded-full blur-3xl" />
-        </div>
+      <section id="home" className="relative scroll-mt-20 overflow-hidden border-b border-hairline bg-canvas pb-20 pt-32 md:pb-32 md:pt-40">
+        <div className="pointer-events-none absolute inset-0 grid-pattern opacity-60" />
+        <motion.div
+          className="pointer-events-none absolute -right-40 -top-40 h-[38rem] w-[38rem] rounded-full bg-accent-red/10 blur-[120px]"
+          animate={prefersReducedMotion ? undefined : { scale: [1, 1.08, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={prefersReducedMotion ? undefined : { duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        />
 
-        <div className="section-container relative z-10 text-center max-w-3xl mx-auto py-8 md:py-16">
-          {/* Pulsating Glowing Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-6 shadow-sm">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span>Available for Hire · Full-Time / Remote / Contract</span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="font-serif text-display-md md:text-display-lg lg:text-display-xl text-ink mb-6">
-            Hi, I&apos;m Alfa Rizi <WavingHand />
-          </h1>
-
-          {/* Subtitle */}
-          <p className="font-sans text-title-md md:text-title-lg text-body-strong mb-4">
-            Junior Backend Developer · Software Engineer
-          </p>
-
-          {/* Description */}
-          <p className="font-sans text-base text-muted leading-relaxed mb-8 max-w-2xl mx-auto">
-            Informatics Management student focused on Backend Development &amp;
-            Software Engineering. Experienced in building web applications with
-            Java Spring Boot, PostgreSQL, and React, with a strong grasp of
-            RESTful APIs, microservices architecture, and application security.
-          </p>
-
-          {/* Badges */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {badges.map((badge) => (
-              <span
-                key={badge.text}
-                className="inline-flex items-center gap-2 bg-surface-card text-ink font-sans text-sm font-medium px-4 py-2 rounded-pill"
-              >
-                <badge.icon size={14} className="text-primary" />
-                <span>{badge.text}</span>
-              </span>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
-            <a href="#projects" className="btn-primary">
-              View Projects
-            </a>
-            <button
-              onClick={() => setCvModalOpen(true)}
-              className="btn-secondary gap-2"
-            >
-              <Eye size={16} />
-              Preview CV
-            </button>
-            <button
-              onClick={handleCopyEmail}
-              className="btn-secondary gap-2 transition-all"
-              title="Copy email to clipboard"
-            >
-              {copied ? (
-                <>
-                  <Check size={16} className="text-emerald-500" />
-                  <span className="text-emerald-600 dark:text-emerald-400 font-medium">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy size={16} />
-                  <span>Copy Email</span>
-                </>
-              )}
-            </button>
-            <button
-              onClick={() => setTerminalOpen(true)}
-              className="btn-secondary gap-2 font-mono text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:border-emerald-500/60"
-            >
-              <Terminal size={16} />
-              CLI Shell
-            </button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center justify-center gap-6 mb-16">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link inline-flex items-center gap-1.5 text-sm"
-                aria-label={link.label}
-              >
-                <link.icon size={16} />
-                <span>{link.label}</span>
-              </a>
-            ))}
-          </div>
-
-          {/* Scroll Indicator */}
-          <motion.a
-            href="#projects"
-            className="inline-flex flex-col items-center text-muted-soft hover:text-muted transition-colors"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            aria-label="Scroll to projects"
+        <div className="section-container relative z-10">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: prefersReducedMotion ? 0 : 0.1 } } }}
+            className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24"
           >
-            <span className="text-xs font-sans mb-1">Scroll down</span>
-            <ChevronDown size={20} />
-          </motion.a>
+            <div className="max-w-4xl">
+              <motion.div variants={reveal} className="mb-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent-red">
+                <span className="h-px w-10 bg-accent-red" />
+                Digital portfolio · 2026
+              </motion.div>
+
+              <motion.h1 variants={reveal} className="font-display text-display-md text-ink md:text-display-lg lg:text-display-xl">
+                Building quiet,
+                <br />
+                <span className="italic text-accent-red">powerful systems.</span>
+              </motion.h1>
+
+              <motion.p variants={reveal} className="mt-9 max-w-2xl font-sans text-base leading-8 text-body md:text-lg">
+                I&apos;m Alfa Rizi, a junior backend developer and software engineer focused on reliable APIs, distributed services, and practical AI integrations.
+              </motion.p>
+
+              <motion.div variants={reveal} className="mt-10 flex flex-wrap gap-3">
+                <motion.a href="#projects" className="btn-primary" whileHover={prefersReducedMotion ? undefined : { y: -3 }} whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}>
+                  Explore my work <ArrowUpRight size={16} />
+                </motion.a>
+                <motion.a href="#contact" className="btn-secondary" whileHover={prefersReducedMotion ? undefined : { y: -3 }} whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}>
+                  Let&apos;s talk
+                </motion.a>
+              </motion.div>
+
+              <motion.div variants={reveal} className="mt-6 flex flex-wrap gap-4 text-xs text-muted">
+                <button onClick={() => setCvModalOpen(true)} className="inline-flex min-h-10 items-center gap-2 rounded-full px-1 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-red"><Eye size={14} /> Preview CV</button>
+                <button onClick={handleCopyEmail} className="inline-flex min-h-10 items-center gap-2 rounded-full px-1 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-red" aria-live="polite">{copied ? <Check size={14} className="text-accent-red" /> : <Copy size={14} />}{copied ? "Email copied" : "Copy email"}</button>
+                <button onClick={() => setTerminalOpen(true)} className="inline-flex min-h-10 items-center gap-2 rounded-full px-1 font-mono transition-colors hover:text-accent-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-red"><Terminal size={14} /> Open CLI</button>
+              </motion.div>
+            </div>
+
+            <motion.div variants={reveal} className="relative">
+              <div className="rounded-[2rem] border border-hairline bg-surface-card/80 p-3 shadow-soft backdrop-blur-sm">
+                <div className="rounded-[1.5rem] border border-hairline-soft bg-gradient-to-br from-surface-soft via-surface-card to-accent-gold/10 p-6 md:p-8">
+                  <div className="flex items-end justify-between border-b border-hairline pb-5">
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">A considered approach</p>
+                      <p className="mt-3 font-display text-3xl italic text-ink">Form follows function.</p>
+                    </div>
+                    <span className="font-display text-4xl text-accent-gold/70">✦</span>
+                  </div>
+
+                  <div className="relative mt-8 space-y-3">
+                    {focusAreas.map((area) => (
+                      <div
+                        key={area.number}
+                        className="relative flex gap-4 rounded-2xl border border-hairline bg-white/55 p-4 transition-colors hover:border-accent-red/40"
+                      >
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink font-mono text-xs text-canvas">{area.number}</span>
+                        <div><p className="font-heading text-title-sm text-ink">{area.title}</p><p className="mt-1 text-xs leading-5 text-muted">{area.detail}</p></div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="ornament-line mt-8 text-[10px]">Alfa Rizi · Bandung, Indonesia</div>
+                  <div className="mt-5 flex flex-wrap gap-2">{['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'RAG'].map((skill) => <span key={skill} className="rounded-full border border-hairline bg-white/70 px-2.5 py-1 font-mono text-[10px] text-body-strong">{skill}</span>)}</div>
+                </div>
+              </div>
+              <motion.div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-accent-red/30 bg-accent-red px-4 py-3 text-white shadow-soft sm:block" animate={prefersReducedMotion ? undefined : { y: [0, -8, 0] }} transition={prefersReducedMotion ? undefined : { duration: 4, repeat: Infinity, ease: "easeInOut" }}><p className="font-mono text-[10px] uppercase tracking-wider opacity-75">Location</p><p className="mt-1 text-sm font-semibold">Bandung, ID</p></motion.div>
+            </motion.div>
+          </motion.div>
+
+          <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-hairline pt-5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">{['Java', 'Python', 'PostgreSQL', 'Docker', 'React', 'REST APIs'].map((skill) => <span key={skill}>{skill}</span>)}</div>
+          <div className="mt-8 flex flex-wrap items-center gap-5">{socialLinks.map((link) => <a key={link.label} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined} className="inline-flex min-h-10 items-center gap-2 rounded-full text-xs text-muted transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-red" aria-label={link.label}><link.icon size={14} /> {link.label}</a>)}</div>
+          <a href="#projects" className="mt-14 inline-flex items-center gap-2 font-display text-xl italic text-accent-red transition-transform hover:translate-x-2">See the selected work <ArrowDownRight size={17} /></a>
         </div>
       </section>
 
-      {/* CV Preview Modal */}
-      <CvPreviewModal
-        isOpen={cvModalOpen}
-        onClose={() => setCvModalOpen(false)}
-      />
-
-      {/* Terminal Modal */}
-      <TerminalModal
-        isOpen={terminalOpen}
-        onClose={() => setTerminalOpen(false)}
-      />
+      <CvPreviewModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
+      <TerminalModal isOpen={terminalOpen} onClose={() => setTerminalOpen(false)} />
     </>
   );
 }

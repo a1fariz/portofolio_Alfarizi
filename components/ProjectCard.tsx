@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -17,6 +17,18 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   const [archModalOpen, setArchModalOpen] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const cardRef = useRef<HTMLElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
 
   const showThumbnail = project.thumbnail && !imgError;
   const cover = getProjectCover(project.category);
@@ -25,24 +37,37 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <>
       <motion.article
-        className="group relative bg-surface-dark rounded-lg p-8 transition-transform duration-300 hover:scale-[1.02] flex flex-col justify-between"
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+         className="group relative flex flex-col justify-between overflow-hidden rounded-[1.5rem] border border-hairline bg-surface-card/70 p-6 transition-colors duration-300 hover:border-accent-red/40 hover:bg-surface-card md:p-7"
+
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{
           duration: 0.5,
-          delay: index * 0.15,
+          delay: index * 0.1,
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
       >
-        <div>
-          {/* Coral accent line at top */}
-          <div className="absolute top-0 left-8 right-8 h-0.5 bg-primary" />
+        {/* Dynamic Spotlight Radial Gradient */}
+        {isHovered && (
+          <div
+            className="pointer-events-none absolute -inset-px rounded-xl opacity-100 transition-opacity duration-300 -z-0"
+            style={{
+              background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(99, 102, 241, 0.12), transparent 80%)`,
+            }}
+          />
+        )}
 
+        <div className="relative z-10">
           {/* Thumbnail / Designed cover */}
           <Link
             href={`/projects/${project.id}`}
-            className="block relative -mx-8 -mt-8 mb-6 aspect-video overflow-hidden rounded-t-lg bg-surface-dark"
+             className="relative -mx-6 -mt-6 mb-6 block aspect-video overflow-hidden rounded-t-[1.5rem] border-b border-hairline bg-surface-dark md:-mx-7 md:-mt-7"
+
             aria-label={`View ${project.title} details`}
           >
             {showThumbnail ? (
@@ -50,6 +75,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 src={project.thumbnail as string}
                 alt={`${project.title} preview`}
                 fill
+                priority={index === 0}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={() => setImgError(true)}
@@ -58,22 +84,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               <div
                 className={`relative flex h-full w-full items-center justify-center bg-gradient-to-br ${cover.gradient}`}
               >
-                {/* Faint dot-grid texture */}
                 <div
-                  className="absolute inset-0 opacity-[0.15]"
+                  className="absolute inset-0 opacity-[0.08]"
                   style={{
                     backgroundImage:
                       "radial-gradient(circle, currentColor 1px, transparent 1px)",
                     backgroundSize: "16px 16px",
-                    color: "var(--color-primary, #cc785c)",
+                    color: "var(--color-primary, #6366f1)",
                   }}
                 />
                 <CoverIcon
                   size={44}
                   strokeWidth={1.5}
-                  className="relative text-primary transition-transform duration-500 group-hover:scale-110"
+                  className="relative text-accent-red transition-transform duration-500 group-hover:scale-110"
                 />
-                <span className="absolute bottom-3 left-4 font-mono text-[11px] uppercase tracking-wider text-on-dark-soft/70">
+                <span className="absolute bottom-3 left-4 font-mono text-[11px] uppercase tracking-wider text-muted">
                   {project.category ?? "Project"}
                 </span>
               </div>
@@ -81,41 +106,39 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </Link>
 
           {/* Status badge & Category */}
-          <div className="flex items-center justify-between gap-2 mb-4">
-            <span className="badge-coral inline-block">
+          <div className="flex flex-wrap items-center gap-2 mb-3.5">
+            <span className="badge-coral">
               {project.status}
             </span>
             {project.category && (
-              <span className="text-[11px] font-mono text-on-dark-soft uppercase tracking-wider">
+              <span className="text-[11px] font-mono text-muted uppercase tracking-wider break-words">
                 {project.category}
               </span>
             )}
           </div>
 
           {/* Title */}
-          <h3 className="font-sans text-title-md text-on-dark mb-3 leading-tight">
-            <Link
-              href={`/projects/${project.id}`}
-              className="hover:text-primary transition-colors"
-            >
+          <h3 className="font-heading text-title-md text-ink mb-2.5 leading-snug group-hover:text-primary transition-colors">
+            <Link href={`/projects/${project.id}`}>
               {project.title}
             </Link>
           </h3>
 
           {/* Description */}
-          <p className="font-sans text-sm text-on-dark-soft leading-relaxed mb-4">
+          <p className="font-sans text-xs md:text-sm text-body leading-relaxed mb-4 line-clamp-3">
             {project.description}
           </p>
 
           {/* Highlight */}
-          <p className="font-sans text-sm text-primary font-medium mb-5">
-            ✦ {project.highlight}
-          </p>
+            <p className="mb-5 flex items-start gap-2 font-sans text-xs font-medium leading-5 text-accent-cyan">
+             <span className="text-primary font-bold">↳</span> {project.highlight}
+           </p>
+
 
           {/* Tech Tags */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-1.5 mb-6">
             {project.tags.map((tag) => (
-              <span key={tag} className="badge-pill text-[12px]">
+              <span key={tag} className="badge-pill text-[11px]">
                 {tag}
               </span>
             ))}
@@ -123,15 +146,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Links & Architecture Button */}
-        <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-hairline/20">
+        <div className="relative z-10 flex flex-wrap items-center gap-3 pt-4 border-t border-hairline">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-sans text-sm text-primary hover:text-primary-active transition-colors"
+            className="inline-flex min-h-10 items-center gap-1.5 px-1 font-mono text-sm text-body hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
           >
             <svg
-              className="w-4 h-4"
+              className="w-3.5 h-3.5"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -145,25 +168,27 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-sans text-sm text-primary hover:text-primary-active transition-colors"
+              className="inline-flex min-h-10 items-center gap-1.5 px-1 font-mono text-sm text-accent-cyan hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
             >
-              <ExternalLink size={14} />
+              <ExternalLink size={13} />
               Live Demo
             </a>
           )}
           <Link
             href={`/projects/${project.id}`}
-            className="inline-flex items-center gap-1 font-sans text-sm font-medium text-on-dark hover:text-primary transition-colors ml-auto"
+             className="inline-flex min-h-10 items-center gap-1 px-1 font-sans text-sm font-semibold text-ink hover:text-primary transition-colors ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+
           >
-            View Details
-            <ArrowRight size={14} />
+            Details
+            <ArrowRight size={13} />
           </Link>
           {project.architecture && (
             <button
               onClick={() => setArchModalOpen(true)}
-              className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold px-2.5 py-1 rounded bg-primary/20 text-primary hover:bg-primary/30 transition-colors"
+               className="inline-flex min-h-10 items-center gap-1 font-mono text-xs font-medium px-2 py-1 rounded-full bg-primary/15 text-primary hover:bg-primary/25 border border-primary/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+
             >
-              <Layers size={13} />
+              <Layers size={11} />
               Architecture
             </button>
           )}

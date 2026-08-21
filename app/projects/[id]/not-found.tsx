@@ -8,7 +8,7 @@ export default function ProjectNotFound() {
         <p className="font-mono text-sm text-primary uppercase tracking-wider mb-3">
           404
         </p>
-        <h1 className="font-serif text-display-sm md:text-display-md text-ink mb-4">
+        <h1 className="font-heading text-display-sm md:text-display-md text-ink mb-4">
           Project Not Found
         </h1>
         <p className="font-sans text-base text-muted mb-8">

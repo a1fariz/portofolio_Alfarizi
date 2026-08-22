@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Briefcase, Check, Copy, Eye, Mail, Terminal } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
-import { fadeInUpVariants, springSmooth, springGentle } from "@/lib/motion";
+import { fadeInUpVariants, springSmooth } from "@/lib/motion";
 
 const CvPreviewModal = dynamic(() => import("./CvPreviewModal"), { ssr: false });
 const TerminalModal = dynamic(() => import("./TerminalModal"), { ssr: false });

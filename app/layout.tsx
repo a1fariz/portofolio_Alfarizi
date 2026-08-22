@@ -7,16 +7,18 @@ import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
   variable: "--font-display",
   display: "swap",
+  preload: true,
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700"],
   variable: "--font-heading",
   display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
@@ -24,6 +26,7 @@ const inter = Inter({
   weight: ["400", "500", "600"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -31,6 +34,7 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-jetbrains",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

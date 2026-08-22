@@ -24,7 +24,7 @@ export const springSnappy: Transition = {
 export const fadeInUpVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 16,
   },
   visible: {
     opacity: 1,

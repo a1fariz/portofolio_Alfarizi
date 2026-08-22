@@ -55,7 +55,7 @@ export default function Hero() {
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={{ visible: { transition: { staggerChildren: prefersReducedMotion ? 0 : 0.08, delayChildren: 0.1 } } }}
+            variants={{ visible: { transition: { staggerChildren: prefersReducedMotion ? 0 : 0.04 } } }}
             className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24"
           >
             <div className="max-w-4xl">

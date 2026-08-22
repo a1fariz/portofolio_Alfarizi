@@ -57,9 +57,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-mono text-xs font-semibold text-ink uppercase tracking-wider mb-4">
+            <h3 className="font-mono text-xs font-semibold text-ink uppercase tracking-wider mb-4">
               Navigation
-            </h4>
+            </h3>
             <nav aria-label="Footer navigation">
               <ul className="space-y-1">
                 {footerLinks.Quick.map((link) => (
@@ -78,9 +78,9 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="font-mono text-xs font-semibold text-ink uppercase tracking-wider mb-4">
+            <h3 className="font-mono text-xs font-semibold text-ink uppercase tracking-wider mb-4">
               Connect
-            </h4>
+            </h3>
             <nav aria-label="Social links">
               <ul className="space-y-1">
                 {footerLinks.Connect.map((link) => (

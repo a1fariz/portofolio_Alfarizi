@@ -190,13 +190,11 @@ export default function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
               <div className="flex items-center gap-2">
                 <button
                    onClick={onClose}
-                    className="min-h-10 min-w-10 rounded-full bg-error transition-colors hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-error"
-
-                   aria-label="Close"
-
+                    className="h-3 w-3 rounded-full bg-error transition-colors hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-error"
+                   aria-label="Close terminal"
                 />
-                <div className="w-3 h-3 rounded-full bg-warning" />
-                <div className="w-3 h-3 rounded-full bg-success" />
+                <div className="w-3 h-3 rounded-full bg-warning" aria-hidden="true" />
+                <div className="w-3 h-3 rounded-full bg-success" aria-hidden="true" />
                  <span className="ml-3 flex items-center gap-1.5 font-mono text-xs text-muted">
 
                    <Terminal size={14} className="text-primary" />

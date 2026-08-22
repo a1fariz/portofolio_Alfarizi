@@ -17,11 +17,6 @@ const socialLinks = [
   { label: "Email", href: "mailto:alfarizi.developer@gmail.com", icon: Mail },
 ];
 
-const focusAreas = [
-  { number: "01", title: "Reliable services", detail: "Secure APIs and clear microservice boundaries." },
-  { number: "02", title: "Useful AI", detail: "RAG pipelines that turn data into practical tools." },
-  { number: "03", title: "Built for people", detail: "Thoughtful interfaces around complex systems." },
-];
 
 const reveal = fadeInUpVariants;
 

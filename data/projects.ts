@@ -95,7 +95,7 @@ export const projects: Project[] = [
     id: "finance-feasibility",
     title: "Finance Feasibility — AI-Powered Investment Analysis Platform",
     description:
-      "Full-stack AI-powered web application for conducting financial feasibility studies and investment analysis. Automatically calculates critical investment metrics (NPV, IRR, ROI, Payback Period) and integrates with Gemini 3.5 Flash for professional strategic insights. Features secure Firebase authentication, PDF export capabilities, and a Supabase PostgreSQL database managed via Drizzle ORM.",
+      "Full-stack AI-powered web application for conducting financial feasibility studies and investment analysis. Automatically calculates critical investment metrics (NPV, IRR, ROI, Payback Period) and integrates with Google Gemini for professional strategic insights. Features secure Firebase authentication, PDF/Excel export capabilities, and PostgreSQL database managed via Drizzle ORM.",
     tags: [
       "React 19",
       "Node.js",
@@ -103,7 +103,7 @@ export const projects: Project[] = [
       "PostgreSQL",
       "Drizzle ORM",
       "Firebase Auth",
-      "Gemini AI",
+      "Google Gemini",
       "TailwindCSS",
     ],
     status: "Completed",
@@ -112,18 +112,48 @@ export const projects: Project[] = [
     highlight: "Automatic NPV/IRR engine + Gemini AI strategic analysis",
     category: "Full-Stack Web",
     thumbnail: "/images/projects/finance-feasibility.png",
+    architecture: {
+      summary: "Full-stack client-server architecture with React 19 frontend, Express.js backend, PostgreSQL with Drizzle ORM, Firebase Authentication, and Google Gemini AI integration.",
+      flow: [
+        "React 19 Client UI & Financial Parameter Inputs",
+        "Express Backend API (Auth Token Verification & Rate Limiting)",
+        "Financial Calculations Engine (NPV, IRR, ROI, Payback Period)",
+        "Google Gemini API & PostgreSQL Database (via Drizzle ORM)",
+      ],
+      components: [
+        { title: "React 19 Frontend", desc: "Interactive dashboard built with Vite, Tailwind CSS v4, Recharts, and Motion for real-time calculation visualization." },
+        { title: "Express.js API Server", desc: "REST API server handling security via Helmet, CORS, and Express Rate Limit." },
+        { title: "Database & ORM", desc: "PostgreSQL database with schema management and type-safe queries powered by Drizzle ORM." },
+        { title: "AI & Auth Integration", desc: "Firebase Admin authentication paired with Google Gemini AI for automated strategic insights generation." },
+      ],
+    },
   },
   {
     id: "finance-management",
     title: "Finance Management System",
     description:
-      "Full-stack finance web application with multi-role authentication (BCrypt + Spring Security), complete CRUD operations, real-time financial dashboard, normalised PostgreSQL schema, and MVC backend with clean REST API endpoints.",
-    tags: ["Java", "Spring Boot", "Spring Security", "Thymeleaf", "PostgreSQL", "BCrypt"],
+      "Full-stack finance web application with multi-role authentication (BCrypt + Spring Security), complete CRUD operations, real-time financial dashboard, Flyway database migrations, normalised PostgreSQL schema, and MVC backend with clean REST API endpoints.",
+    tags: ["Java 17", "Spring Boot 3.2", "Spring Security", "Thymeleaf", "PostgreSQL", "Flyway", "Docker"],
     status: "Completed",
     github: "https://github.com/a1fariz/financeall_project_java_alfariz",
-    highlight: "Full-stack MVC + multi-role auth",
+    highlight: "Full-stack MVC + multi-role auth + Flyway migrations",
     category: "Java / Backend",
     thumbnail: "/images/projects/finance-management.png",
+    architecture: {
+      summary: "Monolithic Spring Boot 3 MVC architecture with Spring Security, Thymeleaf server-side rendering, Flyway schema migrations, and PostgreSQL database.",
+      flow: [
+        "Client HTTP Request & Thymeleaf SSR Views",
+        "Spring Security Filter Chain & Session Auth",
+        "Spring MVC Controller & Business Service Layer",
+        "Spring Data JPA & PostgreSQL DB (Flyway Managed)",
+      ],
+      components: [
+        { title: "Spring MVC & Thymeleaf", desc: "Server-side rendered templates with Spring Security integration and Actuator health endpoints." },
+        { title: "Security Layer", desc: "BCrypt password hashing and role-based access control protecting endpoints and dashboard views." },
+        { title: "Data Persistence", desc: "Spring Data JPA repositories mapped to normalized relational entities." },
+        { title: "Database & Migration", desc: "PostgreSQL database version-controlled and initialized using Flyway migrations." },
+      ],
+    },
   },
   {
     id: "universe-interactive",
@@ -149,5 +179,20 @@ export const projects: Project[] = [
     highlight: "Digital wallet transactions + RBAC security + File Handling (.txt)",
     category: "C Systems",
     thumbnail: "/images/projects/alpay-wallet.png",
+    architecture: {
+      summary: "Terminal-based C application architecture featuring two-role RBAC security, modular procedural functions, and file-based state persistence.",
+      flow: [
+        "Terminal CLI User Input & Menu Navigation",
+        "Authentication & Role-Based Access Control (Admin / User)",
+        "Transaction Execution (Transfer, Top-up, Withdraw)",
+        "Flat File I/O Operations (`user.txt` & `histori.txt`)",
+      ],
+      components: [
+        { title: "CLI Interface & Menu System", desc: "Interactive console menu with input sanitization and dynamic display states." },
+        { title: "RBAC & Auth Engine", desc: "Credential verification distinguishing Admin system controls from standard User wallet operations." },
+        { title: "Transaction Processor", desc: "Atomic balance validation, fund deductions, and error-handling routines in C." },
+        { title: "Flat File Storage Engine", desc: "File I/O persistence keeping user ledger records and audit transaction logs in plain text format." },
+      ],
+    },
   },
 ];

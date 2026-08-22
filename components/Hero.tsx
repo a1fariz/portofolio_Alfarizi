@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Briefcase, Check, Copy, Eye, Mail, Terminal } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
-import CvPreviewModal from "./CvPreviewModal";
-import TerminalModal from "./TerminalModal";
+import { fadeInUpVariants, springSmooth, springGentle } from "@/lib/motion";
+
+const CvPreviewModal = dynamic(() => import("./CvPreviewModal"), { ssr: false });
+const TerminalModal = dynamic(() => import("./TerminalModal"), { ssr: false });
 
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/a1fariz", icon: GithubIcon },
@@ -20,10 +23,7 @@ const focusAreas = [
   { number: "03", title: "Built for people", detail: "Thoughtful interfaces around complex systems." },
 ];
 
-const reveal = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
-};
+const reveal = fadeInUpVariants;
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
@@ -55,7 +55,7 @@ export default function Hero() {
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={{ visible: { transition: { staggerChildren: prefersReducedMotion ? 0 : 0.1 } } }}
+            variants={{ visible: { transition: { staggerChildren: prefersReducedMotion ? 0 : 0.08, delayChildren: 0.1 } } }}
             className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24"
           >
             <div className="max-w-4xl">
@@ -75,10 +75,10 @@ export default function Hero() {
               </motion.p>
 
               <motion.div variants={reveal} className="mt-10 flex flex-wrap gap-3">
-                <motion.a href="#projects" className="btn-primary" whileHover={prefersReducedMotion ? undefined : { y: -3 }} whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}>
+                <motion.a href="#projects" className="btn-primary" whileHover={prefersReducedMotion ? undefined : { y: -3, scale: 1.02 }} whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }} transition={springSmooth}>
                   Explore my work <ArrowUpRight size={16} />
                 </motion.a>
-                <motion.a href="#contact" className="btn-secondary" whileHover={prefersReducedMotion ? undefined : { y: -3 }} whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}>
+                <motion.a href="#contact" className="btn-secondary" whileHover={prefersReducedMotion ? undefined : { y: -3, scale: 1.02 }} whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }} transition={springSmooth}>
                   Let&apos;s talk
                 </motion.a>
               </motion.div>
@@ -127,8 +127,8 @@ export default function Hero() {
         </div>
       </section>
 
-      <CvPreviewModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
-      <TerminalModal isOpen={terminalOpen} onClose={() => setTerminalOpen(false)} />
+      {cvModalOpen && <CvPreviewModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />}
+      {terminalOpen && <TerminalModal isOpen={terminalOpen} onClose={() => setTerminalOpen(false)} />}
     </>
   );
 }

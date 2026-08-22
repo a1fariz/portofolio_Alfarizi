@@ -1,13 +1,16 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink, Layers, ArrowRight } from "lucide-react";
 import { Project } from "@/lib/types";
 import { getProjectCover } from "@/lib/projectCover";
-import ArchitectureModal from "./ArchitectureModal";
+import { springSmooth } from "@/lib/motion";
+
+const ArchitectureModal = dynamic(() => import("./ArchitectureModal"), { ssr: false });
 
 interface ProjectCardProps {
   project: Project;
@@ -20,15 +23,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const cardRef = useRef<HTMLElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     setMousePosition({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
-  };
+  }, []);
 
   const showThumbnail = project.thumbnail && !imgError;
   const cover = getProjectCover(project.category);
@@ -41,15 +45,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-         className="group relative flex flex-col justify-between overflow-hidden rounded-[1.5rem] border border-hairline bg-surface-card/70 p-6 transition-colors duration-300 hover:border-accent-red/40 hover:bg-surface-card md:p-7"
-
+        className="group relative flex flex-col justify-between overflow-hidden rounded-[1.5rem] border border-hairline bg-surface-card/70 p-6 transition-colors duration-300 hover:border-accent-red/40 hover:bg-surface-card md:p-7 will-change-transform"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
+        whileHover={prefersReducedMotion ? undefined : { y: -4 }}
         transition={{
-          duration: 0.5,
-          delay: index * 0.1,
-          ease: [0.25, 0.46, 0.45, 0.94],
+          ...springSmooth,
+          delay: prefersReducedMotion ? 0 : index * 0.08,
         }}
       >
         {/* Dynamic Spotlight Radial Gradient */}
@@ -75,8 +78,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 src={project.thumbnail as string}
                 alt={`${project.title} preview`}
                 fill
-                priority={index === 0}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={() => setImgError(true)}
               />
@@ -196,7 +198,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       </motion.article>
 
       {/* Architecture Breakdown Modal */}
-      {project.architecture && (
+      {project.architecture && archModalOpen && (
         <ArchitectureModal
           isOpen={archModalOpen}
           onClose={() => setArchModalOpen(false)}

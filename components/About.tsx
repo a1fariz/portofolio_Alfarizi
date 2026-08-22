@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Download, MapPin, Globe, Briefcase, GraduationCap, BookOpen, Eye } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import ScrollReveal from "./ScrollReveal";
 import { formalEducation, nonFormalEducation } from "@/data/education";
-import CvPreviewModal from "./CvPreviewModal";
+
+const CvPreviewModal = dynamic(() => import("./CvPreviewModal"), { ssr: false });
 
 export default function About() {
   const [cvModalOpen, setCvModalOpen] = useState(false);
@@ -209,10 +211,12 @@ export default function About() {
       </section>
 
       {/* CV Preview Modal */}
-      <CvPreviewModal
-        isOpen={cvModalOpen}
-        onClose={() => setCvModalOpen(false)}
-      />
+      {cvModalOpen && (
+        <CvPreviewModal
+          isOpen={cvModalOpen}
+          onClose={() => setCvModalOpen(false)}
+        />
+      )}
     </>
   );
 }

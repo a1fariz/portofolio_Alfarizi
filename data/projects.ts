@@ -123,7 +123,7 @@ export const projects: Project[] = [
     github: "https://github.com/a1fariz/financeall_project_java_alfariz",
     highlight: "Full-stack MVC + multi-role auth",
     category: "Java / Backend",
-    thumbnail: "/images/projects/finance-management.png?v=3",
+    thumbnail: "/images/projects/finance-management.png",
   },
   {
     id: "universe-interactive",

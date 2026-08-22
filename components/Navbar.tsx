@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal as TerminalIcon } from "lucide-react";
-import TerminalModal from "./TerminalModal";
+
+const TerminalModal = dynamic(() => import("./TerminalModal"), { ssr: false });
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -215,10 +217,12 @@ export default function Navbar() {
       </AnimatePresence>
 
       {/* Terminal CLI Modal */}
-      <TerminalModal
-        isOpen={terminalOpen}
-        onClose={() => setTerminalOpen(false)}
-      />
+      {terminalOpen && (
+        <TerminalModal
+          isOpen={terminalOpen}
+          onClose={() => setTerminalOpen(false)}
+        />
+      )}
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Download, MapPin, Globe, Briefcase, GraduationCap, BookOpen, Eye } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import ScrollReveal from "./ScrollReveal";
@@ -32,10 +33,15 @@ export default function About() {
             {/* Avatar Side */}
             <ScrollReveal direction="left">
               <div className="flex flex-col items-center md:items-start gap-6">
-                {/* Avatar circle */}
-                <div className="w-36 h-36 rounded-2xl bg-gradient-to-br from-surface-card to-surface-soft flex items-center justify-center border border-hairline shadow-glow-sm relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <span className="font-heading text-display-md text-ink font-bold">AR</span>
+                {/* Avatar photo */}
+                <div className="relative w-36 h-36 rounded-2xl overflow-hidden border border-hairline shadow-soft group bg-surface-soft">
+                  <Image
+                    src="/images/profile.jpg"
+                    alt="Alfa Rizi Profile"
+                    fill
+                    sizes="144px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
 
                 {/* Quick info */}

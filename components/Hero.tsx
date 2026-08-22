@@ -56,7 +56,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={{ visible: { transition: { staggerChildren: prefersReducedMotion ? 0 : 0.04 } } }}
-            className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24"
+            className="max-w-4xl"
           >
             <div className="max-w-4xl">
               <motion.div variants={reveal} className="mb-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-accent-red">
@@ -64,10 +64,10 @@ export default function Hero() {
                 Digital portfolio · 2026
               </motion.div>
 
-              <motion.h1 variants={reveal} className="font-display text-display-md text-ink md:text-display-lg lg:text-display-xl">
+              <motion.h1 variants={reveal} className="font-display text-display-md text-ink md:text-display-lg lg:text-display-xl !leading-[1.18]">
                 Building quiet,
                 <br />
-                <span className="italic text-accent-red">powerful systems.</span>
+                <span className="italic text-accent-red inline-block mt-1">powerful systems.</span>
               </motion.h1>
 
               <motion.p variants={reveal} className="mt-9 max-w-2xl font-sans text-base leading-8 text-body md:text-lg">
@@ -89,36 +89,6 @@ export default function Hero() {
                 <button onClick={() => setTerminalOpen(true)} className="inline-flex min-h-10 items-center gap-2 rounded-full px-1 font-mono transition-colors hover:text-accent-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-red"><Terminal size={14} /> Open CLI</button>
               </motion.div>
             </div>
-
-            <motion.div variants={reveal} className="relative">
-              <div className="rounded-[2rem] border border-hairline bg-surface-card/80 p-3 shadow-soft backdrop-blur-sm">
-                <div className="rounded-[1.5rem] border border-hairline-soft bg-gradient-to-br from-surface-soft via-surface-card to-accent-gold/10 p-6 md:p-8">
-                  <div className="flex items-end justify-between border-b border-hairline pb-5">
-                    <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">A considered approach</p>
-                      <p className="mt-3 font-display text-3xl italic text-ink">Form follows function.</p>
-                    </div>
-                    <span className="font-display text-4xl text-accent-gold/70">✦</span>
-                  </div>
-
-                  <div className="relative mt-8 space-y-3">
-                    {focusAreas.map((area) => (
-                      <div
-                        key={area.number}
-                        className="relative flex gap-4 rounded-2xl border border-hairline bg-white/55 p-4 transition-colors hover:border-accent-red/40"
-                      >
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink font-mono text-xs text-canvas">{area.number}</span>
-                        <div><p className="font-heading text-title-sm text-ink">{area.title}</p><p className="mt-1 text-xs leading-5 text-muted">{area.detail}</p></div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="ornament-line mt-8 text-[10px]">Alfa Rizi · Bandung, Indonesia</div>
-                  <div className="mt-5 flex flex-wrap gap-2">{['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'RAG'].map((skill) => <span key={skill} className="rounded-full border border-hairline bg-white/70 px-2.5 py-1 font-mono text-[10px] text-body-strong">{skill}</span>)}</div>
-                </div>
-              </div>
-              <motion.div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-accent-red/30 bg-accent-red px-4 py-3 text-white shadow-soft sm:block" animate={prefersReducedMotion ? undefined : { y: [0, -8, 0] }} transition={prefersReducedMotion ? undefined : { duration: 4, repeat: Infinity, ease: "easeInOut" }}><p className="font-mono text-[10px] uppercase tracking-wider opacity-75">Location</p><p className="mt-1 text-sm font-semibold">Bandung, ID</p></motion.div>
-            </motion.div>
           </motion.div>
 
           <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-hairline pt-5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">{['Java', 'Python', 'PostgreSQL', 'Docker', 'React', 'REST APIs'].map((skill) => <span key={skill}>{skill}</span>)}</div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal as TerminalIcon } from "lucide-react";
 
@@ -20,6 +21,15 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const ids = navLinks.map((l) => l.href.replace("#", ""));
@@ -67,66 +77,73 @@ export default function Navbar() {
         Skip to content
       </a>
        <nav
-          className="fixed left-0 right-0 top-0 z-50 border-b border-hairline bg-canvas/85 px-4 backdrop-blur-xl transition-all duration-300"
-
-
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-hairline bg-canvas/80 backdrop-blur-xl shadow-xs py-3.5"
+            : "bg-transparent py-5"
+        }`}
         role="navigation"
         aria-label="Main navigation"
       >
-         <div className="section-container mx-auto flex items-center justify-between py-4">
-          {/* Logo */}
+        <div className="section-container mx-auto flex items-center justify-between">
+          {/* Logo with Avatar */}
           <a
             href="#home"
-            className="font-heading text-base font-bold text-ink tracking-tight hover:text-primary transition-colors flex items-center gap-2 group"
+            className="group flex items-center gap-2.5 font-heading text-base font-bold text-ink transition-colors hover:text-accent-red"
           >
-             <div className="flex h-8 w-8 items-center justify-center rounded-full border border-ink bg-ink font-display text-sm font-semibold text-canvas transition-transform group-hover:rotate-[-6deg]">
-
-              AR
+            <div className="relative h-8 w-8 overflow-hidden rounded-full border border-hairline bg-surface-soft transition-transform group-hover:scale-105">
+              <Image
+                src="/images/profile.jpg"
+                alt="Alfa Rizi"
+                fill
+                sizes="32px"
+                className="object-cover"
+              />
             </div>
-            <span className="hidden sm:inline font-semibold">Alfa Rizi</span>
+            <span className="hidden font-semibold sm:inline">Alfa Rizi</span>
           </a>
 
           {/* Desktop Nav Links */}
-             <ul className="hidden items-center gap-6 md:flex">
-
+          <ul className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace("#", "");
               return (
                 <li key={link.href} className="relative">
-                   <a
-                     href={link.href}
-                     aria-current={isActive ? "true" : undefined}
-                     className={`relative block py-2.5 font-sans text-xs font-medium transition-all duration-200 ${
-
-                       isActive
-                         ? "text-accent-red font-semibold"
-                         : "text-muted hover:text-ink"
-
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`relative block py-1 font-sans text-xs transition-colors duration-200 ${
+                      isActive
+                        ? "text-accent-red font-semibold"
+                        : "text-muted hover:text-ink font-medium"
                     }`}
                   >
                     {link.label}
                   </a>
-                   {isActive && <span className="absolute bottom-0 left-0 right-0 h-px bg-accent-red" />}
-
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavLine"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-red rounded-full"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </li>
               );
             })}
           </ul>
 
           {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-2.5">
+          <div className="hidden items-center gap-2.5 md:flex">
             <button
               onClick={() => setTerminalOpen(true)}
-               className="flex items-center gap-1.5 rounded-full border border-accent-red/30 bg-accent-red/5 px-2.5 py-1 font-mono text-[11px] font-medium text-accent-red transition-all hover:border-accent-red/60 hover:bg-accent-red/10"
-
+              className="flex items-center gap-1.5 rounded-full border border-accent-red/30 bg-accent-red/5 px-2.5 py-1 font-mono text-[11px] font-medium text-accent-red transition-all hover:border-accent-red/60 hover:bg-accent-red/10"
               title="Open CLI Terminal Mode"
               aria-label="Open CLI Terminal"
             >
               <TerminalIcon size={12} />
               <span>CLI</span>
             </button>
-             <a href="#contact" className="btn-primary !min-h-9 !px-4 !py-1.5 !text-xs">
-
+            <a href="#contact" className="btn-primary !min-h-9 !px-4 !py-1.5 !text-xs">
               Contact
             </a>
           </div>
@@ -135,17 +152,15 @@ export default function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <button
               onClick={() => setTerminalOpen(true)}
-               className="flex items-center gap-1 rounded-full border border-accent-red/30 bg-accent-red/5 px-2 py-1 font-mono text-[11px] text-accent-red"
-
+              className="flex items-center gap-1 rounded-full border border-accent-red/30 bg-accent-red/5 px-2 py-1 font-mono text-[11px] text-accent-red"
               aria-label="CLI Mode"
             >
               <TerminalIcon size={12} />
               <span>CLI</span>
             </button>
             <button
-               className="min-h-10 min-w-10 inline-flex items-center justify-center text-ink p-1.5 rounded-full hover:bg-surface-soft transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-               aria-controls="mobile-navigation"
-
+              className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full p-1.5 text-ink hover:bg-surface-soft transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              aria-controls="mobile-navigation"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}

@@ -7,6 +7,7 @@ import { Download, MapPin, Globe, Briefcase, GraduationCap, BookOpen, Eye } from
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import ScrollReveal from "./ScrollReveal";
 import { formalEducation, nonFormalEducation } from "@/data/education";
+import { defaultCvVariant, cvFileName } from "@/data/cv";
 
 const CvPreviewModal = dynamic(() => import("./CvPreviewModal"), { ssr: false });
 
@@ -172,24 +173,12 @@ export default function About() {
                     Preview CV
                   </button>
                   <a
-                    href="/cv/AlfaRizi_CV_English.pdf"
-                    download="AlfaRizi_CV_English.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={defaultCvVariant.paths.en}
+                    download={cvFileName(defaultCvVariant.paths.en)}
                     className="btn-secondary gap-2"
                   >
                     <Download size={16} />
-                    CV (EN)
-                  </a>
-                  <a
-                    href="/cv/AlfaRizi_CV_Indonesia.pdf"
-                    download="AlfaRizi_CV_Indonesia.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary gap-2"
-                  >
-                    <Download size={16} />
-                    CV (ID)
+                    Download CV
                   </a>
                   <a
                     href="https://github.com/a1fariz"

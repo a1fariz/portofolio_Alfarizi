@@ -18,5 +18,6 @@ export const nonFormalEducation: NonFormalEducation = {
     { title: "Java Fundamental", period: "Aug 2025 – Jan 2026" },
     { title: "Git & GitHub", period: "Jan 2026 – Feb 2026" },
     { title: "Java Advanced", period: "Feb 2026 – 16 Jun 2026" },
+    { title: "React Fundamental", period: "Jun 2026 – Present" },
   ],
 };

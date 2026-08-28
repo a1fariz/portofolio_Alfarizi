@@ -1,5 +1,0 @@
-# Linguist overrides to ensure repository is properly identified as TypeScript
-.opencode/** linguist-vendored
-*.py linguist-vendored
-*.csv linguist-vendored
-*.json linguist-vendored

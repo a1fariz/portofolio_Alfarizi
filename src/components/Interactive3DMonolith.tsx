@@ -22,7 +22,6 @@ export default function Interactive3DMonolith() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Create a precision faceted architectural icosahedron wireframe + inner core
     const outerGeo = new THREE.IcosahedronGeometry(2.1, 1);
     const innerGeo = new THREE.IcosahedronGeometry(1.6, 0);
 
@@ -46,7 +45,6 @@ export default function Interactive3DMonolith() {
     scene.add(outerMesh);
     scene.add(innerMesh);
 
-    // Mouse Tracking on Hero Container
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
@@ -60,18 +58,10 @@ export default function Interactive3DMonolith() {
     const clock = new THREE.Clock();
     let active = !document.hidden;
 
-    const onVisibilityChange = () => {
-      const next = !document.hidden;
-      if (next === active) return;
-      active = next;
-      if (active) animate();
-    };
-
     const animate = () => {
       if (!active) return;
       const time = clock.getElapsedTime();
 
-      // Lerp rotation to mouse target
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
@@ -85,6 +75,14 @@ export default function Interactive3DMonolith() {
       animationId = requestAnimationFrame(animate);
     };
 
+    const onVisibilityChange = () => {
+      const next = !document.hidden;
+      if (next === active) return;
+      active = next;
+      if (active) animate();
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
     animate();
 
     const handleResize = () => {
@@ -101,6 +99,7 @@ export default function Interactive3DMonolith() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       cancelAnimationFrame(animationId);
       outerGeo.dispose();
       innerGeo.dispose();

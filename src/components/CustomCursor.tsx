@@ -14,9 +14,9 @@ export default function CustomCursor() {
     const textEl = textRef.current;
     if (!cursor || !textEl) return;
 
-    // Use gsap.quickTo for butter smooth cursor trail without jitter
-    const xTo = gsap.quickTo(cursor, "x", { duration: 0.25, ease: "power3.out" });
-    const yTo = gsap.quickTo(cursor, "y", { duration: 0.25, ease: "power3.out" });
+    // Use gsap.quickTo with soft expo deceleration for fluid liquid trail
+    const xTo = gsap.quickTo(cursor, "x", { duration: 0.38, ease: "power2.out" });
+    const yTo = gsap.quickTo(cursor, "y", { duration: 0.38, ease: "power2.out" });
 
     const handleMouseMove = (e: MouseEvent) => {
       xTo(e.clientX);
@@ -40,10 +40,10 @@ export default function CustomCursor() {
           color: "#f4f3ef",
           scale: 1,
           opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
+          duration: 0.4,
+          ease: "cubic-bezier(0.19, 1, 0.22, 1)",
         });
-        gsap.to(textEl, { opacity: 1, duration: 0.2 });
+        gsap.to(textEl, { opacity: 1, duration: 0.25 });
       } else if (interactiveTarget) {
         textEl.textContent = "";
         gsap.to(cursor, {
@@ -54,8 +54,8 @@ export default function CustomCursor() {
           border: "1px solid rgba(20, 20, 20, 0.25)",
           scale: 1,
           opacity: 1,
-          duration: 0.25,
-          ease: "power2.out",
+          duration: 0.3,
+          ease: "cubic-bezier(0.19, 1, 0.22, 1)",
         });
         gsap.to(textEl, { opacity: 0, duration: 0.15 });
       } else {
@@ -68,8 +68,8 @@ export default function CustomCursor() {
           backdropFilter: "none",
           scale: 1,
           opacity: 0.9,
-          duration: 0.2,
-          ease: "power2.out",
+          duration: 0.25,
+          ease: "cubic-bezier(0.19, 1, 0.22, 1)",
         });
         gsap.to(textEl, { opacity: 0, duration: 0.15 });
       }

@@ -35,24 +35,24 @@ export default function HeroSection({
 
     const lines = [line1Ref.current, line2Ref.current, line3Ref.current];
 
-    // Initial state
+    // Initial state: deep baseline, slight tilt, soft optical blur
     gsap.set(lines, {
-      yPercent: 110,
-      rotate: 2,
-      filter: "blur(10px)",
+      yPercent: 120,
+      rotate: 1.5,
+      filter: "blur(12px)",
       opacity: 0,
     });
 
-    gsap.set(sublineRef.current, { opacity: 0, y: 24 });
+    gsap.set(sublineRef.current, { opacity: 0, y: 30, filter: "blur(6px)" });
     gsap.set(ctaRef.current, { opacity: 0, y: 24 });
     gsap.set(borderRef.current, { scaleX: 0 });
 
-    const tl = gsap.timeline({ defaults: { ease: "cubic-bezier(0.16, 1, 0.3, 1)" } });
+    const tl = gsap.timeline({ defaults: { ease: "cubic-bezier(0.19, 1, 0.22, 1)" } });
 
     tl.to(borderRef.current, {
       scaleX: 1,
-      duration: 1.1,
-      ease: "power3.inOut",
+      duration: 1.4,
+      ease: "expo.out",
     })
       .to(
         lines,
@@ -61,28 +61,29 @@ export default function HeroSection({
           rotate: 0,
           filter: "blur(0px)",
           opacity: 1,
-          duration: 1.3,
-          stagger: 0.08,
+          duration: 1.6,
+          stagger: 0.1,
         },
-        "-=0.5"
+        "-=0.7"
       )
       .to(
         sublineRef.current,
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          filter: "blur(0px)",
+          duration: 1.2,
         },
-        "-=0.7"
+        "-=1.0"
       )
       .to(
         ctaRef.current,
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
+          duration: 1.0,
         },
-        "-=0.6"
+        "-=0.8"
       );
 
     // Scroll Parallax Fade Out on Hero content

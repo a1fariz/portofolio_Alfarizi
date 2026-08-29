@@ -188,10 +188,10 @@ export default function InteractiveProjectIndex({
             filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.15 }}
-                transition={{ duration: 0.7, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: false, amount: 0.12 }}
+                transition={{ duration: 0.85, delay: (index % 4) * 0.07, ease: [0.19, 1, 0.22, 1] }}
                 onClick={() => onSelectProject(project)}
                 onMouseEnter={(e) => handleMouseEnterRow(project, e as any)}
                 onMouseLeave={handleMouseLeaveRow as any}
@@ -205,7 +205,7 @@ export default function InteractiveProjectIndex({
                   </span>
                   <div className="space-y-1">
                     <div className="flex flex-wrap items-center gap-3">
-                      <h3 className="project-title text-xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#141414] group-hover:translate-x-3 transition-transform duration-300 uppercase">
+                      <h3 className="project-title text-xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#141414] group-hover:translate-x-3 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] uppercase">
                         {project.title}
                       </h3>
                       <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-black/5 border border-black/5 text-neutral-600">
@@ -225,8 +225,8 @@ export default function InteractiveProjectIndex({
                 <div className="flex items-center gap-6 md:gap-10 self-end md:self-auto font-mono text-xs">
                   <span className="text-neutral-500 hidden lg:inline-block">{project.status}</span>
                   <span className="text-neutral-500">{project.year}</span>
-                  <div className="p-3 rounded-full border border-black/10 group-hover:border-black group-hover:bg-[#141414] group-hover:text-[#f4f3ef] transition-all">
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <div className="p-3 rounded-full border border-black/10 group-hover:border-black group-hover:bg-[#141414] group-hover:text-[#f4f3ef] transition-all duration-300">
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
 

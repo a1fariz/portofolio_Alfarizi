@@ -72,6 +72,7 @@ export default function ScrollPinnedCaseStudy({
 
   return (
     <section
+      id="experience"
       ref={containerRef}
       className="relative py-28 px-6 md:px-12 bg-[#f4f3ef] text-[#141414] border-b border-black/5"
     >

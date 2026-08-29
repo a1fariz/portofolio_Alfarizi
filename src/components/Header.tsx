@@ -29,21 +29,28 @@ export default function Header({
     { label: "Home,", href: "#home" },
     { label: "Projects,", href: "#projects" },
     { label: "Capabilities,", href: "#services" },
-    { label: "Experience,", href: "#awards" },
+    { label: "Credentials,", href: "#awards" },
     { label: "Contact", href: "#contact" },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
     sounds.playClick();
     if (href.startsWith("#")) {
-      e.preventDefault();
       const targetId = href.replace("#", "");
       if (targetId === "home") {
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const el = document.getElementById(targetId);
         if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
+          const headerOffset = 90; // account for fixed header height
+          const elementPosition = el.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
         }
       }
     }
@@ -77,12 +84,10 @@ export default function Header({
               <MagneticButton
                 key={link.label}
                 href={link.href}
-                onClick={() => {}}
+                onClick={(e: any) => handleNavClick(e, link.href)}
                 className="px-3 py-1.5 hover:text-black transition-colors"
               >
-                <span onClick={(e) => handleNavClick(e as any, link.href)}>
-                  {link.label}
-                </span>
+                <span>{link.label}</span>
               </MagneticButton>
             ))}
           </nav>

@@ -22,6 +22,7 @@ html {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   scroll-behavior: auto;
+  scroll-padding-top: 90px;
 }
 
 body {

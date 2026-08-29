@@ -12,7 +12,7 @@ export default function MagneticButton({
 }: {
   children: React.ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e?: any) => void;
   href?: string;
   cursorText?: string;
 }) {

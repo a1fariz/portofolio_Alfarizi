@@ -15,9 +15,7 @@ export default function InteractiveProjectIndex({
 }) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeProject, setActiveProject] = useState<RealProject | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const floatingCardRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const categories = ["All", "Java / Backend", "AI & RAG", "Full-Stack Web", "C Systems"];
@@ -49,70 +47,24 @@ export default function InteractiveProjectIndex({
     return matchesCategory && matchesQuery;
   });
 
-  useEffect(() => {
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) return;
-
-    const floatingCard = floatingCardRef.current;
-    if (!floatingCard) return;
-
-    const xTo = gsap.quickTo(floatingCard, "x", { duration: 0.35, ease: "power3.out" });
-    const yTo = gsap.quickTo(floatingCard, "y", { duration: 0.35, ease: "power3.out" });
-
-    const handleMouseMove = (e: MouseEvent) => {
-      xTo(e.clientX + 24);
-      yTo(e.clientY - 140);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   const handleMouseEnterRow = (project: RealProject, e: React.MouseEvent<HTMLDivElement>) => {
-    setActiveProject(project);
-
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     if (isTouch) return;
 
     const targetRow = e.currentTarget;
     const titleEl = targetRow.querySelector(".project-title");
-    const floatingCard = floatingCardRef.current;
 
     if (titleEl) {
       gsap.to(titleEl, { x: 20, duration: 0.4, ease: "power3.out" });
-    }
-
-    if (floatingCard) {
-      gsap.to(floatingCard, {
-        opacity: 1,
-        scale: 1,
-        clipPath: "inset(0% 0% 0% 0%)",
-        duration: 0.45,
-        ease: "cubic-bezier(0.16, 1, 0.3, 1)",
-      });
     }
   };
 
   const handleMouseLeaveRow = (e: React.MouseEvent<HTMLDivElement>) => {
     const targetRow = e.currentTarget;
     const titleEl = targetRow.querySelector(".project-title");
-    const floatingCard = floatingCardRef.current;
 
     if (titleEl) {
       gsap.to(titleEl, { x: 0, duration: 0.3, ease: "power2.out" });
-    }
-
-    if (floatingCard) {
-      gsap.to(floatingCard, {
-        opacity: 0,
-        scale: 0.95,
-        clipPath: "inset(100% 0% 0% 0%)",
-        duration: 0.3,
-        ease: "power2.inOut",
-      });
     }
   };
 
@@ -193,8 +145,8 @@ export default function InteractiveProjectIndex({
                 viewport={{ once: false, amount: 0.12 }}
                 transition={{ duration: 0.85, delay: (index % 4) * 0.07, ease: [0.19, 1, 0.22, 1] }}
                 onClick={() => onSelectProject(project)}
-                onMouseEnter={(e) => handleMouseEnterRow(project, e as any)}
-                onMouseLeave={handleMouseLeaveRow as any}
+                onMouseEnter={(e) => handleMouseEnterRow(project, e)}
+                onMouseLeave={handleMouseLeaveRow}
                 data-cursor="VIEW CASE"
                 className="group relative py-8 md:py-10 cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-all duration-500 hover:bg-black/[0.02] px-4 -mx-4 rounded-xl"
               >
@@ -260,34 +212,6 @@ export default function InteractiveProjectIndex({
         </div>
       </div>
 
-      {/* Floating Cursor Trail Preview Card (Desktop Only) */}
-      <div
-        ref={floatingCardRef}
-        style={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}
-        className="pointer-events-none fixed top-0 left-0 z-40 w-84 h-60 rounded-2xl overflow-hidden border border-black/10 bg-white shadow-2xl hidden md:block will-change-transform"
-      >
-        {activeProject && (
-          <div className="relative w-full h-full">
-            <Image
-              src={activeProject.image}
-              alt={activeProject.title}
-              fill
-              sizes="340px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between font-mono text-[10px] text-white">
-              <div className="space-y-0.5">
-                <span className="text-neutral-300 block">{activeProject.category}</span>
-                <span className="font-bold uppercase text-xs">{activeProject.title}</span>
-              </div>
-              <span className="px-2 py-1 rounded bg-[#141414] text-[#f4f3ef] font-bold uppercase">
-                {activeProject.year}
-              </span>
-            </div>
-          </div>
-        )}
-      </div>
     </section>
   );
 }

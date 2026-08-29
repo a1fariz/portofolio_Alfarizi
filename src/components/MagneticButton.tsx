@@ -12,7 +12,7 @@ export default function MagneticButton({
 }: {
   children: React.ReactNode;
   className?: string;
-  onClick?: (e?: any) => void;
+  onClick?: (e?: React.MouseEvent) => void;
   href?: string;
   cursorText?: string;
 }) {
@@ -48,20 +48,28 @@ export default function MagneticButton({
     };
   }, []);
 
-  const props = {
-    ref: buttonRef as any,
-    className: `relative inline-flex items-center justify-center transition-colors focus:outline-none focus:ring-1 focus:ring-white ${className}`,
-    onClick,
-    "data-cursor": cursorText,
-  };
-
   if (href) {
     return (
-      <a href={href} {...props}>
+      <a
+        ref={buttonRef as React.RefObject<HTMLAnchorElement | null>}
+        href={href}
+        className={`relative inline-flex items-center justify-center transition-colors focus:outline-none focus:ring-1 focus:ring-white ${className}`}
+        onClick={onClick}
+        {...(cursorText ? { "data-cursor": cursorText } : {})}
+      >
         {children}
       </a>
     );
   }
 
-  return <button {...props}>{children}</button>;
+  return (
+    <button
+      ref={buttonRef as React.RefObject<HTMLButtonElement | null>}
+      className={`relative inline-flex items-center justify-center transition-colors focus:outline-none focus:ring-1 focus:ring-white ${className}`}
+      onClick={onClick}
+      {...(cursorText ? { "data-cursor": cursorText } : {})}
+    >
+      {children}
+    </button>
+  );
 }

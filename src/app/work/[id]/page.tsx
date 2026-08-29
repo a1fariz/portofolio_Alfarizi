@@ -2,11 +2,10 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { REAL_PROJECTS, RealProject } from "@/data/realPortfolio";
-import { ArrowLeft, ArrowUpRight, Code2, ExternalLink, Cpu, Terminal, CheckCircle2, ShieldCheck, Database } from "lucide-react";
+import { REAL_PROJECTS } from "@/data/realPortfolio";
+import { ArrowLeft, ArrowUpRight, Code2, ExternalLink, Cpu } from "lucide-react";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import CustomCursor from "@/components/CustomCursor";
-import MagneticButton from "@/components/MagneticButton";
 
 interface PageProps {
   params: Promise<{ id: string }>;

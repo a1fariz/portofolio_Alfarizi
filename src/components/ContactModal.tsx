@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, CheckCircle2, Mail, Copy, Check, ExternalLink } from "lucide-react";
+import { X, Send, CheckCircle2, Copy, Check, ExternalLink } from "lucide-react";
 import { sounds } from "@/lib/sound";
 
 export default function ContactModal({

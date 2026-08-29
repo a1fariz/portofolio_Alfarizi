@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import MagneticButton from "@/components/MagneticButton";
-import { Menu, X, ArrowUpRight, Terminal as TerminalIcon, FileText, Volume2, VolumeX } from "lucide-react";
+import { Menu, X, ArrowUpRight, FileText, Volume2, VolumeX } from "lucide-react";
 import { sounds } from "@/lib/sound";
 
 export default function Header({
@@ -14,10 +14,9 @@ export default function Header({
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(() => sounds.getMuted());
 
   useEffect(() => {
-    setIsMuted(sounds.getMuted());
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
@@ -84,7 +83,9 @@ export default function Header({
               <MagneticButton
                 key={link.label}
                 href={link.href}
-                onClick={(e: any) => handleNavClick(e, link.href)}
+                onClick={(e?: React.MouseEvent) => {
+                  if (e) handleNavClick(e, link.href);
+                }}
                 className="px-3 py-1.5 hover:text-black transition-colors"
               >
                 <span>{link.label}</span>

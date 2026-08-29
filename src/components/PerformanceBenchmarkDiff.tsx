@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sliders, Zap, CheckCircle2, ShieldAlert, Cpu } from "lucide-react";
+import { Sliders, CheckCircle2, ShieldAlert } from "lucide-react";
 import { sounds } from "@/lib/sound";
 
 export default function PerformanceBenchmarkDiff() {

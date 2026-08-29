@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { TECH_CAPABILITIES } from "@/data/realPortfolio";
 import { ArrowRight, Terminal, Cpu, Sparkles, Layers } from "lucide-react";
-import MagneticButton from "@/components/MagneticButton";
 
 export default function ServicesSection({
   onSelectService,

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Play, Copy, Check, Terminal, Database, Sparkles, Cpu, Layers, RefreshCw } from "lucide-react";
+import { motion } from "framer-motion";
+import { Code2, Play, Copy, Check, Database } from "lucide-react";
 import { sounds } from "@/lib/sound";
 
 interface InspectorEndpoint {
@@ -13,8 +13,8 @@ interface InspectorEndpoint {
   path: string;
   desc: string;
   headers: Record<string, string>;
-  requestPayload?: any;
-  responseGenerator: (params: any) => any;
+  requestPayload?: Record<string, unknown>;
+  responseGenerator: (params: number | string | { inv: number; rate: number }) => Record<string, unknown>;
   schemaDetails: string[];
 }
 
@@ -22,7 +22,7 @@ export default function SystemPayloadInspector() {
   const [activeTab, setActiveTab] = useState<string>("apexgrid");
   const [copied, setCopied] = useState(false);
   const [executing, setExecuting] = useState(false);
-  const [executionResult, setExecutionResult] = useState<any>(null);
+  const [executionResult, setExecutionResult] = useState<Record<string, unknown> | null>(null);
 
   // Dynamic user editable params
   const [raceSeats, setRaceSeats] = useState<number>(2);
@@ -49,23 +49,26 @@ export default function SystemPayloadInspector() {
         seatCount: raceSeats,
         idempotencyKey: "idem_8f9a23b1-09cd",
       },
-      responseGenerator: (seats) => ({
-        status: 201,
-        code: "RESERVATION_CONFIRMED",
-        data: {
-          reservationId: "RES-98214-MNZ",
-          expiresInMinutes: 30,
-          allocatedSeats: Array.from({ length: seats }, (_, i) => `G-A-${140 + i}`),
-          totalPrice: `$${seats * 420}.00`,
-          currency: "USD",
-          lockType: "POSTGRES_ROW_LEVEL_PESSIMISTIC",
-        },
-        telemetry: {
-          dbTriggerLatency: "4.2ms",
-          totalExecution: "18.4ms",
-          acidLockVerified: true,
-        },
-      }),
+      responseGenerator: (params) => {
+        const seats = typeof params === "number" ? params : 2;
+        return {
+          status: 201,
+          code: "RESERVATION_CONFIRMED",
+          data: {
+            reservationId: "RES-98214-MNZ",
+            expiresInMinutes: 30,
+            allocatedSeats: Array.from({ length: seats }, (_, i) => `G-A-${140 + i}`),
+            totalPrice: `$${seats * 420}.00`,
+            currency: "USD",
+            lockType: "POSTGRES_ROW_LEVEL_PESSIMISTIC",
+          },
+          telemetry: {
+            dbTriggerLatency: "4.2ms",
+            totalExecution: "18.4ms",
+            acidLockVerified: true,
+          },
+        };
+      },
       schemaDetails: [
         "Table: race_inventory (seat_id PK, race_id FK, status ENUM, locked_until TIMESTAMP)",
         "PostgreSQL Trigger: verify_and_decrement_quota_trigger()",
@@ -90,28 +93,31 @@ export default function SystemPayloadInspector() {
         documentId: "deep_learning_goodfellow_ch6.pdf",
         includeCitations: true,
       },
-      responseGenerator: (query) => ({
-        status: 200,
-        model: "Google Gemini 2.0 Flash",
-        orchestration: "LangChain RAG Pipeline",
-        retrievedContextChunks: [
-          {
-            page: 204,
-            similarityScore: 0.942,
-            chunkId: "dl-ch6-sec5-p204",
-            excerpt: "Backpropagation algorithms compute gradient vector through chain rule...",
-          },
-          {
-            page: 208,
-            similarityScore: 0.918,
-            chunkId: "dl-ch6-sec7-p208",
-            excerpt: "Forward graph evaluation propagates activations before backward pass...",
-          },
-        ],
-        synthesis: `Regarding '${query}': Backpropagation systematically evaluates gradients by decomposing multivariable calculus derivatives across computational DAG nodes. (Goodfellow et al., p. 204-208).`,
-        generatedCards: 4,
-        latencyMs: 164,
-      }),
+      responseGenerator: (params) => {
+        const query = typeof params === "string" ? params : "";
+        return {
+          status: 200,
+          model: "Google Gemini 2.0 Flash",
+          orchestration: "LangChain RAG Pipeline",
+          retrievedContextChunks: [
+            {
+              page: 204,
+              similarityScore: 0.942,
+              chunkId: "dl-ch6-sec5-p204",
+              excerpt: "Backpropagation algorithms compute gradient vector through chain rule...",
+            },
+            {
+              page: 208,
+              similarityScore: 0.918,
+              chunkId: "dl-ch6-sec7-p208",
+              excerpt: "Forward graph evaluation propagates activations before backward pass...",
+            },
+          ],
+          synthesis: `Regarding '${query}': Backpropagation systematically evaluates gradients by decomposing multivariable calculus derivatives across computational DAG nodes. (Goodfellow et al., p. 204-208).`,
+          generatedCards: 4,
+          latencyMs: 164,
+        };
+      },
       schemaDetails: [
         "Vector Engine: ChromaDB Cosine Indexing with sentence-transformers",
         "Parser: PyMuPDF extracting exact page coordinates & metadata",
@@ -135,7 +141,13 @@ export default function SystemPayloadInspector() {
         annualCashflows: [18000, 24000, 28000, 32000, 35000],
         projectionYears: 5,
       },
-      responseGenerator: ({ inv, rate }) => {
+      responseGenerator: (params) => {
+        const payload = (typeof params === "object" && params !== null ? params : {}) as {
+          inv?: number;
+          rate?: number;
+        };
+        const inv = payload.inv ?? 50000;
+        const rate = payload.rate ?? 10;
         const cashflows = [18000, 24000, 28000, 32000, 35000];
         const r = rate / 100;
         let npv = -inv;

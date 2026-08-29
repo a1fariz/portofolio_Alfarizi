@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight, Copy, Check } from "lucide-react";
 import MagneticButton from "@/components/MagneticButton";
 import { sounds } from "@/lib/sound";
@@ -56,11 +57,11 @@ export default function Footer({
           <div className="space-y-3">
             <span className="text-neutral-500 uppercase">Navigation Index</span>
             <ul className="space-y-2 text-neutral-600">
-              <li><a href="/#overview" className="hover:text-black transition-colors">01 / Overview</a></li>
-              <li><a href="/#projects" className="hover:text-black transition-colors">02 / Works Index</a></li>
-              <li><a href="/#services" className="hover:text-black transition-colors">03 / Engineering Stack</a></li>
-              <li><a href="/#awards" className="hover:text-black transition-colors">04 / Accreditations</a></li>
-              <li><a href="/#contact" className="hover:text-black transition-colors">05 / Direct Connect</a></li>
+              <li><Link href="/#overview" className="hover:text-black transition-colors">01 / Overview</Link></li>
+              <li><Link href="/#projects" className="hover:text-black transition-colors">02 / Works Index</Link></li>
+              <li><Link href="/#services" className="hover:text-black transition-colors">03 / Engineering Stack</Link></li>
+              <li><Link href="/#awards" className="hover:text-black transition-colors">04 / Accreditations</Link></li>
+              <li><Link href="/#contact" className="hover:text-black transition-colors">05 / Direct Connect</Link></li>
             </ul>
           </div>
 

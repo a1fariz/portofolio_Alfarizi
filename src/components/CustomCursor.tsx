@@ -28,10 +28,22 @@ export default function CustomCursor() {
       if (!target) return;
 
       const cursorTarget = target.closest("[data-cursor]");
-      const interactiveTarget = target.closest("button, a, input, select, textarea");
-
       if (cursorTarget) {
-        const badgeText = cursorTarget.getAttribute("data-cursor") || "VIEW CASE";
+        const badgeText = cursorTarget.getAttribute("data-cursor");
+        if (!badgeText || badgeText === "undefined" || badgeText.trim() === "" || badgeText === "null") {
+          textEl.textContent = "";
+          gsap.to(cursor, {
+            width: 0,
+            height: 0,
+            scale: 0,
+            opacity: 0,
+            duration: 0.2,
+            ease: "cubic-bezier(0.19, 1, 0.22, 1)",
+          });
+          gsap.to(textEl, { opacity: 0, duration: 0.15 });
+          return;
+        }
+
         textEl.textContent = badgeText;
         gsap.to(cursor, {
           width: 88,

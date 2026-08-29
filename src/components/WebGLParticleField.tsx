@@ -10,9 +10,9 @@ export default function WebGLParticleField() {
     if (!containerRef.current) return;
     const container = containerRef.current;
 
-    // Check reduced motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (prefersReducedMotion || isMobile) return;
 
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -26,9 +26,7 @@ export default function WebGLParticleField() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Particle Geometry: Reduced on mobile for locked 60fps
-    const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 220 : 750;
+    const particleCount = 750;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const initialPositions = new Float32Array(particleCount * 3);

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
-import WebGLParticleField from "@/components/WebGLParticleField";
 import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
@@ -20,12 +20,22 @@ import Footer from "@/components/Footer";
 import { RealProject } from "@/data/realPortfolio";
 import { sounds } from "@/lib/sound";
 
+const WebGLParticleField = dynamic(() => import("@/components/WebGLParticleField"), { ssr: false });
+
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<RealProject | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isCvOpen, setIsCvOpen] = useState(false);
   const [inquiryContext, setInquiryContext] = useState<string>("");
   const [loaded, setLoaded] = useState(false);
+  const [showParticleField, setShowParticleField] = useState(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setShowParticleField(window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)").matches);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   const handleOpenContact = (context?: string) => {
     if (context) setInquiryContext(context);
@@ -45,8 +55,8 @@ export default function Home() {
       {/* Cinematic Initial Shutter Preloader */}
       {!loaded && <CinematicPreloader onComplete={() => setLoaded(true)} />}
 
-      {/* 3D WebGL Background Particle Shader */}
-      <WebGLParticleField />
+        {/* 3D WebGL Background Particle Shader */}
+        {showParticleField && <WebGLParticleField />}
 
       {/* GSAP QuickTo Magnetic Cursor */}
       <CustomCursor />

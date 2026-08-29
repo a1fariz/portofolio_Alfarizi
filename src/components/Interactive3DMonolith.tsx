@@ -7,7 +7,7 @@ export default function Interactive3DMonolith() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || window.matchMedia("(max-width: 767px), (prefers-reduced-motion: reduce)").matches) return;
     const container = containerRef.current;
 
     const width = container.clientWidth || 280;

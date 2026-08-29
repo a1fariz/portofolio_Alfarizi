@@ -44,31 +44,14 @@ export default function CustomCursor() {
           ease: "cubic-bezier(0.19, 1, 0.22, 1)",
         });
         gsap.to(textEl, { opacity: 1, duration: 0.25 });
-      } else if (interactiveTarget) {
-        textEl.textContent = "";
-        gsap.to(cursor, {
-          width: 40,
-          height: 40,
-          backgroundColor: "rgba(20, 20, 20, 0.08)",
-          backdropFilter: "blur(4px)",
-          border: "1px solid rgba(20, 20, 20, 0.25)",
-          scale: 1,
-          opacity: 1,
-          duration: 0.3,
-          ease: "cubic-bezier(0.19, 1, 0.22, 1)",
-        });
-        gsap.to(textEl, { opacity: 0, duration: 0.15 });
       } else {
         textEl.textContent = "";
         gsap.to(cursor, {
-          width: 7,
-          height: 7,
-          backgroundColor: "#141414",
-          border: "none",
-          backdropFilter: "none",
-          scale: 1,
-          opacity: 0.9,
-          duration: 0.25,
+          width: 0,
+          height: 0,
+          scale: 0,
+          opacity: 0,
+          duration: 0.2,
           ease: "cubic-bezier(0.19, 1, 0.22, 1)",
         });
         gsap.to(textEl, { opacity: 0, duration: 0.15 });
@@ -87,8 +70,8 @@ export default function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className="pointer-events-none fixed top-0 left-0 z-50 rounded-full flex items-center justify-center -translate-x-1/2 -translate-y-1/2 will-change-transform hidden md:flex"
-      style={{ width: 8, height: 8, backgroundColor: "#ffffff" }}
+      className="pointer-events-none fixed top-0 left-0 z-50 rounded-full flex items-center justify-center -translate-x-1/2 -translate-y-1/2 will-change-transform hidden md:flex opacity-0"
+      style={{ width: 0, height: 0 }}
       aria-hidden="true"
     >
       <span

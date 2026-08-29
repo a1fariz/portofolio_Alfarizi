@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
+import MagneticButton from "@/components/MagneticButton";
 import { ArrowDown, ArrowUpRight, Code2 } from "lucide-react";
 import SpinningBadge from "@/components/SpinningBadge";
-import MagneticButton from "@/components/MagneticButton";
+import Interactive3DMonolith from "@/components/Interactive3DMonolith";
 
 export default function HeroSection({
   onExploreProjects,
@@ -18,11 +18,13 @@ export default function HeroSection({
   isReady?: boolean;
 }) {
   const heroRef = useRef<HTMLDivElement>(null);
-  const bannerWrapperRef = useRef<HTMLDivElement>(null);
-  const bannerImgRef = useRef<HTMLDivElement>(null);
-  const title1Ref = useRef<HTMLDivElement>(null);
-  const title2Ref = useRef<HTMLDivElement>(null);
-  const descRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const line1Ref = useRef<HTMLDivElement>(null);
+  const line2Ref = useRef<HTMLDivElement>(null);
+  const line3Ref = useRef<HTMLDivElement>(null);
+  const sublineRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const borderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isReady) return;
@@ -31,62 +33,70 @@ export default function HeroSection({
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    // 1. Initial Load Reveal (Awwwards Masked Slide Up)
+    const lines = [line1Ref.current, line2Ref.current, line3Ref.current];
+
+    // Initial state
+    gsap.set(lines, {
+      yPercent: 110,
+      rotate: 2,
+      filter: "blur(10px)",
+      opacity: 0,
+    });
+
+    gsap.set(sublineRef.current, { opacity: 0, y: 24 });
+    gsap.set(ctaRef.current, { opacity: 0, y: 24 });
+    gsap.set(borderRef.current, { scaleX: 0 });
+
     const tl = gsap.timeline({ defaults: { ease: "cubic-bezier(0.16, 1, 0.3, 1)" } });
 
-    gsap.set([title1Ref.current, title2Ref.current], { yPercent: 120, opacity: 0 });
-    gsap.set(bannerWrapperRef.current, { clipPath: "inset(100% 0% 0% 0%)", scale: 1.08 });
-    gsap.set(descRef.current, { opacity: 0, y: 30 });
-
-    tl.to([title1Ref.current, title2Ref.current], {
-      yPercent: 0,
-      opacity: 1,
-      duration: 1.4,
-      stagger: 0.1,
+    tl.to(borderRef.current, {
+      scaleX: 1,
+      duration: 1.1,
+      ease: "power3.inOut",
     })
       .to(
-        bannerWrapperRef.current,
+        lines,
         {
-          clipPath: "inset(0% 0% 0% 0%)",
-          scale: 1,
-          duration: 1.5,
+          yPercent: 0,
+          rotate: 0,
+          filter: "blur(0px)",
+          opacity: 1,
+          duration: 1.3,
+          stagger: 0.08,
         },
-        "-=1.1"
+        "-=0.5"
       )
       .to(
-        descRef.current,
+        sublineRef.current,
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 0.8,
         },
-        "-=0.9"
+        "-=0.7"
+      )
+      .to(
+        ctaRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+        },
+        "-=0.6"
       );
 
-    // 2. Continuous Scroll Effect (Kononenko Parallax & Mask Wipe on Scroll)
-    if (bannerWrapperRef.current && bannerImgRef.current && heroRef.current) {
-      gsap.to(bannerImgRef.current, {
-        yPercent: 20,
-        scale: 1.15,
+    // Scroll Parallax Fade Out on Hero content
+    if (heroRef.current && contentRef.current) {
+      gsap.to(contentRef.current, {
+        y: -60,
+        opacity: 0.15,
+        filter: "blur(4px)",
         ease: "none",
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      // Subtle mask collapse when scrolling out
-      gsap.to(bannerWrapperRef.current, {
-        y: -40,
-        opacity: 0.3,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
+          scrub: 0.5,
         },
       });
     }
@@ -100,106 +110,124 @@ export default function HeroSection({
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen w-full flex flex-col justify-between pt-28 pb-12 px-6 md:px-12 bg-[#f4f3ef] text-[#141414] border-b border-black/5"
+      className="relative min-h-screen w-full flex flex-col justify-between pt-32 pb-12 px-6 md:px-12 bg-[#f4f3ef] text-[#141414] border-b border-black/5 overflow-hidden"
     >
-      {/* Top Editorial Header & Spinning Badge */}
-      <div className="max-w-[1440px] mx-auto w-full pt-4 space-y-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8">
-          <div className="space-y-1">
-            <div className="overflow-hidden">
-              <h1
-                ref={title1Ref}
-                className="text-4xl sm:text-7xl md:text-8xl lg:text-[7rem] font-normal tracking-[-0.04em] text-[#141414] leading-[0.92]"
-              >
-                Alfa Rizi
-              </h1>
-            </div>
-            <div className="overflow-hidden">
-              <span
-                ref={title2Ref}
-                className="text-3xl sm:text-6xl md:text-7xl lg:text-[6rem] text-neutral-500 font-light tracking-[-0.04em] block leading-[0.95]"
-              >
-                Software Engineer
-              </span>
-            </div>
-          </div>
+      {/* Top Kinetic Border */}
+      <div
+        ref={borderRef}
+        className="absolute top-24 left-6 right-6 md:left-12 md:right-12 h-[1px] bg-black/10 kinetic-border"
+      />
 
-          <div className="flex items-center gap-6 self-start md:self-end">
-            <div className="text-right hidden sm:block font-mono text-xs text-neutral-500 space-y-1">
-              <p>Systematic Clarity &amp; Creativity</p>
-              <p className="text-black font-semibold">Java 17 · Spring Boot 3 · LangChain RAG</p>
-            </div>
-            <SpinningBadge text="• ALFA RIZI • SOFTWARE ENGINEER • 2026 • " size="md" />
-          </div>
+      {/* Top Metadata Header */}
+      <div className="max-w-[1440px] mx-auto w-full flex flex-wrap items-center justify-between gap-4 pt-6 font-mono text-xs text-neutral-600">
+        <div className="flex items-center gap-3 tracking-widest uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#141414] animate-ping" />
+          <span>Alfa Rizi — Junior Backend Developer &amp; Software Engineer</span>
         </div>
+        <div className="tracking-widest uppercase text-neutral-500 hidden sm:block">
+          JAVA 17 · SPRING BOOT · RAG AI · POSTGRESQL · NEXT.JS
+        </div>
+      </div>
 
-        {/* Big Full-Bleed Parallax Banner like Kononenko */}
-        <div
-          ref={bannerWrapperRef}
-          className="relative aspect-[16/9] sm:aspect-[21/9] w-full rounded-3xl overflow-hidden bg-neutral-200 border border-black/5 shadow-md will-change-transform"
-        >
-          <div ref={bannerImgRef} className="relative w-full h-[120%] -top-[10%] will-change-transform">
-            <Image
-              src="/images/projects/apexgrid.png"
-              alt="Alfa Rizi Showcase Architecture"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center brightness-95"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-          </div>
-
-          {/* Banner Meta Overlay */}
-          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white font-mono text-xs">
-            <div className="space-y-1 drop-shadow-md">
-              <span className="text-[10px] text-neutral-300 uppercase tracking-widest block">
-                Featured Architecture Case
-              </span>
-              <h2 className="text-base sm:text-xl font-bold uppercase tracking-tight text-white">
-                ApexGrid — High-Concurrency Ticket Platform
-              </h2>
-            </div>
-
-            <button
-              onClick={onExploreProjects}
-              className="px-5 py-2.5 rounded-full bg-white text-black font-mono text-xs uppercase tracking-wider font-bold hover:bg-[#141414] hover:text-white transition-all shadow-lg flex items-center gap-2"
+      {/* Main Editorial Typography Reveal */}
+      <div ref={contentRef} className="max-w-[1440px] mx-auto w-full my-auto py-12 space-y-8 will-change-transform">
+        <div className="space-y-1">
+          {/* Line 1 */}
+          <div className="overflow-hidden">
+            <div
+              ref={line1Ref}
+              className="text-3xl sm:text-6xl md:text-7xl lg:text-[6.4rem] font-bold tracking-[-0.04em] leading-[0.92] text-[#141414] uppercase will-change-transform"
             >
-              <span>Explore Cases</span>
-              <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
-            </button>
+              BUILDING QUIET,
+            </div>
+          </div>
+
+          {/* Line 2 */}
+          <div className="overflow-hidden">
+            <div
+              ref={line2Ref}
+              className="text-3xl sm:text-6xl md:text-7xl lg:text-[6.4rem] font-bold tracking-[-0.04em] leading-[0.92] text-[#141414] uppercase will-change-transform"
+            >
+              POWERFUL SYSTEMS &amp;
+            </div>
+          </div>
+
+          {/* Line 3 with Serif Accent */}
+          <div className="overflow-hidden">
+            <div
+              ref={line3Ref}
+              className="text-3xl sm:text-6xl md:text-7xl lg:text-[6.4rem] font-bold tracking-[-0.04em] leading-[0.92] uppercase will-change-transform text-[#141414]"
+            >
+              RELIABLE{" "}
+              <span className="font-serif italic font-normal text-neutral-500">
+                Architectures.
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Kononenko 3-Column Editorial Descriptor */}
+        {/* Subline and Interaction Grid */}
         <div
-          ref={descRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 font-sans text-sm text-neutral-600 border-t border-black/10"
+          ref={sublineRef}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center lg:items-end pt-4 border-t border-black/10"
         >
-          <div className="space-y-1">
-            <span className="font-mono text-xs uppercase tracking-wider text-black font-bold block">
-              01 / Distributed Microservices
-            </span>
-            <p className="leading-relaxed font-light">
-              Spring Cloud Gateway routing, BCrypt JWT authorization filter, PostgreSQL trigger quota locking, and 30-min auto-expiry scheduling.
+          <div className="lg:col-span-7 space-y-4">
+            <p className="max-w-2xl text-base sm:text-lg md:text-xl text-neutral-700 font-light leading-relaxed">
+              I&apos;m Alfa Rizi, focused on reliable APIs, distributed services (Spring Boot),
+              asynchronous RAG pipelines (LangChain), and practical AI integrations.
             </p>
           </div>
-          <div className="space-y-1">
-            <span className="font-mono text-xs uppercase tracking-wider text-black font-bold block">
-              02 / AI &amp; Vector Intelligence
-            </span>
-            <p className="leading-relaxed font-light">
-              Asynchronous RAG document pipelines, ChromaDB cosine vector search indexing, and Google Gemini 2.0 Flash prompt orchestration.
-            </p>
+
+          <div className="lg:col-span-5 flex flex-wrap justify-start lg:justify-end items-center gap-4 sm:gap-6">
+            <Interactive3DMonolith />
+            <SpinningBadge text="• ALFA RIZI • BACKEND & AI • PORTFOLIO • " size="md" />
           </div>
-          <div className="space-y-1">
-            <span className="font-mono text-xs uppercase tracking-wider text-black font-bold block">
-              03 / Creative Motion Client
-            </span>
-            <p className="leading-relaxed font-light">
-              Lenis buttery smooth scrolling, GSAP 3 scroll-triggered clip-path unmasking, and WebGL Three.js interactive visual computing.
-            </p>
-          </div>
+        </div>
+
+        {/* CTAs */}
+        <div ref={ctaRef} className="flex flex-wrap items-center gap-4 pt-4">
+          <MagneticButton
+            onClick={onExploreProjects}
+            cursorText="PROJECTS"
+            className="px-8 py-4 rounded-full bg-[#141414] text-[#f4f3ef] font-mono text-xs uppercase tracking-widest font-bold hover:bg-neutral-800 transition-all flex items-center gap-3"
+          >
+            <span>Explore 7+ Systems</span>
+            <Code2 className="w-4 h-4" />
+          </MagneticButton>
+
+          <MagneticButton
+            onClick={onOpenContact}
+            cursorText="LET'S TALK"
+            className="px-8 py-4 rounded-full border border-black/15 text-[#141414] font-mono text-xs uppercase tracking-widest hover:bg-black/5 hover:border-black transition-all flex items-center gap-2"
+          >
+            <span>Let&apos;s Talk</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </MagneticButton>
+        </div>
+      </div>
+
+      {/* Hero Bottom Bar */}
+      <div className="max-w-[1440px] mx-auto w-full grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-black/10 font-mono text-xs text-neutral-600">
+        <div>
+          <span className="text-[10px] uppercase block text-neutral-500">Core Runtime</span>
+          <span className="text-black mt-0.5 block font-medium">Java 17 / Spring · Python</span>
+        </div>
+        <div>
+          <span className="text-[10px] uppercase block text-neutral-500">Motion Layer</span>
+          <span className="text-black mt-0.5 block font-medium">GSAP 3 · Three.js · Lenis</span>
+        </div>
+        <div>
+          <span className="text-[10px] uppercase block text-neutral-500">Location</span>
+          <span className="text-black mt-0.5 block font-medium">Bandung, ID / Remote</span>
+        </div>
+        <div className="flex items-center justify-end">
+          <button
+            onClick={onExploreProjects}
+            className="flex items-center gap-2 text-black hover:opacity-60 transition-opacity"
+          >
+            <span>Scroll Down</span>
+            <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
+          </button>
         </div>
       </div>
     </section>

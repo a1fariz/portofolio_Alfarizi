@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "Microservices",
     "Awwwards SOTD Portfolio",
   ],
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

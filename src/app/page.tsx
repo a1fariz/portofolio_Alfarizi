@@ -12,15 +12,15 @@ import PerformanceBenchmarkDiff from "@/components/PerformanceBenchmarkDiff";
 import SystemPayloadInspector from "@/components/SystemPayloadInspector";
 import ServicesSection from "@/components/ServicesSection";
 import RecognitionAndOfficesSection from "@/components/RecognitionAndOfficesSection";
-import ProjectModal from "@/components/ProjectModal";
-import ContactModal from "@/components/ContactModal";
-import CvDownloadModal from "@/components/CvDownloadModal";
 import CinematicPreloader from "@/components/CinematicPreloader";
 import Footer from "@/components/Footer";
 import { RealProject } from "@/data/realPortfolio";
 import { sounds } from "@/lib/sound";
 
 const WebGLParticleField = dynamic(() => import("@/components/WebGLParticleField"), { ssr: false });
+const ProjectModal = dynamic(() => import("@/components/ProjectModal"), { ssr: false });
+const ContactModal = dynamic(() => import("@/components/ContactModal"), { ssr: false });
+const CvDownloadModal = dynamic(() => import("@/components/CvDownloadModal"), { ssr: false });
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<RealProject | null>(null);
@@ -31,10 +31,16 @@ export default function Home() {
   const [showParticleField, setShowParticleField] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      setShowParticleField(window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)").matches);
-    });
-    return () => cancelAnimationFrame(frame);
+    if (!window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)").matches) return;
+
+    const show = () => setShowParticleField(true);
+    const idleId = window.requestIdleCallback?.(show, { timeout: 3000 });
+    const timeoutId = idleId === undefined ? window.setTimeout(show, 3000) : undefined;
+
+    return () => {
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
   }, []);
 
   const handleOpenContact = (context?: string) => {
@@ -109,29 +115,30 @@ export default function Home() {
         <Footer onOpenContact={() => handleOpenContact("Footer Collaboration")} />
 
         {/* Project Details Lightbox Modal */}
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-          onOpenInquiry={(projectName) =>
-            handleOpenContact(`Project Inquiry: ${projectName}`)
-          }
-        />
+        {selectedProject && (
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+            onOpenInquiry={(projectName) =>
+              handleOpenContact(`Project Inquiry: ${projectName}`)
+            }
+          />
+        )}
 
         {/* Multi-Track Resume CV Selector Modal */}
-        <CvDownloadModal
-          isOpen={isCvOpen}
-          onClose={() => setIsCvOpen(false)}
-        />
+        {isCvOpen && <CvDownloadModal isOpen onClose={() => setIsCvOpen(false)} />}
 
         {/* Contact Modal */}
-        <ContactModal
-          isOpen={isContactOpen}
-          onClose={() => {
-            setIsContactOpen(false);
-            setInquiryContext("");
-          }}
-          initialProject={inquiryContext}
-        />
+        {isContactOpen && (
+          <ContactModal
+            isOpen
+            onClose={() => {
+              setIsContactOpen(false);
+              setInquiryContext("");
+            }}
+            initialProject={inquiryContext}
+          />
+        )}
       </main>
     </SmoothScrollProvider>
   );

@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { REAL_PROJECTS } from "@/data/realPortfolio";
 import { ArrowLeft, ArrowUpRight, Code2, ExternalLink, Cpu } from "lucide-react";
-import SmoothScrollProvider from "@/components/SmoothScrollProvider";
-import CustomCursor from "@/components/CustomCursor";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -58,10 +56,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const nextProject = REAL_PROJECTS[(currentIndex + 1) % REAL_PROJECTS.length];
 
   return (
-    <SmoothScrollProvider>
-      <CustomCursor />
-
-      <main className="min-h-screen bg-[#f4f3ef] text-[#141414] selection:bg-[#141414] selection:text-[#f4f3ef] pb-24">
+    <main className="min-h-screen bg-[#f4f3ef] text-[#141414] selection:bg-[#141414] selection:text-[#f4f3ef] pb-24">
         {/* Navigation Bar */}
         <header className="sticky top-0 z-40 bg-[#f4f3ef]/90 backdrop-blur-md border-b border-black/5 py-6 px-6 md:px-12">
           <div className="max-w-[1440px] mx-auto flex items-center justify-between">
@@ -277,6 +272,5 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
         </section>
       </main>
-    </SmoothScrollProvider>
   );
 }

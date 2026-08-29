@@ -11,8 +11,7 @@ export default function WebGLParticleField() {
     const container = containerRef.current;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    if (prefersReducedMotion || isMobile) return;
+    if (prefersReducedMotion) return;
 
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -155,8 +154,11 @@ export default function WebGLParticleField() {
     // Animation Loop
     let animationFrameId: number;
     const clock = new THREE.Clock();
+    let active = !document.hidden;
 
     const render = () => {
+      if (!active) return;
+
       const elapsedTime = clock.getElapsedTime();
 
       // Lerp mouse
@@ -176,12 +178,21 @@ export default function WebGLParticleField() {
       animationFrameId = requestAnimationFrame(render);
     };
 
+    const onVisibilityChange = () => {
+      const next = !document.hidden;
+      if (next === active) return;
+      active = next;
+      if (active) render();
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
     render();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       cancelAnimationFrame(animationFrameId);
       geometry.dispose();
       material.dispose();

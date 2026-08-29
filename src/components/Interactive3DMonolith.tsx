@@ -58,8 +58,17 @@ export default function Interactive3DMonolith() {
 
     let animationId: number;
     const clock = new THREE.Clock();
+    let active = !document.hidden;
+
+    const onVisibilityChange = () => {
+      const next = !document.hidden;
+      if (next === active) return;
+      active = next;
+      if (active) animate();
+    };
 
     const animate = () => {
+      if (!active) return;
       const time = clock.getElapsedTime();
 
       // Lerp rotation to mouse target

@@ -16,13 +16,13 @@ export default function SmoothScrollProvider({
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
-      lerp: 0.08,
-      duration: 1.2,
+      lerp: 0.07,
+      duration: 1.3,
       smoothWheel: true,
       orientation: "vertical",
       gestureOrientation: "vertical",
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.4,
       infinite: false,
     });
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Sliders, Zap, CheckCircle2, ShieldAlert, Cpu } from "lucide-react";
 import { sounds } from "@/lib/sound";
 
@@ -15,7 +16,13 @@ export default function PerformanceBenchmarkDiff() {
   return (
     <section className="py-24 px-6 md:px-12 bg-[#f4f3ef] text-[#141414] border-b border-black/5">
       <div className="max-w-[1440px] mx-auto space-y-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8"
+        >
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-500 block mb-1">
               Engineering Optimization Impact
@@ -27,10 +34,16 @@ export default function PerformanceBenchmarkDiff() {
           <p className="font-mono text-xs text-neutral-600 max-w-sm">
             Drag the interactive slider to compare conventional ORM querying vs. optimized PostgreSQL triggers &amp; vector search indexes.
           </p>
-        </div>
+        </motion.div>
 
         {/* Comparison Diff Box */}
-        <div className="relative rounded-3xl bg-white border border-black/10 overflow-hidden shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative rounded-3xl bg-white border border-black/10 overflow-hidden shadow-sm"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-black/10">
             {/* Left: Traditional App Layer Logic */}
             <div className="p-5 sm:p-8 space-y-4 sm:space-y-6 bg-neutral-50/50">
@@ -109,7 +122,7 @@ export default function PerformanceBenchmarkDiff() {
               className="w-full sm:w-64 accent-white cursor-pointer"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

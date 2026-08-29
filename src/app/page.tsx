@@ -62,6 +62,7 @@ export default function Home() {
         <HeroSection
           onExploreProjects={handleExploreProjects}
           onOpenContact={() => handleOpenContact("Hero Collaboration")}
+          isReady={loaded}
         />
 
         {/* Step 3: Interactive Project Index (Floating Cursor Trail) */}

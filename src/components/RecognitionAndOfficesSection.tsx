@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { CERTIFICATIONS, EXPERIENCE_RECORDS, ORGANIZATIONS } from "@/data/realPortfolio";
 import { ArrowUpRight, Award, Briefcase, Copy, Check } from "lucide-react";
 import { sounds } from "@/lib/sound";
@@ -21,7 +22,13 @@ export default function RecognitionAndOfficesSection() {
         {/* Credentials & Experiences Dual Column */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Certifications (7+ from alfarizi.my.id) */}
-          <div className="lg:col-span-6 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-6"
+          >
             <div className="flex items-center justify-between border-b border-black/10 pb-4">
               <div className="flex items-center gap-3">
                 <Award className="w-4 h-4 text-black" />
@@ -34,8 +41,12 @@ export default function RecognitionAndOfficesSection() {
 
             <div className="space-y-3">
               {CERTIFICATIONS.map((cert, i) => (
-                <div
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
                   className="p-4 rounded-xl bg-white border border-black/5 flex items-start justify-between gap-4 hover:border-black/20 transition-colors shadow-sm"
                 >
                   <div className="space-y-0.5">
@@ -49,13 +60,19 @@ export default function RecognitionAndOfficesSection() {
                   <span className="font-mono text-xs text-neutral-400">
                     {cert.year}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Professional Experience & Organizations */}
-          <div className="lg:col-span-6 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-6"
+          >
             <div className="flex items-center justify-between border-b border-black/10 pb-4">
               <div className="flex items-center gap-3">
                 <Briefcase className="w-4 h-4 text-black" />
@@ -111,11 +128,18 @@ export default function RecognitionAndOfficesSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Global Hubs & Connection */}
-        <div id="contact" className="space-y-8 pt-8 border-t border-black/10">
+        <motion.div
+          id="contact"
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-8 pt-8 border-t border-black/10"
+        >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-500">
@@ -178,7 +202,7 @@ export default function RecognitionAndOfficesSection() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

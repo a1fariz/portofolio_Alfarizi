@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight, Search, X } from "lucide-react";
 import { RealProject, REAL_PROJECTS } from "@/data/realPortfolio";
@@ -185,13 +186,17 @@ export default function InteractiveProjectIndex({
         <div className="divide-y divide-black/10 pt-2">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
-              <div
+              <motion.div
                 key={project.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.15 }}
+                transition={{ duration: 0.7, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => onSelectProject(project)}
-                onMouseEnter={(e) => handleMouseEnterRow(project, e)}
-                onMouseLeave={handleMouseLeaveRow}
+                onMouseEnter={(e) => handleMouseEnterRow(project, e as any)}
+                onMouseLeave={handleMouseLeaveRow as any}
                 data-cursor="VIEW CASE"
-                className="group relative py-8 md:py-10 cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-colors hover:bg-black/[0.02] px-4 -mx-4 rounded-xl"
+                className="group relative py-8 md:py-10 cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-all duration-500 hover:bg-black/[0.02] px-4 -mx-4 rounded-xl"
               >
                 {/* Left Column: Number & Title */}
                 <div className="flex items-baseline gap-6 md:gap-10 max-w-3xl">
@@ -200,7 +205,7 @@ export default function InteractiveProjectIndex({
                   </span>
                   <div className="space-y-1">
                     <div className="flex flex-wrap items-center gap-3">
-                      <h3 className="project-title text-xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#141414] group-hover:text-black transition-colors uppercase will-change-transform">
+                      <h3 className="project-title text-xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#141414] group-hover:translate-x-3 transition-transform duration-300 uppercase">
                         {project.title}
                       </h3>
                       <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-black/5 border border-black/5 text-neutral-600">
@@ -235,7 +240,7 @@ export default function InteractiveProjectIndex({
                     className="object-cover"
                   />
                 </div>
-              </div>
+              </motion.div>
             ))
           ) : (
             <div className="py-16 text-center space-y-2 font-mono text-xs text-neutral-500">

@@ -31,30 +31,34 @@ export default function ScrollPinnedCaseStudy({
       if (imgWrapper && imgInner) {
         gsap.fromTo(
           imgWrapper,
-          { clipPath: "inset(100% 0% 0% 0%)" },
+          { clipPath: "inset(100% 0% 0% 0%)", scale: 0.96, opacity: 0.2 },
           {
             clipPath: "inset(0% 0% 0% 0%)",
+            scale: 1,
+            opacity: 1,
             duration: 1.2,
-            ease: "cubic-bezier(0.16, 1, 0.3, 1)",
+            ease: "power3.out",
             scrollTrigger: {
               trigger: card,
               start: "top 80%",
-              toggleActions: "play none none reverse",
+              end: "bottom 20%",
+              toggleActions: "play reverse play reverse",
             },
           }
         );
 
         gsap.fromTo(
           imgInner,
-          { scale: 1.25 },
+          { scale: 1.25, y: -20 },
           {
             scale: 1.0,
+            y: 20,
             ease: "none",
             scrollTrigger: {
               trigger: card,
               start: "top bottom",
               end: "bottom top",
-              scrub: true,
+              scrub: 0.8,
             },
           }
         );

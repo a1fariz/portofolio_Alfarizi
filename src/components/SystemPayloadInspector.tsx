@@ -194,7 +194,13 @@ export default function SystemPayloadInspector() {
     <section className="py-24 px-6 md:px-12 bg-[#f4f3ef] text-[#141414] border-b border-black/5">
       <div className="max-w-[1440px] mx-auto space-y-12">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8"
+        >
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-500 block mb-1">
               Interactive System Inspector
@@ -206,7 +212,7 @@ export default function SystemPayloadInspector() {
           <p className="font-mono text-xs text-neutral-600 max-w-md font-light">
             Directly test and inspect live API payloads, database triggers, and RAG vector pipelines built across Alfa Rizi&apos;s production systems.
           </p>
-        </div>
+        </motion.div>
 
         {/* Tab Selector */}
         <div className="flex flex-wrap gap-2">
@@ -218,7 +224,7 @@ export default function SystemPayloadInspector() {
                 setExecutionResult(null);
                 sounds.playClick();
               }}
-              className={`px-5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all flex items-center gap-2 ${
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all flex items-center gap-2 ${
                 activeTab === ep.id
                   ? "bg-[#141414] text-[#f4f3ef] font-bold shadow-md"
                   : "bg-white text-neutral-600 border border-black/5 hover:text-black"
@@ -231,7 +237,13 @@ export default function SystemPayloadInspector() {
         </div>
 
         {/* Interactive Workspace Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+        >
           {/* Left Column: Interactive Param Tuning & Request Headers */}
           <div className="lg:col-span-5 space-y-6">
             <div className="p-6 rounded-3xl bg-white border border-black/5 space-y-5 shadow-sm">
@@ -244,7 +256,7 @@ export default function SystemPayloadInspector() {
 
               <div className="font-mono text-xs space-y-1">
                 <span className="text-neutral-400 block">Endpoint Route</span>
-                <span className="text-black font-bold block bg-neutral-100 p-2 rounded-xl overflow-x-auto">
+                <span className="text-black font-bold block bg-neutral-100 p-2 rounded-xl overflow-x-auto text-[11px] sm:text-xs">
                   {current.path}
                 </span>
               </div>
@@ -364,7 +376,7 @@ export default function SystemPayloadInspector() {
 
           {/* Right Column: Live Terminal Response View */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-[#0c0c0c] border border-white/10 p-6 sm:p-8 text-white font-mono text-xs shadow-2xl flex flex-col justify-between min-h-[500px]">
+            <div className="rounded-3xl bg-[#0c0c0c] border border-white/10 p-5 sm:p-8 text-white font-mono text-xs shadow-2xl flex flex-col justify-between min-h-[460px] sm:min-h-[500px]">
               <div className="space-y-4">
                 {/* Terminal Header */}
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
@@ -372,16 +384,16 @@ export default function SystemPayloadInspector() {
                     <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
-                    <span className="text-neutral-400 pl-2">payload_inspector.json</span>
+                    <span className="text-neutral-400 pl-2 text-[11px]">payload_inspector.json</span>
                   </div>
 
-                  <span className="text-emerald-400 text-[11px]">
+                  <span className="text-emerald-400 text-[10px] sm:text-[11px]">
                     {executionResult ? "STATUS: 200 OK / ACID COMPLIANT" : "AWAITING DISPATCH"}
                   </span>
                 </div>
 
                 {/* Response Code Block */}
-                <div className="overflow-x-auto max-h-[380px] text-neutral-300 leading-relaxed font-mono">
+                <div className="overflow-x-auto max-h-[380px] text-neutral-300 leading-relaxed font-mono text-[11px] sm:text-xs">
                   <pre>
                     {JSON.stringify(
                       executionResult ||
@@ -406,7 +418,7 @@ export default function SystemPayloadInspector() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

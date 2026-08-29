@@ -26,12 +26,28 @@ export default function Header({
   }, []);
 
   const links = [
-    { label: "Home,", href: "#overview" },
+    { label: "Home,", href: "#home" },
     { label: "Projects,", href: "#projects" },
     { label: "Capabilities,", href: "#services" },
     { label: "Experience,", href: "#awards" },
     { label: "Contact", href: "#contact" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    sounds.playClick();
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.replace("#", "");
+      if (targetId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
 
   return (
     <>
@@ -61,9 +77,12 @@ export default function Header({
               <MagneticButton
                 key={link.label}
                 href={link.href}
+                onClick={() => {}}
                 className="px-3 py-1.5 hover:text-black transition-colors"
               >
-                {link.label}
+                <span onClick={(e) => handleNavClick(e as any, link.href)}>
+                  {link.label}
+                </span>
               </MagneticButton>
             ))}
           </nav>
@@ -135,7 +154,10 @@ export default function Header({
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => {
+                    setMobileOpen(false);
+                    handleNavClick(e, link.href);
+                  }}
                   className="text-3xl font-light tracking-tight text-black flex items-center justify-between border-b border-black/5 pb-3"
                 >
                   <span>{link.label.replace(",", "")}</span>

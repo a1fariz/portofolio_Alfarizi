@@ -1,51 +1,22 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-export default function SpinningBadge({
-  text = "• ARCHITECTURE • DESIGN • PORTFOLIO • 2026 ",
-  size = "md",
-}: {
-  text?: string;
-  size?: "sm" | "md" | "lg";
-}) {
-  const characters = text.split("");
-  const sizeMap = {
-    sm: { box: "w-24 h-24", radius: 36, font: "text-[8px]", icon: "w-8 h-8 text-[10px]" },
-    md: { box: "w-32 h-32", radius: 50, font: "text-[10px]", icon: "w-11 h-11 text-xs" },
-    lg: { box: "w-40 h-40", radius: 64, font: "text-[11px]", icon: "w-14 h-14 text-sm" },
-  };
-
-  const { box, radius, font, icon } = sizeMap[size];
-
+export default function SpinningBadge({ text }: { text?: string }) {
+  const label = text ?? "ALFA RIZI · BACKEND & AI · PORTFOLIO · ";
   return (
-    <div className={`relative ${box} flex items-center justify-center pointer-events-none`}>
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 flex items-center justify-center"
-      >
-        {characters.map((char, i) => {
-          const angle = (i / characters.length) * 360;
-          return (
-            <span
-              key={i}
-              className={`absolute font-mono uppercase font-semibold text-[#121212] tracking-widest origin-center ${font}`}
-              style={{
-                transform: `rotate(${angle}deg) translate(${radius}px) rotate(90deg)`,
-              }}
-            >
-              {char}
-            </span>
-          );
-        })}
-      </motion.div>
-
-      <div
-        className={`${icon} rounded-full bg-[#141414] text-[#f4f3ef] flex items-center justify-center font-mono shadow-sm`}
-      >
-        ✦
-      </div>
+    <div
+      aria-hidden="true"
+      className="relative h-24 w-24 shrink-0 sm:h-28 sm:w-28"
+    >
+      <svg viewBox="0 0 100 100" className="spin-slow h-full w-full">
+        <defs>
+          <path
+            id="badge-circle"
+            d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"
+          />
+        </defs>
+        <text className="fill-neutral-600 font-mono text-[8.5px] uppercase">
+          <textPath href="#badge-circle">{label}</textPath>
+        </text>
+      </svg>
+      <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#141414]" />
     </div>
   );
 }

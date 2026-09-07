@@ -255,8 +255,22 @@ export const CERTIFICATIONS = [
   { title: "Introduction to Cybersecurity", issuer: "edX", year: "2025" },
 ];
 
-export const EXPERIENCE_RECORDS = [
+export const EDUCATION_RECORDS = [
   {
+    title: "Associate Degree in Informatics Management (D3)",
+    org: "Universitas Nasional PASIM",
+    period: "Expected May 2027",
+    desc: "GPA 3.6 / 4.0 — Bandung, Indonesia",
+  },
+  {
+    title: "PUB Intensive Technical Scholarship",
+    org: "Pemberdayaan Umat Berkelanjutan",
+    period: "2024 – Present",
+    desc: "Logic & C · Data Structures & Relational Databases · Web (HTML/CSS/JS) · Java Development · Git & GitHub · Advanced Java Development · React Development",
+  },
+];
+
+export const EXPERIENCE_RECORDS = [  {
     role: "Lead Intern — IT & Business Operations",
     org: "PT Resik Cemerlang",
     period: "2025 – Present",

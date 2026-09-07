@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { REAL_PROJECTS } from "@/data/realPortfolio";
 import { ArrowLeft, ArrowUpRight, Code2, ExternalLink, Cpu } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -62,7 +63,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <div className="max-w-[1440px] mx-auto flex items-center justify-between">
             <Link
               href="/#projects"
-              data-cursor="BACK"
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-neutral-600 hover:text-black transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -83,7 +83,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* Project Header Hero */}
         <section className="pt-16 pb-12 px-6 md:px-12">
           <div className="max-w-[1440px] mx-auto space-y-8">
-            <div className="space-y-3">
+            <Reveal>
+              <div className="space-y-3">
               <div className="flex items-center gap-2 font-mono text-xs text-neutral-500 uppercase">
                 <span>{project.year}</span>
                 <span>·</span>
@@ -97,63 +98,70 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <p className="text-lg sm:text-2xl text-neutral-600 font-light max-w-3xl">
                 {project.subtitle}
               </p>
-            </div>
-
-            {/* Tech Stack Badges */}
-            <div className="flex flex-wrap gap-2 pt-2 border-t border-black/10">
-              {project.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="font-mono text-xs bg-white border border-black/5 text-neutral-700 px-3 py-1 rounded-full shadow-sm"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {/* Full-Bleed High Res Image */}
-            <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden bg-neutral-200 border border-black/5 shadow-md">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                priority
-                sizes="(max-width: 1440px) 100vw, 1440px"
-                className="object-cover"
-              />
-            </div>
-
-            {/* Quick Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-b border-black/10 pb-8">
-              <div className="flex items-center gap-3">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-5 py-2.5 rounded-full bg-white border border-black/10 hover:border-black font-mono text-xs uppercase font-bold text-black flex items-center gap-2 transition-all shadow-sm"
-                  >
-                    <Code2 className="w-3.5 h-3.5" />
-                    <span>GitHub Repository</span>
-                  </a>
-                )}
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-5 py-2.5 rounded-full bg-[#141414] text-[#f4f3ef] font-mono text-xs uppercase font-bold flex items-center gap-2 hover:bg-neutral-800 transition-all shadow-sm"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    <span>Live Platform</span>
-                  </a>
-                )}
               </div>
+            </Reveal>
 
-              <div className="font-mono text-xs text-neutral-500">
-                ↳ {project.highlight}
+            <Reveal>
+              {/* Tech Stack Badges */}
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-black/10">
+                {project.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="font-mono text-xs bg-white border border-black/5 text-neutral-700 px-3 py-1 rounded-full shadow-sm"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
-            </div>
+            </Reveal>
+
+            <Reveal>
+              {/* Full-Bleed High Res Image */}
+              <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden bg-neutral-200 border border-black/5 shadow-md">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1440px) 100vw, 1440px"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+
+            <Reveal>
+              {/* Quick Actions */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-b border-black/10 pb-8">
+                <div className="flex flex-wrap items-center gap-3">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-5 py-2.5 rounded-full bg-white border border-black/10 hover:border-black font-mono text-xs uppercase font-bold text-black flex items-center gap-2 transition-all shadow-sm"
+                    >
+                      <Code2 className="w-3.5 h-3.5" />
+                      <span>GitHub Repository</span>
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-5 py-2.5 rounded-full bg-[#141414] text-[#f4f3ef] font-mono text-xs uppercase font-bold flex items-center gap-2 hover:bg-neutral-800 transition-all shadow-sm"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Live Platform</span>
+                    </a>
+                  )}
+                </div>
+
+                <div className="font-mono text-xs text-neutral-500">
+                  ↳ {project.highlight}
+                </div>
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -162,35 +170,42 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left: Narrative Overview */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="space-y-2">
-                <span className="font-mono text-xs uppercase tracking-widest text-neutral-500">
-                  Engineering Scope
-                </span>
-                <h2 className="text-2xl sm:text-4xl font-bold text-black uppercase">
-                  Problem &amp; System Purpose
-                </h2>
-              </div>
+              <Reveal>
+                <div className="space-y-2">
+                  <span className="font-mono text-xs uppercase tracking-widest text-neutral-500">
+                    Engineering Scope
+                  </span>
+                  <h2 className="text-2xl sm:text-4xl font-bold text-black uppercase">
+                    Problem &amp; System Purpose
+                  </h2>
+                </div>
+              </Reveal>
 
-              <p className="text-neutral-700 text-base sm:text-lg font-light leading-relaxed">
-                {project.description}
-              </p>
+              <Reveal>
+                <p className="text-neutral-700 text-base sm:text-lg font-light leading-relaxed">
+                  {project.description}
+                </p>
+              </Reveal>
 
-              {/* Metrics Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
-                {project.metrics.map((metric, i) => (
-                  <div
-                    key={i}
-                    className="p-4 rounded-2xl bg-white border border-black/5 font-mono text-xs shadow-sm space-y-1"
-                  >
-                    <span className="text-neutral-400 block text-[10px] uppercase">Specification</span>
-                    <span className="text-black font-bold block">{metric}</span>
-                  </div>
-                ))}
-              </div>
+              <Reveal>
+                {/* Metrics Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+                  {project.metrics.map((metric, i) => (
+                    <div
+                      key={i}
+                      className="p-4 rounded-2xl bg-white border border-black/5 font-mono text-xs shadow-sm space-y-1"
+                    >
+                      <span className="text-neutral-400 block text-[10px] uppercase">Specification</span>
+                      <span className="text-black font-bold block">{metric}</span>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
             </div>
 
             {/* Right: Architecture Flow & Components */}
             <div className="lg:col-span-6 space-y-6">
+              <Reveal>
               <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/5 space-y-6 shadow-sm">
                 <div className="flex items-center gap-3 border-b border-black/5 pb-4">
                   <Cpu className="w-5 h-5 text-black shrink-0" />
@@ -242,6 +257,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   </div>
                 </div>
               </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -249,21 +265,22 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* Next Project Footer Bar */}
         <section className="pt-20 px-6 md:px-12 border-t border-black/10 mt-12">
           <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-neutral-500">
-                Next Production Case
-              </span>
-              <h3 className="text-3xl sm:text-5xl font-bold text-black uppercase mt-1">
-                {nextProject.title}
-              </h3>
-              <p className="font-mono text-xs text-neutral-600">
-                {nextProject.subtitle}
-              </p>
-            </div>
+            <Reveal>
+              <div>
+                <span className="font-mono text-xs uppercase tracking-widest text-neutral-500">
+                  Next Production Case
+                </span>
+                <h3 className="text-3xl sm:text-5xl font-bold text-black uppercase mt-1">
+                  {nextProject.title}
+                </h3>
+                <p className="font-mono text-xs text-neutral-600">
+                  {nextProject.subtitle}
+                </p>
+              </div>
+            </Reveal>
 
             <Link
               href={`/work/${nextProject.id}`}
-              data-cursor="NEXT"
               className="px-8 py-4 rounded-full bg-[#141414] text-[#f4f3ef] font-mono text-xs uppercase tracking-widest font-bold hover:bg-neutral-800 transition-all flex items-center gap-3 shadow-md"
             >
               <span>Explore Next Case</span>

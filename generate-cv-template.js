@@ -147,6 +147,29 @@ const cvHtmlTemplate = (data) => `
       font-size: 8.0pt;
       line-height: 1.21;
     }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      row-gap: 1.5px;
+      margin-top: 1px;
+    }
+    .cert-item {
+      font-size: 7.9pt;
+      color: #1e293b;
+      line-height: 1.22;
+    }
+    .cert-title {
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .cert-issuer {
+      color: #475569;
+    }
+    .cert-year {
+      color: #64748b;
+      font-size: 7.5pt;
+    }
   </style>
 </head>
 <body>
@@ -242,6 +265,19 @@ const cvHtmlTemplate = (data) => `
       </div>
     `).join('')}
   </div>
+
+  ${data.certifications && data.certifications.length ? `
+  <div class="section">
+    <div class="section-title">${data.labels.certifications}</div>
+    <div class="cert-grid">
+      ${data.certifications.map(c => `
+        <div class="cert-item">
+          <span class="cert-title">${c.title}</span> — <span class="cert-issuer">${c.issuer}</span> <span class="cert-year">(${c.year})</span>
+        </div>
+      `).join('')}
+    </div>
+  </div>
+  ` : ''}
 
 </body>
 </html>

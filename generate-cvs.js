@@ -27,12 +27,14 @@ const baseLabels = {
     skills: 'Technical Skills',
     experience: 'Professional Experience',
     education: 'Education & Training',
+    certifications: 'Certifications & Credentials',
   },
   id: {
     summary: 'Ringkasan Profesional',
     skills: 'Keahlian Teknis',
     experience: 'Pengalaman Kerja & Magang',
     education: 'Pendidikan & Pelatihan',
+    certifications: 'Sertifikasi & Kredensial',
   },
 };
 
@@ -89,6 +91,26 @@ const education = {
         'Penerima Beasiswa Pelatihan Intensif PUB (2024 – Sekarang): Logika Pemrograman, Struktur Data, Database Relasional, Java Lanjutan, dan Pengembangan React.',
       ],
     },
+  ],
+};
+
+// ---------- Shared certifications (per language) ----------
+const certifications = {
+  en: [
+    { title: 'Python for Everybody Specialization', issuer: 'University of Michigan', year: '2026' },
+    { title: 'Programming for Data Science with Python', issuer: 'HarvardX', year: '2025' },
+    { title: 'Certified Entry-Level Python Programmer (PCEP)', issuer: 'Python Institute', year: '2025' },
+    { title: 'Introduction to Cloud Computing', issuer: 'IBM', year: '2026' },
+    { title: 'Professional English Communication Skills', issuer: 'Arizona State University', year: '2026' },
+    { title: 'Cybersecurity Fundamentals', issuer: 'Rochester Institute of Technology (RIT)', year: '2025' },
+  ],
+  id: [
+    { title: 'Spesialisasi Python for Everybody', issuer: 'University of Michigan', year: '2026' },
+    { title: 'Programming for Data Science with Python', issuer: 'HarvardX', year: '2025' },
+    { title: 'Certified Entry-Level Python Programmer (PCEP)', issuer: 'Python Institute', year: '2025' },
+    { title: 'Pengenalan Cloud Computing', issuer: 'IBM', year: '2026' },
+    { title: 'Keterampilan Komunikasi Bahasa Inggris Profesional', issuer: 'Arizona State University', year: '2026' },
+    { title: 'Cybersecurity Fundamentals', issuer: 'Rochester Institute of Technology (RIT)', year: '2025' },
   ],
 };
 
@@ -479,6 +501,7 @@ const cvDataList = Object.entries(roleContent).flatMap(([, langs]) =>
     fileName: langs[lang].fileName,
     data: {
       ...contact,
+      targetRole: langs[lang].targetRole,
       location: locationByLang[lang],
       labels: {
         ...baseLabels[lang],
@@ -489,6 +512,7 @@ const cvDataList = Object.entries(roleContent).flatMap(([, langs]) =>
       projects: langs[lang].projects,
       experience: experience[lang],
       education: education[lang],
+      certifications: certifications[lang],
     },
   }))
 );

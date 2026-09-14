@@ -21,34 +21,6 @@ export interface RealProject {
 
 export const REAL_PROJECTS: RealProject[] = [
   {
-    id: "apexgrid",
-    title: "ApexGrid",
-    subtitle: "F1 Race Ticket Reservation & Microservices Platform",
-    category: "Java / Backend",
-    stack: ["Java 17", "Spring Boot 3.2", "Spring Cloud Gateway", "PostgreSQL", "React 18", "Docker", "JWT", "TailwindCSS"],
-    year: "2026",
-    status: "In Deployment & Maintenance",
-    github: "https://github.com/a1fariz/ApexGrid",
-    image: "/images/projects/apexgrid.png",
-    description: "Production-ready distributed microservices platform featuring 3 independent Spring Boot services (API Gateway, User Service, Race Service) orchestrated via Spring Cloud Gateway. Real-time race ticket inventory synchronized through PostgreSQL database triggers, a 30-minute auto-expiry reservation scheduler, shared RBAC security (USER/ADMIN), Swagger UI, and a full Admin Panel with analytics dashboard via database views.",
-    highlight: "Microservices architecture + RBAC + real-time quota system",
-    architecture: {
-      summary: "Distributed microservices system designed for high concurrency with zero quota race conditions and centralized JWT gateway validation.",
-      flow: [
-        "React 18 Glassmorphic UI Client",
-        "Spring Cloud Gateway (Centralized Routing & JWT Filter)",
-        "Microservices (User Service / Race Ticket Service)",
-        "PostgreSQL DB Triggers & 30-Min Auto-Expiry Scheduler",
-      ],
-      components: [
-        { title: "Spring Cloud Gateway", desc: "Handles centralized routing, rate limiting, and RBAC token evaluation." },
-        { title: "Quota & Race Service", desc: "High-concurrency ticket booking engine powered by PostgreSQL triggers for real-time inventory management." },
-        { title: "Analytics & Views", desc: "Complex PostgreSQL DB views feed real-time sales and reservation metrics to the React Admin Panel." },
-      ],
-    },
-    metrics: ["3 Independent Microservices", "< 40ms Gateway Response", "100% ACID Seat Locking"],
-  },
-  {
     id: "reloop",
     title: "ReLoop",
     subtitle: "Enterprise Circular-Commerce Platform & Escrow Architecture",
@@ -76,6 +48,34 @@ export const REAL_PROJECTS: RealProject[] = [
       ],
     },
     metrics: ["25 Bounded Contexts", "100% Balanced Double-Entry DR=CR", "15-Min Anti-Hoarding Leases"],
+  },
+  {
+    id: "apexgrid",
+    title: "ApexGrid",
+    subtitle: "F1 Race Ticket Reservation & Microservices Platform",
+    category: "Java / Backend",
+    stack: ["Java 17", "Spring Boot 3.2", "Spring Cloud Gateway", "PostgreSQL", "React 18", "Docker", "JWT", "TailwindCSS"],
+    year: "2026",
+    status: "In Deployment & Maintenance",
+    github: "https://github.com/a1fariz/ApexGrid",
+    image: "/images/projects/apexgrid.png",
+    description: "Production-ready distributed microservices platform featuring 3 independent Spring Boot services (API Gateway, User Service, Race Service) orchestrated via Spring Cloud Gateway. Real-time race ticket inventory synchronized through PostgreSQL database triggers, a 30-minute auto-expiry reservation scheduler, shared RBAC security (USER/ADMIN), Swagger UI, and a full Admin Panel with analytics dashboard via database views.",
+    highlight: "Microservices architecture + RBAC + real-time quota system",
+    architecture: {
+      summary: "Distributed microservices system designed for high concurrency with zero quota race conditions and centralized JWT gateway validation.",
+      flow: [
+        "React 18 Glassmorphic UI Client",
+        "Spring Cloud Gateway (Centralized Routing & JWT Filter)",
+        "Microservices (User Service / Race Ticket Service)",
+        "PostgreSQL DB Triggers & 30-Min Auto-Expiry Scheduler",
+      ],
+      components: [
+        { title: "Spring Cloud Gateway", desc: "Handles centralized routing, rate limiting, and RBAC token evaluation." },
+        { title: "Quota & Race Service", desc: "High-concurrency ticket booking engine powered by PostgreSQL triggers for real-time inventory management." },
+        { title: "Analytics & Views", desc: "Complex PostgreSQL DB views feed real-time sales and reservation metrics to the React Admin Panel." },
+      ],
+    },
+    metrics: ["3 Independent Microservices", "< 40ms Gateway Response", "100% ACID Seat Locking"],
   },
   {
     id: "studymate-ai",

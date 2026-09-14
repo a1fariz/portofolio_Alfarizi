@@ -49,6 +49,35 @@ export const REAL_PROJECTS: RealProject[] = [
     metrics: ["3 Independent Microservices", "< 40ms Gateway Response", "100% ACID Seat Locking"],
   },
   {
+    id: "reloop",
+    title: "ReLoop",
+    subtitle: "Enterprise Circular-Commerce Platform & Escrow Architecture",
+    category: "Java / Backend",
+    stack: ["Java 17", "Quarkus 3.15 LTS", "Next.js 14", "PostgreSQL 16", "Redis 7", "Flyway", "Double-Entry Ledger", "TailwindCSS"],
+    year: "2026",
+    status: "Completed",
+    github: "https://github.com/a1fariz/ReLoop",
+    demo: "https://reloop.biz.id",
+    image: "/images/projects/reloop.png",
+    description: "Enterprise-grade circular commerce platform engineered for authenticated serialized electronics, 50-point technical grading certification, anti-hoarding checkout leases, and balanced double-entry escrow accounting. Built as a Quarkus 3.15 LTS modular monolith across 25 bounded contexts with ArchUnit boundary verification, transactional outbox async dispatcher, and full Next.js 14 client with TanStack Query.",
+    highlight: "Quarkus 3.15 modular monolith + Double-entry escrow ledger + Anti-hoarding checkout leases",
+    architecture: {
+      summary: "Modular monolith architecture built on Quarkus 3.15 LTS and Java 17, featuring strict ArchUnit bounded contexts, balanced double-entry journal lines (zero discrepancy), pessimistic row-locked 15-minute checkout leases, and transactional outbox worker.",
+      flow: [
+        "Next.js 14 Client & TanStack Query State",
+        "Quarkus 3.15 Modular Monolith & JWT/RBAC Filter",
+        "Anti-Hoarding Checkout Lease Engine (Pessimistic Lock & Partial Unique Index)",
+        "Double-Entry Financial Escrow Ledger & Outbox Worker",
+      ],
+      components: [
+        { title: "Quarkus 3.15 Modular Monolith", desc: "25 bounded-context domain modules with RESTEasy Reactive, Panache ORM, and ArchUnit architecture verification tests." },
+        { title: "Double-Entry Escrow Ledger", desc: "Balanced debit/credit journal transactions for escrow holds, seller payouts, platform commissions, and arbitrated disputes." },
+        { title: "Anti-Hoarding Checkout Leases", desc: "Two-stage reservation acquiring pessimistic row locks (`SELECT ... FOR UPDATE`) with 15-minute leases enforced by PostgreSQL partial unique indices." },
+      ],
+    },
+    metrics: ["25 Bounded Contexts", "100% Balanced Double-Entry DR=CR", "15-Min Anti-Hoarding Leases"],
+  },
+  {
     id: "studymate-ai",
     title: "StudyMate AI",
     subtitle: "Intelligent RAG-Based Educational Knowledge Assistant",
@@ -75,6 +104,64 @@ export const REAL_PROJECTS: RealProject[] = [
       ],
     },
     metrics: ["60 req/min Rate Limiting", "Page-level Citation Accuracy", "Docker Compose + CI/CD"],
+  },
+  {
+    id: "arte",
+    title: "Arte",
+    subtitle: "Classical Art Bureau & Interactive Curatorial Archive",
+    category: "Full-Stack Web",
+    stack: ["React 19", "Vite", "TailwindCSS", "React Router 7", "Framer Motion", "Web Audio API", "The Met API", "LocalStorage"],
+    year: "2026",
+    status: "Completed",
+    github: "https://github.com/a1fariz/arte",
+    demo: "https://www.arte.my.id/",
+    image: "/images/projects/arte.png",
+    description: "Interactive classical art archive and exhibition platform powered by The Metropolitan Museum of Art Open Access collection. Built with React 19, Vite, and Tailwind CSS. Features an infinite film-strip marquee, 360° circular orbit gallery, real-time multi-filter catalog, accessible lightbox modal, dual Curator/Visitor roles, full curatorial CRUD operations with localStorage persistence, bilingual EN/ID support, and procedural sound FX via Web Audio API.",
+    highlight: "360° orbit gallery + full CRUD curation + bilingual support + Web Audio API",
+    architecture: {
+      summary: "Client-side modular SPA architecture built on React 19 and Vite with Context API state management, accessible dialogs with keyboard focus trapping, localStorage persistence, and synthetic Web Audio API feedback.",
+      flow: [
+        "React Router v7 Client Routing & Dual Role Switcher (Curator / Visitor)",
+        "Context API State Management (Artworks Data, Cart/Favorites, Bilingual i18n)",
+        "Interactive Visual Showcase (360° Orbit Gallery, Lightbox, Infinite Marquee)",
+        "LocalStorage Atomic Persistence & Web Audio API Sound Feedback",
+      ],
+      components: [
+        { title: "360° Circular Orbit Gallery", desc: "Interactive circular orbit navigation featuring viewport-aware pause optimization via IntersectionObserver." },
+        { title: "Curatorial CRUD Engine", desc: "Accessible Create, Read, Update, and Delete forms with strict field validation, focus-trapped dialogs, and instant persistence." },
+        { title: "Bilingual & Audio System", desc: "Full English and Indonesian dynamic translation combined with synthetic procedural sound FX via Web Audio API." },
+      ],
+    },
+    metrics: ["33+ Curated Open Access Masterpieces", "Zero-Latency Web Audio API", "100% Client-Side Offline Persistence"],
+  },
+  {
+    id: "vanguard-ielts",
+    title: "Vanguard IELTS",
+    subtitle: "A1 to C1 Academic IELTS Preparation & SRS Platform",
+    category: "Full-Stack Web",
+    stack: ["React 19", "TypeScript", "Vite", "TailwindCSS", "Web Speech API", "SRS Engine", "Canvas Confetti"],
+    year: "2026",
+    status: "Completed",
+    github: "https://github.com/a1fariz/Vanguard-IELTS",
+    demo: "https://vanguard-ielts.vercel.app",
+    image: "/images/projects/vanguard-ielts.png",
+    description: "Interactive, comprehensive IELTS academic preparation web platform covering CEFR A1 to C1 proficiency levels. Features all 4 official IELTS skill modules (Listening, Reading, Writing, Speaking), Shadowing Studio with native Web Speech synthesis, SuperMemo-inspired Spaced Repetition (SRS) academic vocabulary engine, step-by-step Daily Adventure progression map, Mistake Bank for targeted error recovery, and Paraphrase Studio.",
+    highlight: "4-skill IELTS preparation + Spaced Repetition (SRS) + Shadowing Studio + Web Speech API",
+    architecture: {
+      summary: "Client-side modular SPA built with React 19, TypeScript, and Tailwind CSS v4, combining browser-native Web Speech API audio modeling with an automated SuperMemo-inspired Spaced Repetition retention engine.",
+      flow: [
+        "Diagnostic CEFR Placement Assessment (A1 to C1 Calibration)",
+        "Daily Adventure Progression & Interactive Quest Planner",
+        "4-Skill Academic Labs (Listening Audio, Reading Passages, Writing Tasks, Speaking Prompts)",
+        "Shadowing Speech Engine & SRS Retention Memory Review Queue",
+      ],
+      components: [
+        { title: "4-Skill IELTS Lab Suite", desc: "Interactive drills for Listening audio checkpoints, timed Reading simulations, Task 1/2 Writing prompts, and Speaking parts." },
+        { title: "Spaced Repetition & Mistake Bank", desc: "SuperMemo-inspired algorithm calculating review intervals with automated mistake tracking for focused remediation." },
+        { title: "Shadowing Studio & Speech Engine", desc: "Browser-native Web Speech API implementation for speech synthesis, pronunciation modeling, and conversational shadowing." },
+      ],
+    },
+    metrics: ["4-Skill Comprehensive Coverage", "CEFR A1–C1 Level Progression", "SuperMemo-Inspired SRS Retention"],
   },
   {
     id: "renshuu",
@@ -222,7 +309,7 @@ export const REAL_PROJECTS: RealProject[] = [
 export const TECH_CAPABILITIES = [
   {
     category: "Backend & Systems",
-    items: ["Java 17 / Spring Boot 3.2", "Spring Cloud Gateway (Microservices)", "Spring Security & BCrypt", "PostgreSQL & Drizzle ORM", "Docker & CI/CD Pipelines"],
+    items: ["Java 17 / Quarkus 3.15 LTS (Modular Monolith)", "Spring Boot 3.2 & Spring Cloud Gateway", "Double-Entry Escrow Accounting", "PostgreSQL & Redis Cache", "Docker & CI/CD Pipelines"],
   },
   {
     category: "AI & Vector Search",
@@ -239,8 +326,8 @@ export const TECH_CAPABILITIES = [
 ];
 
 export const STATS = [
-  { value: "3+", label: "Production Services", note: "Spring Boot Microservices & LangChain RAG" },
-  { value: "7+", label: "Technical Projects", note: "Backend, AI, Web & C CLI Systems" },
+  { value: "4+", label: "Production Services", note: "Quarkus & Spring Boot Microservices, LangChain RAG" },
+  { value: "10+", label: "Technical Projects", note: "Backend, AI, Web & C CLI Systems" },
   { value: "7+", label: "Verified Certifications", note: "U. Michigan, HarvardX, IBM, edX, ASU" },
   { value: "100%", label: "Code Rigor", note: "ACID Transactions & Automated Testing" },
 ];

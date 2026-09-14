@@ -357,17 +357,12 @@ export const EDUCATION_RECORDS = [
   },
 ];
 
-export const EXPERIENCE_RECORDS = [  {
+export const EXPERIENCE_RECORDS = [
+  {
     role: "Lead Intern — IT & Business Operations",
     org: "PT Resik Cemerlang",
     period: "2025 – Present",
     desc: "Directed a 5-person intern team in live IT operations. Managed SLA ticket handling, weekly laptop maintenance (security patching, antivirus), and medical device specification quality control. Delivered weekly operational reports to senior management.",
-  },
-  {
-    role: "Lead Intern — IT Hardware",
-    org: "SMP Negeri 2 Batujajar",
-    period: "2024",
-    desc: "Executed full hardware maintenance cycles (fault diagnosis, component repair, printer servicing). Established hardware inventory & maintenance log system, reducing repeat-fault response time significantly.",
   },
 ];
 

@@ -14,17 +14,17 @@ This repository houses the source code for Alfa Rizi's personal portfolio websit
 
 ## Featured Projects Catalog
 
-1. **ApexGrid**
-   - Subtitle: F1 Race Ticket Reservation & Microservices Platform
-   - Category: Java / Backend
-   - Stack: Java 17, Spring Boot 3.2, Spring Cloud Gateway, PostgreSQL, React 18, Docker, JWT, TailwindCSS
-   - Architecture: Distributed microservices system featuring 3 independent Spring Boot services, real-time ticket quota management via transactional database triggers, 30-minute auto-expiry reservation scheduler, and shared RBAC.
-
-2. **ReLoop**
+1. **ReLoop**
    - Subtitle: Enterprise Circular-Commerce Platform & Escrow Architecture
    - Category: Java / Backend
    - Stack: Java 17, Quarkus 3.15 LTS, Next.js 14, PostgreSQL 16, Redis 7, Flyway, Double-Entry Ledger, TailwindCSS
    - Architecture: Enterprise-grade circular commerce platform built as a Quarkus 3.15 modular monolith with 25 bounded contexts, ArchUnit architecture verification, balanced double-entry escrow accounting, anti-hoarding checkout leases with pessimistic locks, and transactional outbox worker.
+
+2. **ApexGrid**
+   - Subtitle: F1 Race Ticket Reservation & Microservices Platform
+   - Category: Java / Backend
+   - Stack: Java 17, Spring Boot 3.2, Spring Cloud Gateway, PostgreSQL, React 18, Docker, JWT, TailwindCSS
+   - Architecture: Distributed microservices system featuring 3 independent Spring Boot services, real-time ticket quota management via transactional database triggers, 30-minute auto-expiry reservation scheduler, and shared RBAC.
 
 3. **StudyMate AI**
    - Subtitle: Intelligent RAG-Based Educational Knowledge Assistant

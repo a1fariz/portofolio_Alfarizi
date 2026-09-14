@@ -50,16 +50,6 @@ const experience = {
         'Validated technical specifications across thousands of medical device asset entries, ensuring database integrity and audit readiness.',
       ],
     },
-    {
-      role: 'Lead Intern — IT Hardware',
-      company: 'SMP Negeri 2 Batujajar',
-      location: 'West Bandung, Indonesia',
-      period: '2024',
-      bullets: [
-        'Diagnosed and resolved hardware faults, network cabling issues, and printer servicing across school computer laboratories.',
-        'Designed an inventory and maintenance logging workflow that reduced repeat-fault turnaround time significantly.',
-      ],
-    },
   ],
   id: [
     {
@@ -71,16 +61,6 @@ const experience = {
         'Memimpin tim beranggotakan 5 intern dalam operasional dukungan teknis IT, diagnosa hardware, dan kepatuhan SLA tiket pemeliharaan.',
         'Mengelola instalasi patch keamanan OS, konfigurasi software, dan pembaruan definisi antivirus pada puluhan laptop operasional.',
         'Melakukan validasi spesifikasi teknis pada ribuan entri data inventaris alat medis guna menjamin akurasi dan kesiapan audit.',
-      ],
-    },
-    {
-      role: 'Lead Intern — IT Hardware',
-      company: 'SMP Negeri 2 Batujajar',
-      location: 'Bandung Barat, Indonesia',
-      period: '2024',
-      bullets: [
-        'Mendiagnosis kerusakan komponen, perbaikan hardware, instalasi jaringan lokal, dan pemeliharaan printer laboratorium komputer.',
-        'Merancang sistem pencatatan log inventaris dan perawatan hardware guna mempercepat penanganan masalah teknis berulang.',
       ],
     },
   ],

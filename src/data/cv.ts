@@ -11,7 +11,7 @@ export const cvVariants: CvVariant[] = [
   {
     id: "general",
     label: "General",
-    description: "Software Engineer — all-round profile & system architecture",
+    description: "Software Engineer — distributed microservices, modular monoliths & RAG",
     paths: {
       en: "/cv/AlfaRizi_CV_EN.pdf",
       id: "/cv/AlfaRizi_CV_ID.pdf",
@@ -20,7 +20,7 @@ export const cvVariants: CvVariant[] = [
   {
     id: "backend",
     label: "Backend",
-    description: "Backend Developer — Java 17, Spring Boot 3, PostgreSQL",
+    description: "Backend Developer — Quarkus 3.15, Spring Boot 3.2, PostgreSQL & Escrow",
     paths: {
       en: "/cv/AlfaRizi_CV_Backend_EN.pdf",
       id: "/cv/AlfaRizi_CV_Backend_ID.pdf",
@@ -29,7 +29,7 @@ export const cvVariants: CvVariant[] = [
   {
     id: "fullstack",
     label: "FullStack",
-    description: "Full-Stack Developer — React 19, Next.js, Spring Boot",
+    description: "Full-Stack Developer — React 19, Next.js 14, Quarkus & Spring Boot",
     paths: {
       en: "/cv/AlfaRizi_CV_FullStack_EN.pdf",
       id: "/cv/AlfaRizi_CV_FullStack_ID.pdf",

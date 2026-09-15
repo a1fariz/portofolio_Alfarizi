@@ -143,7 +143,7 @@ export const REAL_PROJECTS: RealProject[] = [
     year: "2026",
     status: "Completed",
     github: "https://github.com/a1fariz/Vanguard-IELTS",
-    demo: "https://vanguard-ielts.vercel.app",
+    demo: "https://vanguard-ielts.alfarizi.my.id/",
     image: "/images/projects/vanguard-ielts.png",
     description: "Interactive, comprehensive IELTS academic preparation web platform covering CEFR A1 to C1 proficiency levels. Features all 4 official IELTS skill modules (Listening, Reading, Writing, Speaking), Shadowing Studio with native Web Speech synthesis, SuperMemo-inspired Spaced Repetition (SRS) academic vocabulary engine, step-by-step Daily Adventure progression map, Mistake Bank for targeted error recovery, and Paraphrase Studio.",
     highlight: "4-skill IELTS preparation + Spaced Repetition (SRS) + Shadowing Studio + Web Speech API",

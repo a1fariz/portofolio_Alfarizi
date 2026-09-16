@@ -25,29 +25,31 @@ export const REAL_PROJECTS: RealProject[] = [
     title: "ReLoop",
     subtitle: "Enterprise Circular-Commerce Platform & Escrow Architecture",
     category: "Java / Backend",
-    stack: ["Java 17", "Quarkus 3.15 LTS", "Next.js 14", "PostgreSQL 16", "Redis 7", "Flyway", "Double-Entry Ledger", "TailwindCSS"],
+    stack: ["Java 17", "Quarkus 3.15 LTS", "Next.js 14", "PostgreSQL 16", "Redis 7", "Flyway", "Firebase Auth", "Double-Entry Ledger", "TailwindCSS"],
     year: "2026",
     status: "Completed",
     github: "https://github.com/a1fariz/ReLoop",
     demo: "https://reloop.biz.id",
     image: "/images/projects/reloop.png",
-    description: "Enterprise-grade circular commerce platform engineered for authenticated serialized electronics, 50-point technical grading certification, anti-hoarding checkout leases, and balanced double-entry escrow accounting. Built as a Quarkus 3.15 LTS modular monolith across 25 bounded contexts with ArchUnit boundary verification, transactional outbox async dispatcher, and full Next.js 14 client with TanStack Query.",
-    highlight: "Quarkus 3.15 modular monolith + Double-entry escrow ledger + Anti-hoarding checkout leases",
+    description: "Enterprise-grade circular commerce platform engineered for authenticated serialized electronics, 50-point technical grading certification, anti-hoarding checkout leases, and balanced double-entry escrow accounting. Built as a Quarkus 3.15 LTS modular monolith across 25 bounded contexts with ArchUnit boundary verification, transactional outbox async dispatcher, Firebase Google Sign-In authentication, and full Next.js 14 client with TanStack Query.",
+    highlight: "Quarkus 3.15 modular monolith + Double-entry escrow ledger + Anti-hoarding checkout leases + Firebase Google Sign-In",
     architecture: {
-      summary: "Modular monolith architecture built on Quarkus 3.15 LTS and Java 17, featuring strict ArchUnit bounded contexts, balanced double-entry journal lines (zero discrepancy), pessimistic row-locked 15-minute checkout leases, and transactional outbox worker.",
+      summary: "Modular monolith architecture built on Quarkus 3.15 LTS and Java 17, featuring strict ArchUnit bounded contexts, balanced double-entry journal lines (zero discrepancy), pessimistic row-locked 15-minute checkout leases, Firebase Google Sign-In with server-side ID token verification, and transactional outbox worker.",
       flow: [
         "Next.js 14 Client & TanStack Query State",
         "Quarkus 3.15 Modular Monolith & JWT/RBAC Filter",
+        "Firebase Google Sign-In & Server-Side Token Verification",
         "Anti-Hoarding Checkout Lease Engine (Pessimistic Lock & Partial Unique Index)",
         "Double-Entry Financial Escrow Ledger & Outbox Worker",
       ],
       components: [
         { title: "Quarkus 3.15 Modular Monolith", desc: "25 bounded-context domain modules with RESTEasy Reactive, Panache ORM, and ArchUnit architecture verification tests." },
         { title: "Double-Entry Escrow Ledger", desc: "Balanced debit/credit journal transactions for escrow holds, seller payouts, platform commissions, and arbitrated disputes." },
+        { title: "Firebase Google Sign-In", desc: "OAuth 2.0 Google authentication via Firebase SDK with server-side ID token verification through Google Identity Toolkit API." },
         { title: "Anti-Hoarding Checkout Leases", desc: "Two-stage reservation acquiring pessimistic row locks (`SELECT ... FOR UPDATE`) with 15-minute leases enforced by PostgreSQL partial unique indices." },
       ],
     },
-    metrics: ["25 Bounded Contexts", "100% Balanced Double-Entry DR=CR", "15-Min Anti-Hoarding Leases"],
+    metrics: ["25 Bounded Contexts", "100% Balanced Double-Entry DR=CR", "15-Min Anti-Hoarding Leases", "Firebase Google OAuth"],
   },
   {
     id: "apexgrid",
@@ -321,7 +323,7 @@ export const TECH_CAPABILITIES = [
   },
   {
     category: "Engineering Principles",
-    items: ["RESTful API Architecture", "JWT & Role-Based Access Control (RBAC)", "PostgreSQL ACID Triggers", "Offline-First State Persistence", "Clean Code & SOLID Design"],
+    items: ["RESTful API Architecture", "JWT & Role-Based Access Control (RBAC)", "Firebase Auth (Google Sign-In)", "PostgreSQL ACID Triggers", "Offline-First State Persistence", "Clean Code & SOLID Design"],
   },
 ];
 

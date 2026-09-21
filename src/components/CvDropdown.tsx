@@ -4,9 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, FileText } from "lucide-react";
 import { CvVariant } from "@/data/cv";
 
-export default function CvDropdown({ variants }: { variants: CvVariant[] }) {
+export default function CvDropdown({
+  variants,
+  variant = "nav",
+  align,
+}: {
+  variants: CvVariant[];
+  variant?: "nav" | "hero";
+  align?: "left" | "right";
+}) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const menuAlign = align ?? (variant === "hero" ? "left" : "right");
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -35,10 +44,14 @@ export default function CvDropdown({ variants }: { variants: CvVariant[] }) {
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         aria-haspopup="menu"
-        className="inline-flex items-center gap-1.5 rounded-full bg-[#141414] px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#f4f3ef] transition-colors hover:bg-neutral-800"
+        className={
+          variant === "hero"
+            ? "inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest transition-colors hover:border-black"
+            : "inline-flex items-center gap-1.5 rounded-full bg-[#141414] px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#f4f3ef] transition-colors hover:bg-neutral-800"
+        }
       >
         <FileText className="h-3.5 w-3.5" />
-        <span>CV</span>
+        <span>{variant === "hero" ? "Resume / CV" : "CV"}</span>
         <ChevronDown
           className={`h-3.5 w-3.5 transition-transform duration-200 ${
             open ? "rotate-180" : ""
@@ -49,7 +62,9 @@ export default function CvDropdown({ variants }: { variants: CvVariant[] }) {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 mt-2 w-72 origin-top-right rounded-xl border border-black/10 bg-[#f4f3ef] p-1.5 shadow-xl backdrop-blur-md"
+          className={`absolute z-50 mt-2 w-72 rounded-xl border border-black/10 bg-[#f4f3ef] p-1.5 shadow-xl backdrop-blur-md ${
+            menuAlign === "left" ? "left-0 origin-top-left" : "right-0 origin-top-right"
+          }`}
         >
           <div className="px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-neutral-400">
             Select CV Track

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import {
   REAL_PROJECTS,
   TECH_CAPABILITIES,
@@ -12,6 +12,7 @@ import {
 import { cvVariants } from "@/data/cv";
 import Reveal from "@/components/Reveal";
 import SpinningBadge from "@/components/SpinningBadge";
+import CvDropdown from "@/components/CvDropdown";
 
 const EMAIL = "alfarizi.developer@gmail.com";
 const GITHUB = "https://github.com/a1fariz";
@@ -28,13 +29,7 @@ function Nav() {
           <a href="#projects" className="hidden text-neutral-600 transition-colors hover:text-black sm:inline">Projects</a>
           <a href="#about" className="hidden text-neutral-600 transition-colors hover:text-black sm:inline">About</a>
           <a href={`mailto:${EMAIL}`} className="text-neutral-600 transition-colors hover:text-black">Contact</a>
-          <a
-            href={cvVariants[0].paths.en}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#141414] px-4 py-1.5 font-bold text-[#f4f3ef] transition-colors hover:bg-neutral-800"
-          >
-            <FileText className="h-3.5 w-3.5" />
-            CV
-          </a>
+          <CvDropdown variants={cvVariants} />
         </div>
       </nav>
     </header>
@@ -272,6 +267,8 @@ function Footer() {
               <a
                 key={cv.id}
                 href={cv.paths.en}
+                target="_blank"
+                rel="noreferrer"
                 className="text-neutral-600 transition-colors hover:text-black"
               >
                 CV — {cv.label}

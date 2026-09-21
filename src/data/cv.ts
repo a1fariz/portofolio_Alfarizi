@@ -9,30 +9,39 @@ export interface CvVariant {
 
 export const cvVariants: CvVariant[] = [
   {
-    id: "general",
-    label: "General",
-    description: "Software Engineer — distributed microservices, modular monoliths & RAG",
+    id: "software-engineer",
+    label: "Software Engineer",
+    description: "Software Engineer — Java, Spring Boot, Quarkus, React, Next.js, Python & PostgreSQL",
     paths: {
-      en: "/cv/AlfaRizi_CV_EN.pdf",
-      id: "/cv/AlfaRizi_CV_ID.pdf",
+      en: "/cv/Alfarizi_CV_Software_Engineer.pdf",
+      id: "/cv/Alfarizi_CV_Software_Engineer.pdf",
     },
   },
   {
-    id: "backend",
-    label: "Backend",
-    description: "Backend Developer — Quarkus 3.15, Spring Boot 3.2, PostgreSQL & Escrow",
+    id: "java-backend",
+    label: "Java Backend",
+    description: "Java Backend Engineer — Spring Boot, Quarkus, PostgreSQL, concurrency & Docker",
     paths: {
-      en: "/cv/AlfaRizi_CV_Backend_EN.pdf",
-      id: "/cv/AlfaRizi_CV_Backend_ID.pdf",
+      en: "/cv/Alfarizi_CV_Java_Backend.pdf",
+      id: "/cv/Alfarizi_CV_Java_Backend.pdf",
     },
   },
   {
     id: "fullstack",
-    label: "FullStack",
-    description: "Full-Stack Developer — React 19, Next.js 14, Quarkus & Spring Boot",
+    label: "Full Stack",
+    description: "Full Stack Developer — React, Next.js, TypeScript, API integration & Java/Python backends",
     paths: {
-      en: "/cv/AlfaRizi_CV_FullStack_EN.pdf",
-      id: "/cv/AlfaRizi_CV_FullStack_ID.pdf",
+      en: "/cv/Alfarizi_CV_Full_Stack_Developer.pdf",
+      id: "/cv/Alfarizi_CV_Full_Stack_Developer.pdf",
+    },
+  },
+  {
+    id: "ai-python",
+    label: "AI & Python",
+    description: "Python & AI Engineer — FastAPI, RAG pipelines, vector search & microservices",
+    paths: {
+      en: "/cv/Alfarizi_CV_AI_Python.pdf",
+      id: "/cv/Alfarizi_CV_AI_Python.pdf",
     },
   },
 ];

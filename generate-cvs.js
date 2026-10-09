@@ -43,9 +43,9 @@ const experience = {
   en: [
     {
       role: 'Lead Intern — IT & Business Operations',
-      company: 'PT Resik Cemerlang (Pasim Group)',
+      company: 'PT Resika Cemerlang (Pasim Group)',
       location: 'Bandung, Indonesia',
-      period: '2025 – Present',
+      period: '2025 – Sep 2026',
       bullets: [
         'Directed a 5-person intern team managing day-to-day IT support operations, hardware diagnostics, and workstation SLA ticket compliance.',
         'Enforced OS security patching, software configurations, and antivirus definition updates across corporate laptops.',
@@ -56,9 +56,9 @@ const experience = {
   id: [
     {
       role: 'Lead Intern — IT & Business Operations',
-      company: 'PT Resik Cemerlang (Pasim Group)',
+      company: 'PT Resika Cemerlang (Pasim Group)',
       location: 'Bandung, Indonesia',
-      period: '2025 – Sekarang',
+      period: '2025 – September 2026',
       bullets: [
         'Memimpin tim beranggotakan 5 intern dalam operasional dukungan teknis IT, diagnosa hardware, dan kepatuhan SLA tiket pemeliharaan.',
         'Mengelola instalasi patch keamanan OS, konfigurasi software, dan pembaruan definisi antivirus pada puluhan laptop operasional.',
@@ -73,22 +73,26 @@ const education = {
   en: [
     {
       institution: 'Universitas Nasional PASIM',
-      degree: 'Associate Degree in Informatics Management (D3) — GPA: 3.6 / 4.0',
+      degree: 'Associate Degree in Informatics Management (D3) — GPA: 3.78 / 4.00',
       location: 'Bandung, Indonesia',
-      period: 'Expected May 2027',
+      period: 'Coursework completed; preparing for final thesis defense',
       bullets: [
         'PUB Intensive Technical Scholarship (2024 – Present): Logic & C, Data Structures, Relational Databases, Advanced Java Development, and React Development.',
+        'Intensive React Front-End Development Training (Sep 2026); Fundamental Back-End Programming with Java and Git & GitHub Training (Jan 2026).',
+        'Web Programming Training (Aug 2025); Database and Data Structure Training (May 2025).',
       ],
     },
   ],
   id: [
     {
       institution: 'Universitas Nasional PASIM',
-      degree: 'D3 Manajemen Informatika — IPK: 3.6 / 4.0',
+      degree: 'D3 Manajemen Informatika — IPK: 3.78 / 4.00',
       location: 'Bandung, Indonesia',
-      period: 'Estimasi Mei 2027',
+      period: 'Perkuliahan selesai; sedang mempersiapkan sidang tugas akhir',
       bullets: [
         'Penerima Beasiswa Pelatihan Intensif PUB (2024 – Sekarang): Logika Pemrograman, Struktur Data, Database Relasional, Java Lanjutan, dan Pengembangan React.',
+        'Pelatihan Intensif React Front-End (Sep 2026); Fundamental Back-End Programming dengan Java dan Git & GitHub (Jan 2026).',
+        'Pelatihan Web Programming (Agu 2025); Database dan Struktur Data (Mei 2025).',
       ],
     },
   ],
@@ -101,16 +105,12 @@ const certifications = {
     { title: 'Programming for Data Science with Python', issuer: 'HarvardX', year: '2025' },
     { title: 'Certified Entry-Level Python Programmer (PCEP)', issuer: 'Python Institute', year: '2025' },
     { title: 'Introduction to Cloud Computing', issuer: 'IBM', year: '2026' },
-    { title: 'Professional English Communication Skills', issuer: 'Arizona State University', year: '2026' },
-    { title: 'Cybersecurity Fundamentals', issuer: 'Rochester Institute of Technology (RIT)', year: '2025' },
   ],
   id: [
     { title: 'Spesialisasi Python for Everybody', issuer: 'University of Michigan', year: '2026' },
     { title: 'Programming for Data Science with Python', issuer: 'HarvardX', year: '2025' },
     { title: 'Certified Entry-Level Python Programmer (PCEP)', issuer: 'Python Institute', year: '2025' },
     { title: 'Pengenalan Cloud Computing', issuer: 'IBM', year: '2026' },
-    { title: 'Keterampilan Komunikasi Bahasa Inggris Profesional', issuer: 'Arizona State University', year: '2026' },
-    { title: 'Cybersecurity Fundamentals', issuer: 'Rochester Institute of Technology (RIT)', year: '2025' },
   ],
 };
 
@@ -123,7 +123,7 @@ const roleContent = {
       targetRole: 'Software Engineer',
       projectsTitle: 'Featured Engineering Projects',
       summary:
-        'Software Engineer (Informatics Management D3 student, GPA 3.6/4.0) with proven experience engineering distributed microservices, enterprise modular monoliths, AI/RAG pipelines, and interactive web platforms. Strong technical mastery in Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), and PostgreSQL (PL/pgSQL triggers, views, Flyway), with Docker containerization and automated GitHub Actions CI/CD.',
+        'Software Engineer (Informatics Management D3 graduate, GPA 3.78/4.00; coursework completed, preparing for final thesis defense) with proven experience engineering distributed microservices, enterprise modular monoliths, AI/RAG pipelines, and interactive web platforms. Strong technical mastery in Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), and PostgreSQL (PL/pgSQL triggers, views, Flyway), with Docker containerization and automated GitHub Actions CI/CD.',
       skills: [
         { category: 'Languages', items: 'Java 17, TypeScript, JavaScript (ES6+), Python 3.12, SQL, C' },
         { category: 'Backend & Systems', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, FastAPI, Express.js, Double-Entry Escrow' },
@@ -183,7 +183,7 @@ const roleContent = {
       targetRole: 'Software Engineer',
       projectsTitle: 'Proyek Rekayasa Perangkat Lunak Unggulan',
       summary:
-        'Software Engineer (mahasiswa D3 Manajemen Informatika, IPK 3.6/4.0) berpengalaman membangun arsitektur modular monolith enterprise, microservices terdistribusi, pipeline AI/RAG, dan aplikasi web interaktif. Menguasai secara mendalam Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), dan PostgreSQL (PL/pgSQL triggers, views, Flyway), didukung containerisasi Docker dan CI/CD GitHub Actions.',
+        'Software Engineer (lulusan D3 Manajemen Informatika, IPK 3.78/4.00; perkuliahan selesai dan sedang mempersiapkan sidang tugas akhir) berpengalaman membangun arsitektur modular monolith enterprise, microservices terdistribusi, pipeline AI/RAG, dan aplikasi web interaktif. Menguasai secara mendalam Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), dan PostgreSQL (PL/pgSQL triggers, views, Flyway), didukung containerisasi Docker dan CI/CD GitHub Actions.',
       skills: [
         { category: 'Bahasa Pemrograman', items: 'Java 17, TypeScript, JavaScript (ES6+), Python 3.12, SQL, C' },
         { category: 'Backend & Sistem', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, FastAPI, Express.js, Double-Entry Escrow' },

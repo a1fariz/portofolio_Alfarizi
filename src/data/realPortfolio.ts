@@ -349,7 +349,7 @@ export const EDUCATION_RECORDS = [
     title: "Associate Degree in Informatics Management (D3)",
     org: "Universitas Nasional PASIM",
     period: "Expected May 2027",
-    desc: "GPA 3.6 / 4.0 — Bandung, Indonesia",
+    desc: "GPA 3.78 / 4.0 — Bandung, Indonesia",
   },
   {
     title: "PUB Intensive Technical Scholarship",
@@ -362,7 +362,7 @@ export const EDUCATION_RECORDS = [
 export const EXPERIENCE_RECORDS = [
   {
     role: "Lead Intern — IT & Business Operations",
-    org: "PT Resik Cemerlang",
+    org: "PT Resika Cemerlang",
     period: "2025 – Present",
     desc: "Directed a 5-person intern team in live IT operations. Managed SLA ticket handling, weekly laptop maintenance (security patching, antivirus), and medical device specification quality control. Delivered weekly operational reports to senior management.",
   },

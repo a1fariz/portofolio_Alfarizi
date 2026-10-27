@@ -14,6 +14,7 @@ const contact = {
   email: 'alfarizi.developer@gmail.com',
   github: 'https://github.com/a1fariz',
   portfolio: 'https://alfarizi.my.id',
+  linkedin: 'https://www.linkedin.com/in/alfa-rizi-65b483412',
 };
 
 const locationByLang = {
@@ -119,11 +120,11 @@ const roleContent = {
   // ===== 1. GENERAL SOFTWARE ENGINEER =====
   general: {
     en: {
-      fileName: 'AlfaRizi_CV_EN.pdf',
+      fileName: 'Alfarizi_CV_Software_Engineer.pdf',
       targetRole: 'Software Engineer',
       projectsTitle: 'Featured Engineering Projects',
       summary:
-        'Software Engineer (Informatics Management D3 graduate, GPA 3.78/4.00; coursework completed, preparing for final thesis defense) with proven experience engineering distributed microservices, enterprise modular monoliths, AI/RAG pipelines, and interactive web platforms. Strong technical mastery in Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), and PostgreSQL (PL/pgSQL triggers, views, Flyway), with Docker containerization and automated GitHub Actions CI/CD.',
+        'Software Engineer (Informatics Management D3 student, GPA 3.78/4.00; coursework completed, preparing for final thesis defense) with proven experience engineering distributed microservices, enterprise modular monoliths, AI/RAG pipelines, and interactive web platforms. Hands-on experience in Go (net/http, pgx), Dart/Flutter, SQLite, Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), and PostgreSQL (PL/pgSQL triggers, views, Flyway), with Docker containerization and automated GitHub Actions CI/CD.',
       skills: [
         { category: 'Languages', items: 'Java 17, TypeScript, JavaScript (ES6+), Python 3.12, SQL, C' },
         { category: 'Backend & Systems', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, FastAPI, Express.js, Double-Entry Escrow' },
@@ -243,7 +244,7 @@ const roleContent = {
   // ===== 2. BACKEND DEVELOPER =====
   backend: {
     en: {
-      fileName: 'AlfaRizi_CV_Backend_EN.pdf',
+      fileName: 'Alfarizi_CV_Java_Backend.pdf',
       targetRole: 'Backend Developer',
       projectsTitle: 'Featured Backend Projects',
       summary:
@@ -369,7 +370,7 @@ const roleContent = {
   // ===== 3. FULL-STACK DEVELOPER =====
   fullstack: {
     en: {
-      fileName: 'AlfaRizi_CV_FullStack_EN.pdf',
+      fileName: 'Alfarizi_CV_Full_Stack_Developer.pdf',
       targetRole: 'Full-Stack Developer',
       projectsTitle: 'Featured Full-Stack Projects',
       summary:
@@ -495,31 +496,88 @@ const roleContent = {
   },
 };
 
-// ---------- Assemble final CV list ----------
-const cvDataList = Object.entries(roleContent).flatMap(([, langs]) =>
-  ['en', 'id'].map((lang) => ({
-    fileName: langs[lang].fileName,
-    data: {
-      ...contact,
-      targetRole: langs[lang].targetRole,
-      location: locationByLang[lang],
-      labels: {
-        ...baseLabels[lang],
-        projects: langs[lang].projectsTitle,
-      },
-      summary: langs[lang].summary,
-      skills: langs[lang].skills,
-      projects: langs[lang].projects,
-      experience: experience[lang],
-      education: education[lang],
-      certifications: certifications[lang],
+roleContent.ai = {
+  en: {
+    ...roleContent.general.en,
+    fileName: 'Alfarizi_CV_AI_Python.pdf',
+    targetRole: 'AI & Python Engineer',
+    projectsTitle: 'Featured AI & Python Projects',
+    summary: 'Entry-level Software Engineer focused on Python backend development and AI applications, with hands-on experience building asynchronous FastAPI services, RAG pipelines, vector search, document processing, and rate limiting.',
+    skills: [
+      { category: 'Languages', items: 'Python 3.12, SQL, TypeScript, JavaScript, Java' },
+      { category: 'AI & Backend', items: 'FastAPI, ChromaDB, Gemini, PyMuPDF, RAG, vector search' },
+      { category: 'Web', items: 'React, Next.js, Vite, Tailwind CSS' },
+      { category: 'Infrastructure & Tools', items: 'Docker, PostgreSQL, Redis, Git, GitHub Actions, Linux' },
+    ],
+    projects: roleContent.general.en.projects.filter((project) => project.title.startsWith('StudyMate AI') || project.title.startsWith('ReLoop')),
+  },
+};
+
+// Keep the project stack grounded in project-golang's implemented features.
+for (const [role, translations] of Object.entries(roleContent)) {
+  for (const [lang, content] of Object.entries(translations)) {
+    const tooling = content.skills.find(skill => /Tools|Tooling|Testing/.test(skill.category));
+    if (tooling && !tooling.items.includes('IntelliJ IDEA')) tooling.items += ', IntelliJ IDEA';
+
+    content.skills.push({
+      category: lang === 'id' ? 'Go & Pengembangan Mobile' : 'Go & Mobile Development',
+      items: 'Go (Golang), Dart, Flutter, net/http, pgx, PostgreSQL, SQLite (sqflite)',
+    });
+    content.projects.unshift({
+      title: lang === 'id' ? 'Catat Uang - Aplikasi Keuangan Pribadi' : 'Catat Uang - Personal Finance Application',
+      tech: 'Go, Dart, Flutter, PostgreSQL, SQLite',
+      year: '2026',
+      bullets: lang === 'id' ? [
+        'Mengembangkan aplikasi Flutter yang dapat digunakan offline dengan transaksi, tagihan, penyimpanan SQLite, dan pengingat lokal.',
+        'Membangun REST API Go dengan PostgreSQL, registrasi/login, sesi yang dapat dicabut, CRUD transaksi/tagihan, dan pembayaran idempotent.',
+        'Mengimplementasikan sinkronisasi manual transaksi/tagihan dengan outbox SQLite, retry idempotent, peninjauan konflik, backup terenkripsi, dan pemulihan akun; CI backend/Android lulus.',
+      ] : [
+        'Developed an offline-capable Flutter app with transactions, bills, SQLite storage, and local reminders.',
+        'Built a Go REST API with PostgreSQL, registration/login, revocable sessions, transaction/bill CRUD, and idempotent payments.',
+        'Implemented opt-in transaction/bill sync with SQLite outboxes, idempotent retries, conflict review, encrypted backups and account recovery; backend/Android CI passed.',
+      ],
+    });
+  }
+}
+
+roleContent.java = { en: { ...roleContent.backend.en, fileName: 'Alfarizi_CV_Java_Backend.pdf', targetRole: 'Java Backend Developer' } };
+roleContent.backend = { en: {
+  ...roleContent.backend.en,
+  fileName: 'Alfarizi_Junior_Backend_EN.pdf',
+  targetRole: 'Junior Backend Developer | Go & Java',
+  summary: 'Junior backend developer building Go and Java APIs with PostgreSQL. Implemented an offline-first Flutter finance app with explicit synchronization, idempotent payments, revocable sessions, encrypted backups and account recovery. Hands-on experience with Quarkus, Spring Boot, database transactions and automated integration testing. D3 Informatics Management coursework completed; preparing for final thesis defense.',
+  projects: roleContent.backend.en.projects.slice(0, 3),
+} };
+roleContent.frontend = { en: {
+  ...roleContent.fullstack.en, fileName: 'Alfarizi_Frontend.pdf', targetRole: 'Frontend Developer',
+  summary: 'Frontend developer building responsive React, Next.js and TypeScript applications, with additional Flutter experience. Projects include interactive art and learning interfaces and an offline-first finance app with SQLite, explicit synchronization, encrypted backups and account flows.',
+} };
+roleContent.master = { en: {
+  ...roleContent.general.en, fileName: 'Alfarizi_Master_Resume.pdf', targetRole: 'Software Engineer | Go, Java & Full Stack',
+} };
+
+const cvDataList = Object.values(roleContent).map(({ en }) => ({
+  fileName: en.fileName,
+  data: {
+    ...contact,
+    targetRole: en.targetRole,
+    location: locationByLang.en,
+    labels: {
+      ...baseLabels.en,
+      projects: en.projectsTitle,
     },
-  }))
-);
+    summary: en.summary,
+    skills: en.skills,
+    projects: en.projects,
+    experience: experience.en,
+    education: education.en,
+    certifications: certifications.en,
+  },
+}));
 
 async function generateAllPdfs() {
   console.log('Launching browser via Playwright...');
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
 
   for (const item of cvDataList) {
     const htmlContent = cvHtmlTemplate(item.data);
@@ -541,6 +599,16 @@ async function generateAllPdfs() {
         right: '0.42in',
       },
     });
+
+    const downloadNames = {
+      'Alfarizi_CV_Software_Engineer.pdf': 'Alfarizi_Software.pdf',
+      'Alfarizi_CV_Java_Backend.pdf': 'Alfarizi_Java.pdf',
+      'Alfarizi_CV_Full_Stack_Developer.pdf': 'Alfarizi_FullStack.pdf',
+      'Alfarizi_CV_AI_Python.pdf': 'Alfarizi_AI.pdf',
+    };
+    if (downloadNames[item.fileName]) {
+      fs.copyFileSync(outputPath, path.join(outputDir, downloadNames[item.fileName]));
+    }
 
     // Check page count by reading generated PDF
     const pdfBuffer = fs.readFileSync(outputPath);

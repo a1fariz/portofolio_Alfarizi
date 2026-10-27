@@ -9,6 +9,15 @@ export interface CvVariant {
 
 export const cvVariants: CvVariant[] = [
   {
+    id: "go-java-backend",
+    label: "Go / Java Backend",
+    description: "Latest junior backend CV · English",
+    paths: {
+      en: "/cv/Alfarizi_Junior_Backend_EN.pdf",
+      id: "/cv/Alfarizi_Junior_Backend_EN.pdf",
+    },
+  },
+  {
     id: "master-resume",
     label: "Master Resume",
     description: "Complete resume",

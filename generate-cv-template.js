@@ -180,7 +180,8 @@ const cvHtmlTemplate = (data) => `
     <div class="contact">
       ${data.location} | <a href="mailto:${data.email}">${data.email}</a> | 
       <a href="${data.github}">github.com/a1fariz</a> | 
-      <a href="${data.portfolio}">alfarizi.my.id</a>
+      <a href="${data.portfolio}">alfarizi.my.id</a> |
+      <a href="${data.linkedin}">LinkedIn</a>
     </div>
   </div>
 

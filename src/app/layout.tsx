@@ -19,14 +19,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://alfarizi.my.id"),
   title: {
-    default: "Alfa Rizi — Junior Backend Developer | Go & Java",
+    default: "Alfa Rizi — Software Developer | Web, Backend, Mobile & AI",
     template: "%s | Alfa Rizi",
   },
   description:
-    "Go and Java backend portfolio: REST APIs, PostgreSQL transactions, authentication, and integration testing. Explore Catat Uang, ReLoop, and ApexGrid.",
+    "Software development portfolio across frontend, backend, full-stack web, Flutter mobile, and AI applications. Explore projects, testing evidence, and role-specific CVs.",
   keywords: [
     "Alfa Rizi",
     "Backend Developer",
+    "Frontend Developer",
+    "Full Stack Developer",
+    "Flutter Developer",
+    "AI Application Developer",
+    "IT Support",
     "Java Spring Boot",
     "Software Engineer",
     "Go Golang",
@@ -45,9 +50,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://alfarizi.my.id",
-    title: "Alfa Rizi — Junior Backend Developer | Go & Java",
+    title: "Alfa Rizi — Software Developer | Web, Backend, Mobile & AI",
     description:
-      "Explore Go and Java backend projects, architecture decisions, and testing evidence.",
+      "Explore web, backend, mobile, and AI projects with architecture decisions and testing evidence.",
     siteName: "Alfa Rizi Portfolio",
     images: [
       {
@@ -60,9 +65,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alfa Rizi — Junior Backend Developer | Go & Java",
+    title: "Alfa Rizi — Software Developer | Web, Backend, Mobile & AI",
     description:
-      "Go and Java backend projects with PostgreSQL, authentication, and integration testing.",
+      "React interfaces, Go and Java APIs, Flutter apps, and Python AI tools. Browse projects and role-specific CVs.",
     images: ["/images/profile.jpg"],
     creator: "@alfarizi",
   },
@@ -83,7 +88,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Alfa Rizi",
-  jobTitle: "Junior Backend Developer",
+  jobTitle: "Software Developer",
   url: "https://alfarizi.my.id",
   image: "https://alfarizi.my.id/images/profile.jpg",
   sameAs: [
@@ -102,7 +107,7 @@ const jsonLd = {
     "Docker",
     "Next.js",
   ],
-  alumniOf: {
+  affiliation: {
     "@type": "EducationalOrganization",
     name: "Universitas Nasional PASIM",
   },

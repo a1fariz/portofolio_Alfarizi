@@ -8,6 +8,7 @@ export interface RealProject {
     decisions: string[];
     evidence: string[];
     limitations: string;
+    links?: { label: string; url: string }[];
   };
   stack: string[];
   year: string;
@@ -54,12 +55,17 @@ export const REAL_PROJECTS: RealProject[] = [
       decisions: ["Keep local finance usable without an account; require explicit linking before uploading records.", "Persist synchronization queues and use idempotency keys, version checks and conflict review so interrupted requests can be retried safely.", "Protect bill payments with database transactions, row locks and uniqueness constraints.", "Verify backups and restore on isolated copies; provide cleanup previews before changing retained server data."],
       evidence: ["The project verification report dated 27 October 2026 records successful Backend and Mobile CI for code 57f956c, including Go race/PostgreSQL, vulnerability checks, container checks and native Android emulator jobs.", "Integration tests exercise two real SQLite ledgers against the Go API, including retry, conflict, payment, reopen and dataset recovery flows.", "An SMTP loopback test covers HTTP recovery requests, outbox delivery, MIME codes, one-time reset and session revocation.", "Source code, the verification report and release gates are available in the public repository. The recorded development APK and CI results do not constitute a public production release."],
       limitations: "Public hosting/HTTPS, provider email delivery, production signing and store release remain pending. Real Android device checks, two-device acceptance and iOS builds still require the corresponding hardware/services. Emulator and CI results do not establish production reliability.",
+      links: [
+        { label: "Verification report", url: "https://github.com/a1fariz/CatatUang/blob/main/VERIFICATION.md" },
+        { label: "Release gates", url: "https://github.com/a1fariz/CatatUang/blob/main/RELEASE_READINESS.md" },
+        { label: "Backend and mobile CI", url: "https://github.com/a1fariz/CatatUang/actions" },
+      ],
     },
   },
   {
     id: "reloop",
     title: "ReLoop",
-    subtitle: "Enterprise Circular-Commerce Platform & Escrow Architecture",
+    subtitle: "Circular-Commerce Platform & Escrow Architecture",
     category: "Java / Backend",
     stack: ["Java 17", "Quarkus 3.15 LTS", "Next.js 14", "PostgreSQL 16", "Redis 7", "Flyway", "Firebase Auth", "Double-Entry Ledger", "TailwindCSS"],
     year: "2026",
@@ -67,10 +73,10 @@ export const REAL_PROJECTS: RealProject[] = [
     github: "https://github.com/a1fariz/ReLoop",
     demo: "https://reloop.biz.id",
     image: "/images/projects/reloop.png",
-    description: "Enterprise-grade circular commerce platform engineered for authenticated serialized electronics, 50-point technical grading certification, anti-hoarding checkout leases, and balanced double-entry escrow accounting. Built as a Quarkus 3.15 LTS modular monolith across 25 bounded contexts with ArchUnit boundary verification, transactional outbox async dispatcher, Firebase Google Sign-In authentication, and full Next.js 14 client with TanStack Query.",
+    description: "Circular-commerce portfolio project built for authenticated serialized electronics, 50-point technical grading certification, anti-hoarding checkout leases, and balanced double-entry escrow accounting. Built as a Quarkus 3.15 LTS modular monolith across 25 backend modules with ArchUnit boundary verification, transactional outbox async dispatcher, Firebase Google Sign-In authentication, and full Next.js 14 client with TanStack Query.",
     highlight: "Quarkus 3.15 modular monolith + Double-entry escrow ledger + Anti-hoarding checkout leases + Firebase Google Sign-In",
     architecture: {
-      summary: "Modular monolith architecture built on Quarkus 3.15 LTS and Java 17, featuring strict ArchUnit bounded contexts, balanced double-entry journal lines (zero discrepancy), pessimistic row-locked 15-minute checkout leases, Firebase Google Sign-In with server-side ID token verification, and transactional outbox worker.",
+      summary: "Modular monolith architecture built on Quarkus 3.15 LTS and Java 17, featuring strict ArchUnit bounded contexts, balanced debit/credit journal entries, pessimistic row-locked 15-minute checkout leases, Firebase Google Sign-In with server-side ID token verification, and transactional outbox worker.",
       flow: [
         "Next.js 14 Client & TanStack Query State",
         "Quarkus 3.15 Modular Monolith & JWT/RBAC Filter",
@@ -79,18 +85,23 @@ export const REAL_PROJECTS: RealProject[] = [
         "Double-Entry Financial Escrow Ledger & Outbox Worker",
       ],
       components: [
-        { title: "Quarkus 3.15 Modular Monolith", desc: "25 bounded-context domain modules with RESTEasy Reactive, Panache ORM, and ArchUnit architecture verification tests." },
+        { title: "Quarkus 3.15 Modular Monolith", desc: "25 backend packages/modules with RESTEasy Reactive, Panache ORM, and ArchUnit architecture verification tests." },
         { title: "Double-Entry Escrow Ledger", desc: "Balanced debit/credit journal transactions for escrow holds, seller payouts, platform commissions, and arbitrated disputes." },
         { title: "Firebase Google Sign-In", desc: "OAuth 2.0 Google authentication via Firebase SDK with server-side ID token verification through Google Identity Toolkit API." },
         { title: "Anti-Hoarding Checkout Leases", desc: "Two-stage reservation acquiring pessimistic row locks (`SELECT ... FOR UPDATE`) with 15-minute leases enforced by PostgreSQL partial unique indices." },
       ],
     },
-    metrics: ["25 bounded contexts", "Double-entry escrow ledger", "15-minute checkout leases"],
+    metrics: ["25 backend modules", "Double-entry escrow ledger", "15-minute checkout leases"],
     caseStudy: {
       contribution: "Developed commerce backend modules, escrow accounting and reservation logic in a Quarkus modular monolith, with a Next.js client.",
       decisions: ["Keep domain modules in one application with ArchUnit boundary checks to make module dependencies explicit.", "Use pessimistic row locks and expiring reservations to coordinate checkout access to limited inventory.", "Represent escrow movements as debit/credit journal entries rather than updating a balance without an accounting trail."],
-      evidence: ["The implementation is organized into 25 bounded contexts with architecture verification checks.", "Checkout leases are configured for 15 minutes. This is a system rule, not a performance benchmark.", "Repository and demo links are provided for implementation review."],
+      evidence: ["The implementation is organized into 25 backend modules with architecture verification checks.", "Checkout leases are configured for 15 minutes. This is a system rule, not a performance benchmark.", "Repository and demo links are provided for implementation review."],
       limitations: "No latency, throughput or availability benchmark is claimed here. Production-scale reliability requires documented load tests and operational evidence.",
+      links: [
+        { label: "Architecture and setup", url: "https://github.com/a1fariz/ReLoop#readme" },
+        { label: "Backend source and tests", url: "https://github.com/a1fariz/ReLoop/tree/main/backend-quarkus" },
+        { label: "CI runs", url: "https://github.com/a1fariz/ReLoop/actions" },
+      ],
     },
   },
   {
@@ -115,7 +126,7 @@ export const REAL_PROJECTS: RealProject[] = [
       ],
       components: [
         { title: "Spring Cloud Gateway", desc: "Handles centralized routing, rate limiting, and RBAC token evaluation." },
-        { title: "Quota & Race Service", desc: "High-concurrency ticket booking engine powered by PostgreSQL triggers for real-time inventory management." },
+        { title: "Quota & Race Service", desc: "Ticket booking service powered by PostgreSQL triggers for real-time inventory management." },
         { title: "Analytics & Views", desc: "Complex PostgreSQL DB views feed real-time sales and reservation metrics to the React Admin Panel." },
       ],
     },
@@ -125,6 +136,10 @@ export const REAL_PROJECTS: RealProject[] = [
       decisions: ["Route client requests through Spring Cloud Gateway to centralize entry to the user and race services.", "Use PostgreSQL inventory triggers and a reservation-expiry worker to keep booking state and ticket availability coordinated."],
       evidence: ["The repository contains 3 service responsibilities: gateway, users and race-ticket reservations.", "Reservations expire after 30 minutes; the worker releases expired bookings.", "JWT and role-based authorization distinguish user and admin flows."],
       limitations: "Gateway latency and production concurrency have not been substantiated with a benchmark here. Service boundaries demonstrate the architecture, not an availability guarantee.",
+      links: [
+        { label: "Architecture and API guide", url: "https://github.com/a1fariz/ApexGrid#readme" },
+        { label: "Source repository", url: "https://github.com/a1fariz/ApexGrid" },
+      ],
     },
   },
   {
@@ -137,10 +152,10 @@ export const REAL_PROJECTS: RealProject[] = [
     status: "In Deployment & Maintenance",
     github: "https://github.com/a1fariz/StudyMateAI",
     image: "/images/projects/studymate-ai.png",
-    description: "High-performance asynchronous RAG pipeline processing academic textbook PDFs and generating personalized study content. Semantic search index via ChromaDB & sentence-transformers, Google Gemini 2.0 Flash orchestration (summaries, quizzes, 3D flip flashcards, dynamic study plans), page-specific citations via PyMuPDF, rate limiter (60 req/min), JWT auth with bcrypt, and automated CI/CD deployment via GitHub Actions.",
-    highlight: "RAG pipeline + AI integration + CI/CD",
+    description: "Asynchronous RAG pipeline processing academic textbook PDFs and generating personalized study content. Semantic search index via ChromaDB & sentence-transformers, Google Gemini 2.0 Flash orchestration (summaries, quizzes, 3D flip flashcards, dynamic study plans), page-specific citations via PyMuPDF, rate limiter (60 req/min), JWT auth with bcrypt, and GitHub Actions workflows for lint, tests and container builds.",
+    highlight: "Document ingestion + vector search + generated study tools",
     architecture: {
-      summary: "Asynchronous Retrieval-Augmented Generation (RAG) system utilizing vector embeddings, semantic search, and LLM orchestration with automated CI/CD deployment.",
+      summary: "Asynchronous Retrieval-Augmented Generation (RAG) system utilizing vector embeddings, semantic search, and LLM orchestration with automated CI checks.",
       flow: [
         "PDF Upload & PyMuPDF Citation Extraction",
         "Chunking & Embeddings via sentence-transformers",
@@ -149,11 +164,22 @@ export const REAL_PROJECTS: RealProject[] = [
       ],
       components: [
         { title: "PyMuPDF Ingestion", desc: "Extracts textual content, page numbers, and metadata from academic PDF textbooks." },
-        { title: "ChromaDB Vector Store", desc: "Indexes document chunks locally for lightning-fast cosine similarity vector searches." },
+        { title: "ChromaDB Vector Store", desc: "Indexes document chunks locally for cosine similarity searches." },
         { title: "Gemini 2.0 Flash Engine", desc: "Orchestrates prompts for automated summaries, interactive quizzes, and 3D flashcards." },
       ],
     },
-    metrics: ["60 req/min Rate Limiting", "Page-level Citation Accuracy", "Docker Compose + CI/CD"],
+    metrics: ["60 req/min Rate Limiting", "Page-linked source references", "Docker Compose + CI checks"],
+    caseStudy: {
+      contribution: "Implemented PDF ingestion, vector indexing, retrieval-assisted answers, study-content generation, and a browser interface backed by FastAPI.",
+      decisions: ["Keep source page metadata with extracted chunks so readers can inspect the original PDF.", "Separate document parsing, embeddings, vector storage, retrieval and generation into service modules.", "Limit request frequency with an in-memory per-IP sliding window."],
+      evidence: ["The public repository provides pytest checks and a GitHub Actions workflow for linting, tests, container builds and dependency-audit steps.", "Page references point back to source material; they do not prove that generated answers are correct.", "The workflow configuration does not contain an automatic deployment job."],
+      limitations: "Generated content requires source review. The in-memory rate limiter is local to a process and does not establish a distributed quota. No answer-quality or production-latency benchmark is claimed.",
+      links: [
+        { label: "Architecture and testing guide", url: "https://github.com/a1fariz/StudyMateAI#readme" },
+        { label: "Test suite", url: "https://github.com/a1fariz/StudyMateAI/tree/main/tests" },
+        { label: "CI runs", url: "https://github.com/a1fariz/StudyMateAI/actions" },
+      ],
+    },
   },
   {
     id: "arte",
@@ -182,7 +208,7 @@ export const REAL_PROJECTS: RealProject[] = [
         { title: "Bilingual & Audio System", desc: "Full English and Indonesian dynamic translation combined with synthetic procedural sound FX via Web Audio API." },
       ],
     },
-    metrics: ["33+ Curated Open Access Masterpieces", "Zero-Latency Web Audio API", "100% Client-Side Offline Persistence"],
+    metrics: ["33+ Curated Open Access Masterpieces", "Procedural Web Audio feedback", "LocalStorage curation state"],
   },
   {
     id: "vanguard-ielts",
@@ -218,7 +244,7 @@ export const REAL_PROJECTS: RealProject[] = [
     title: "Renshuu",
     subtitle: "Interactive Japanese Learning & Spaced Repetition (SRS)",
     category: "Full-Stack Web",
-    stack: ["JavaScript", "HTML5 Canvas", "CSS3", "Web Speech API", "SVG KanjiVG", "SRS Algorithm", "LocalStorage"],
+    stack: ["TypeScript", "Next.js 16", "React 19", "HTML5 Canvas", "Web Speech API", "SRS", "LocalStorage"],
     year: "2026",
     status: "Completed",
     github: "https://github.com/a1fariz/renshuu",
@@ -240,7 +266,7 @@ export const REAL_PROJECTS: RealProject[] = [
         { title: "Speech & Audio Synthesizer", desc: "Native browser Web Speech API (`ja-JP`) for instant, serverless Japanese audio synthesis." },
       ],
     },
-    metrics: ["100% Offline-First Architecture", "Native Web Speech API", "Zero External Dependencies"],
+    metrics: ["Local progress storage", "Native Web Speech API", "Next.js / React / TypeScript"],
   },
   {
     id: "finance-feasibility",
@@ -274,7 +300,7 @@ export const REAL_PROJECTS: RealProject[] = [
   {
     id: "finance-management",
     title: "Finance Management System",
-    subtitle: "Full-Stack Enterprise Financial Dashboard & MVC",
+    subtitle: "Personal Finance Dashboard & MVC",
     category: "Java / Backend",
     stack: ["Java 17", "Spring Boot 3.2", "Spring Security", "Thymeleaf", "PostgreSQL", "Flyway", "Docker"],
     year: "2026",
@@ -304,7 +330,7 @@ export const REAL_PROJECTS: RealProject[] = [
     title: "Universe Interactive (Solar Explorer)",
     subtitle: "Astronomy Calculation & Planetary Physics Engine",
     category: "Full-Stack Web",
-    stack: ["HTML5", "CSS3", "JavaScript", "Astronomy API", "NASA Data"],
+    stack: ["HTML5", "CSS3", "JavaScript", "Three.js", "GSAP", "NASA Data"],
     year: "2026",
     status: "Completed",
     github: "https://github.com/a1fariz/projek-website-your-age-other-planet",
@@ -313,7 +339,7 @@ export const REAL_PROJECTS: RealProject[] = [
     description: "Space-themed interactive website with scroll-triggered animations, planetary age calculation across all solar system bodies based on authentic NASA orbital velocities, live astronomy data via REST API, and persistent dark/light mode toggle.",
     highlight: "Interactive animation + Planetary Physics + Astronomy API",
     architecture: {
-      summary: "Client-side physics simulator computing planetary rotational velocity and orbital period conversions with live astronomy API data.",
+      summary: "Browser application calculating planetary ages from orbital-period ratios, with a Three.js solar-system view and astronomy content.",
       flow: [
         "User Birthdate Input",
         "Orbital Mechanics Calculation Matrix",
@@ -321,11 +347,11 @@ export const REAL_PROJECTS: RealProject[] = [
         "Planetary Age & Next Birthday Countdown Output",
       ],
       components: [
-        { title: "Orbital Mechanics Engine", desc: "Precise NASA orbital ratio calculations for Mercury through Pluto." },
+        { title: "Planetary-age calculator", desc: "Converts elapsed time using the configured orbital-period ratios for the displayed solar-system bodies." },
         { title: "Visualizer & Canvas", desc: "Procedurally generated HTML5 starfield particle effect." },
       ],
     },
-    metrics: ["Accurate NASA Orbital Math", "Pure Vanilla JS Performance", "Zero Framework Overhead"],
+    metrics: ["Planetary-age calculations", "Three.js solar-system view", "Canvas starfield"],
   },
   {
     id: "alpay-wallet",
@@ -337,29 +363,29 @@ export const REAL_PROJECTS: RealProject[] = [
     status: "Completed",
     github: "https://github.com/a1fariz/ALPAY-E-Wallet",
     image: "/images/projects/alpay-wallet.png",
-    description: "Terminal-based digital e-wallet system developed in C implementing a secure two-role RBAC (Admin & User) system, complete financial transaction flow (balance transfer, top-up, withdrawal, transaction history), and persistent data management using flat files (.txt) without external database dependencies.",
-    highlight: "Digital wallet transactions + RBAC security + File Handling (.txt)",
+    description: "Windows console wallet learning simulation in C with separate admin/user menus, balance transfers, top-ups, withdrawals and transaction history. Data, including password text, is stored in local flat files; the application is intended for sample data and does not process real payments.",
+    highlight: "Wallet simulation + user/admin menus + text-file persistence",
     architecture: {
-      summary: "Low-level procedural system in C managing memory-efficient record locks, authentication state, and sequential transaction logging via flat files.",
+      summary: "Low-level procedural system in C managing role-based CLI navigation and transaction history via flat files.",
       flow: [
         "Terminal CLI Menu & Credential Authentication",
         "RBAC Access Verification (Admin / User)",
         "Balance Calculation & Transaction Ledger Processing",
-        "Flat File (.txt) Atomic Write & Persistence",
+        "Flat File (.txt) Read / Write Persistence",
       ],
       components: [
-        { title: "Auth & RBAC Matrix", desc: "Credential hashing and session role enforcement directly in C structs." },
+        { title: "Auth & RBAC Matrix", desc: "Password input masking and user/admin role checks. Passwords are stored in local text files; this is a learning simulation." },
         { title: "Flat File Storage Engine", desc: "Custom file stream parser for deterministic balance and history serialization." },
       ],
     },
-    metrics: ["Zero External Database Dependencies", "Sub-Millisecond CLI Execution", "Thread-Safe File Writes"],
+    metrics: ["Windows console application", "Text-file storage", "User / admin workflows"],
   },
 ];
 
 export const TECH_CAPABILITIES = [
   {
     category: "Backend & Systems",
-    items: ["Go / net/http / pgx", "Flutter / Dart / SQLite", "Java 17 / Quarkus 3.15 LTS (Modular Monolith)", "Spring Boot 3.2 & Spring Cloud Gateway", "Double-Entry Escrow Accounting", "PostgreSQL & Redis Cache", "Docker & CI/CD Pipelines"],
+    items: ["Go / net/http / pgx", "Java / Quarkus / Spring Boot", "PostgreSQL, migrations & row locks", "Account isolation & revocable sessions", "Double-entry journal logic"],
   },
   {
     category: "AI & Vector Search",
@@ -367,19 +393,27 @@ export const TECH_CAPABILITIES = [
   },
   {
     category: "Frontend & Motion",
-    items: ["React 19 & Next.js", "Tailwind CSS & TypeScript", "GSAP 3 + ScrollTrigger", "Three.js WebGL Shaders", "Lenis Smooth Scrolling"],
+    items: ["React 19 & Next.js", "Tailwind CSS & TypeScript", "GSAP 3 + ScrollTrigger", "Three.js visualizations", "Browser Web Audio / Speech APIs"],
   },
   {
-    category: "Engineering Principles",
-    items: ["RESTful API Architecture", "JWT & Role-Based Access Control (RBAC)", "Firebase Auth (Google Sign-In)", "PostgreSQL ACID Triggers", "Offline-First State Persistence", "Clean Code & SOLID Design"],
+    category: "Flutter & Local Data",
+    items: ["Flutter / Dart interfaces", "SQLite ledger persistence", "Explicit sync & persistent outboxes", "Conflict and dataset recovery", "Encrypted backup / restore flows"],
+  },
+  {
+    category: "Testing & Delivery",
+    items: ["Go race detector & PostgreSQL integration tests", "JUnit / ArchUnit / Testcontainers", "Flutter unit, widget & emulator checks", "Docker Compose & GitHub Actions", "Documented verification and release gates"],
+  },
+  {
+    category: "IT Support & Data Quality",
+    items: ["Hardware diagnostics & workstation maintenance", "OS patches & software configuration", "Antivirus updates & support tickets", "Technical asset-record validation", "Intern team coordination"],
   },
 ];
 
 export const STATS = [
-  { value: "4+", label: "Production Services", note: "Quarkus & Spring Boot Microservices, LangChain RAG" },
+  { value: "5", label: "Project areas", note: "Backend, full-stack, frontend, AI and mobile" },
   { value: "10+", label: "Technical Projects", note: "Backend, AI, Web & C CLI Systems" },
-  { value: "7+", label: "Verified Certifications", note: "U. Michigan, HarvardX, IBM, edX, ASU" },
-  { value: "100%", label: "Code Rigor", note: "ACID Transactions & Automated Testing" },
+  { value: "7", label: "Listed credentials", note: "See education and certifications" },
+  { value: "9", label: "CV tracks", note: "Choose a resume for the opportunity" },
 ];
 
 export const CERTIFICATIONS = [

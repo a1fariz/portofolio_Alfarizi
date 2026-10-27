@@ -69,7 +69,7 @@ export default function CvDropdown({
           <div className="px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-neutral-400">
             Select CV Track
           </div>
-          <div className="space-y-0.5">
+          <div className="max-h-[65vh] space-y-0.5 overflow-y-auto">
             {variants.map((cv) => (
               <a
                 key={cv.id}

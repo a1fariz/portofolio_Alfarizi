@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Alfa Rizi — Software Engineer Portfolio",
     short_name: "Alfa Rizi",
-    description: "Building quiet, powerful systems. Distributed backend microservices & RAG AI pipelines.",
+    description: "Web interfaces, backend APIs, Flutter mobile apps, and AI applications by Alfa Rizi.",
     start_url: "/",
     display: "standalone",
     background_color: "#141414",

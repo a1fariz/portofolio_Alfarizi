@@ -5,22 +5,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { RealProject } from "@/data/realPortfolio";
 
+const SELECTED_IDS = new Set(["catat-uang", "reloop", "apexgrid", "studymate-ai", "arte", "vanguard-ielts"]);
+const ROLE_PROJECTS: Record<string, Set<string>> = {
+  Backend: new Set(["catat-uang", "reloop", "apexgrid", "finance-management"]),
+  "Full Stack": new Set(["reloop", "apexgrid", "finance-feasibility", "finance-management"]),
+  Frontend: new Set(["arte", "vanguard-ielts", "renshuu", "universe-interactive"]),
+  "AI & Python": new Set(["studymate-ai", "finance-feasibility"]),
+  Mobile: new Set(["catat-uang"]),
+};
+
 export default function ProjectList({ projects }: { projects: RealProject[] }) {
   const [activeCategory, setActiveCategory] = useState<string>("Featured");
-  const featuredIds = new Set(["catat-uang", "reloop", "apexgrid"]);
 
   const categories = useMemo(() => {
-    const counts: Record<string, number> = { Featured: projects.filter(p => ["catat-uang", "reloop", "apexgrid"].includes(p.id)).length, All: projects.length };
-    projects.forEach((p) => {
-      counts[p.category] = (counts[p.category] || 0) + 1;
-    });
+    const counts: Record<string, number> = { Featured: projects.filter(p => SELECTED_IDS.has(p.id)).length, All: projects.length };
+    for (const [role, ids] of Object.entries(ROLE_PROJECTS)) {
+      counts[role] = projects.filter(project => ids.has(project.id)).length;
+    }
     return Object.entries(counts).map(([name, count]) => ({ name, count }));
   }, [projects]);
 
   const filteredProjects = useMemo(() => {
-    if (activeCategory === "Featured") return projects.filter(p => ["catat-uang", "reloop", "apexgrid"].includes(p.id));
+    if (activeCategory === "Featured") return projects.filter(p => SELECTED_IDS.has(p.id));
     if (activeCategory === "All") return projects;
-    return projects.filter((p) => p.category === activeCategory);
+    return projects.filter((p) => ROLE_PROJECTS[activeCategory]?.has(p.id));
   }, [projects, activeCategory]);
 
   return (
@@ -40,7 +48,7 @@ export default function ProjectList({ projects }: { projects: RealProject[] }) {
                   : "border border-black/10 bg-white text-neutral-600 hover:border-black/30 hover:text-black"
               }`}
             >
-              <span>{cat.name === "All" ? "All projects" : cat.name === "Featured" ? "Featured backend" : cat.name}</span>
+              <span>{cat.name === "All" ? "All projects" : cat.name === "Featured" ? "Selected work" : cat.name}</span>
               <span
                 className={`text-[10px] ${
                   isActive ? "text-neutral-400" : "text-neutral-400"
@@ -81,7 +89,7 @@ export default function ProjectList({ projects }: { projects: RealProject[] }) {
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-neutral-700">{project.highlight}</p>
                 <p className="mt-2 font-mono text-[11px] text-neutral-500">{project.status}</p>
-                {featuredIds.has(project.id) && <p className="mt-3 border-l-2 border-black/20 pl-3 text-sm font-medium">{project.metrics[0]}</p>}
+                {SELECTED_IDS.has(project.id) && <p className="mt-3 border-l-2 border-black/20 pl-3 text-sm font-medium">{project.metrics[0]}</p>}
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {project.stack.slice(0, 3).map((tech) => (
                     <span

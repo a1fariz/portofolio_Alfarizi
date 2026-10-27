@@ -1,5 +1,5 @@
 export default function SpinningBadge({ text }: { text?: string }) {
-  const label = text ?? "ALFA RIZI · BACKEND & AI · PORTFOLIO · ";
+  const label = text ?? "ALFA RIZI · WEB · MOBILE · AI · ";
   return (
     <div
       aria-hidden="true"

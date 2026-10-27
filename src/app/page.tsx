@@ -39,19 +39,19 @@ function Hero() {
   return (
     <section className="mx-auto max-w-5xl px-6 pb-20 pt-16 sm:pt-24">
       <p className="fade-up font-mono text-xs uppercase tracking-widest text-neutral-500" style={{ animationDelay: "0.1s" }}>
-        Go · Java · PostgreSQL
+        Web · Backend · Mobile · AI Applications
       </p>
 
       <h1 className="mt-6 text-[clamp(2.6rem,9vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]">
         <span className="mask-line">
-          <span style={{ animationDelay: "0.15s" }}>Junior Backend</span>
+          <span style={{ animationDelay: "0.15s" }}>Software</span>
         </span>
         <span className="mask-line">
           <span style={{ animationDelay: "0.27s" }}>Developer.</span>
         </span>
         <span className="mask-line">
           <span style={{ animationDelay: "0.39s" }}>
-            <span className="text-neutral-500 italic normal-case">Go &amp; Java.</span>
+            <span className="text-neutral-500 italic normal-case">Across the stack.</span>
           </span>
         </span>
       </h1>
@@ -59,9 +59,9 @@ function Hero() {
       <div className="draw-line mt-8 border-t border-black/10 pt-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <p className="fade-up max-w-md text-base font-light leading-relaxed text-neutral-700 sm:text-lg" style={{ animationDelay: "0.55s" }}>
-            I&apos;m Alfa Rizi. I build REST APIs with Go, Java, and PostgreSQL,
-            with a focus on authentication, consistent transactions, and
-            integration testing. Explore the decisions and tests behind my projects.
+            I&apos;m Alfa Rizi. I build web interfaces, backend APIs, Flutter apps,
+            and AI-powered tools. Explore projects across React, Go, Java, and
+            Python, then choose the CV that fits the role you&apos;re hiring for.
           </p>
           <div className="fade-up" style={{ animationDelay: "0.65s" }}>
             <SpinningBadge />
@@ -73,9 +73,9 @@ function Hero() {
             href="#projects"
             className="rounded-full bg-[#141414] px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-[#f4f3ef] transition-colors hover:bg-neutral-800"
           >
-            View Backend Projects
+            Explore Projects
           </a>
-          <a href="/cv/Alfarizi_Junior_Backend_EN.pdf" target="_blank" rel="noreferrer" className="rounded-full border border-black/10 bg-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest transition-colors hover:border-black">Download Backend CV ↗</a>
+          <CvDropdown variants={cvVariants} variant="hero" />
           <a
             href={`mailto:${EMAIL}`}
             className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest transition-colors hover:border-black"
@@ -212,7 +212,7 @@ function Footer() {
       <div className="mx-auto max-w-5xl px-6 py-16">
         <Reveal>
           <h2 className="text-3xl font-bold uppercase tracking-tight sm:text-4xl">Let&apos;s talk.</h2>
-          <p className="mt-4 max-w-xl text-neutral-600">Interested in my backend work? Get in touch about junior Go / Java roles or a project you have in mind.</p>
+          <p className="mt-4 max-w-xl text-neutral-600">Open to software development, backend, full-stack, frontend, Flutter, AI application, and IT support opportunities. Let&apos;s discuss where my projects and experience fit your team.</p>
           <a
             href={`mailto:${EMAIL}`}
             className="mt-4 inline-block font-mono text-sm text-neutral-600 underline-offset-4 transition-colors hover:text-black hover:underline"

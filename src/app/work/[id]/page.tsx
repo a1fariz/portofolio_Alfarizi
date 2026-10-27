@@ -174,7 +174,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
             <div className="grid gap-8 md:grid-cols-2">
               <div><h2 className="text-xl font-bold">Engineering decisions</h2><ul className="mt-3 list-disc space-y-3 pl-5 leading-relaxed text-neutral-700">{project.caseStudy.decisions.map(item => <li key={item}>{item}</li>)}</ul></div>
-              <div><h2 className="text-xl font-bold">Testing &amp; evidence</h2><ul className="mt-3 list-disc space-y-3 pl-5 leading-relaxed text-neutral-700">{project.caseStudy.evidence.map(item => <li key={item}>{item}</li>)}</ul></div>
+              <div>
+                <h2 className="text-xl font-bold">Testing &amp; evidence</h2>
+                <ul className="mt-3 list-disc space-y-3 pl-5 leading-relaxed text-neutral-700">{project.caseStudy.evidence.map(item => <li key={item}>{item}</li>)}</ul>
+                {project.caseStudy.links && <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold">{project.caseStudy.links.map(link => <li key={link.url}><a href={link.url} target="_blank" rel="noreferrer" className="underline underline-offset-4">{link.label} ↗</a></li>)}</ul>}
+              </div>
             </div>
             <div className="rounded-2xl border border-black/10 p-6"><h2 className="font-bold">Current limitations &amp; next steps</h2><p className="mt-3 leading-relaxed text-neutral-700">{project.caseStudy.limitations}</p></div>
           </section>

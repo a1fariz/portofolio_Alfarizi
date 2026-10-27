@@ -1,181 +1,82 @@
-# Alfa Rizi — Software Engineering Portfolio
+# Alfa Rizi — Software Development Portfolio
 
-Personal software engineering portfolio and architectural case study platform built with Next.js App Router, TypeScript, and Tailwind CSS. Features Go and Java backend projects, architecture decisions, testing evidence, AI/RAG pipelines, and full-stack applications.
+Portfolio untuk frontend, backend, full-stack web, Flutter/mobile, dan aplikasi AI, disertai pilihan CV sesuai posisi.
 
-Live Website: https://alfarizi.my.id
-
----
-
-## Education status
+**[Buka portfolio](https://alfarizi.my.id)** · [GitHub](https://github.com/a1fariz) · [LinkedIn](https://www.linkedin.com/in/alfa-rizi-65b483412)
 
 Mahasiswa D3 Manajemen Informatika, Universitas Nasional PASIM — **sedang menyusun tugas akhir**.
 
-## Overview
+## Jelajahi sesuai kebutuhan
 
-This repository houses the source code for Alfa Rizi's personal portfolio website. It features an editorial, high-performance web experience focused on quiet minimalism, typography hierarchy, responsive layouts, and comprehensive architectural breakdowns for each featured project.
+| Bidang | Contoh pekerjaan |
+| --- | --- |
+| Backend | Catat Uang, ReLoop, ApexGrid, FinanceAll |
+| Full stack | ReLoop, ApexGrid, Finance Feasibility, FinanceAll |
+| Frontend | Arte, Vanguard IELTS, Renshuu, Solar Explorer |
+| Python dan aplikasi AI | StudyMate AI, Finance Feasibility |
+| Flutter/mobile | Catat Uang |
+| IT support | Pengalaman magang dukungan hardware/OS dan validasi data di PT Resika Cemerlang |
 
----
+Halaman utama menampilkan enam project lintas bidang. Filter membantu memilih project yang relevan; studi kasus menjelaskan kontribusi, keputusan teknis, bukti dan batas implementasi.
 
-## Featured Go Project
+## Project dan bukti
 
-**[Catat Uang](https://github.com/a1fariz/CatatUang)** — offline-first Flutter/SQLite personal finance app with a Go/PostgreSQL API, explicitly linked transaction/bill synchronization, idempotent payments, encrypted backups, account recovery, and backend/native Android CI. Local implementation is complete; public hosting, production signing, provider email delivery and real-device acceptance remain pending. Source code and verification documentation are public.
+| Project | Ringkasan | Tinjau |
+| --- | --- | --- |
+| Catat Uang | Flutter/SQLite, API Go/PostgreSQL, sinkronisasi eksplisit, pembayaran idempotent dan backup terenkripsi | [Source dan verifikasi](https://github.com/a1fariz/CatatUang) |
+| ReLoop | Quarkus/Next.js, ledger double-entry, checkout lease dan outbox | [Source dan panduan tes](https://github.com/a1fariz/ReLoop) |
+| ApexGrid | React dan layanan Spring Boot untuk reservasi tiket | [Source dan arsitektur](https://github.com/a1fariz/ApexGrid) |
+| StudyMate AI | FastAPI, pemrosesan PDF, vector search dan RAG dengan referensi halaman | [Source dan pengujian](https://github.com/a1fariz/StudyMateAI) |
+| Arte | Galeri React, form kurasi, aksesibilitas dan Web Audio | [Source dan screenshot](https://github.com/a1fariz/arte) |
+| Vanguard IELTS | UI latihan empat keterampilan, SRS dan Web Speech API | [Source](https://github.com/a1fariz/Vanguard-IELTS) |
 
-Run `npm run generate:cv` to regenerate all seven CV tracks and legacy download aliases from `generate-cvs.js`.
+Project lainnya tersedia lewat **All projects**. Konfigurasi CI, aturan bisnis dan jumlah modul tidak digunakan sebagai pengganti benchmark production.
 
-## Featured Projects Catalog
+## Sembilan pilihan CV
 
-1. **ReLoop**
-   - Subtitle: Enterprise Circular-Commerce Platform & Escrow Architecture
-   - Category: Java / Backend
-   - Stack: Java 17, Quarkus 3.15 LTS, Next.js 14, PostgreSQL 16, Redis 7, Flyway, Double-Entry Ledger, TailwindCSS
-   - Architecture: Enterprise-grade circular commerce platform built as a Quarkus 3.15 modular monolith with 25 bounded contexts, ArchUnit architecture verification, balanced double-entry escrow accounting, anti-hoarding checkout leases with pessimistic locks, and transactional outbox worker.
+Software Developer, Master Resume, Full Stack, Frontend, Go/Java Backend, Java Backend, AI/Python, Flutter/Mobile dan IT Support. Masing-masing memakai ringkasan, urutan project dan keahlian sesuai posisi. Tautan lama tetap dipertahankan.
 
-2. **ApexGrid**
-   - Subtitle: F1 Race Ticket Reservation & Microservices Platform
-   - Category: Java / Backend
-   - Stack: Java 17, Spring Boot 3.2, Spring Cloud Gateway, PostgreSQL, React 18, Docker, JWT, TailwindCSS
-   - Architecture: Distributed microservices system featuring 3 independent Spring Boot services, real-time ticket quota management via transactional database triggers, 30-minute auto-expiry reservation scheduler, and shared RBAC.
+- Data menu: `src/data/cv.ts`
+- Sumber: `generate-cvs.js` dan `generate-cv-template.js`
+- Hasil: `public/cv/`, sembilan versi dan empat salinan nama lama
 
-3. **StudyMate AI**
-   - Subtitle: Intelligent RAG-Based Educational Knowledge Assistant
-   - Category: AI & RAG
-   - Stack: Python, LangChain, ChromaDB, Google Gemini 2.0 Flash, PyMuPDF, Docker, JWT, GitHub Actions
-   - Architecture: Asynchronous Retrieval-Augmented Generation pipeline parsing academic textbook PDFs, indexing vector chunks in ChromaDB, and generating study plans, quizzes, and citations via Gemini 2.0 Flash.
+Regenerasi dengan `npm run generate:cv`. Generator memakai Playwright; atur `CHROME_PATH` bila Chrome berada di lokasi berbeda. Periksa jumlah halaman dan render PDF setelah mengubah konten.
 
-4. **Arte**
-   - Subtitle: Classical Art Bureau & Interactive Curatorial Archive
-   - Category: Full-Stack Web
-   - Stack: React 19, Vite, TailwindCSS, React Router 7, Framer Motion, Web Audio API, The Met API, LocalStorage
-   - Architecture: Curatorial art platform powered by The Metropolitan Museum of Art Open Access API, featuring 360-degree circular orbit gallery, infinite marquee, accessible CRUD forms with focus trapping, dual Curator/Visitor roles, and procedural Web Audio API sound feedback.
+## Menjalankan lokal
 
-5. **Vanguard IELTS**
-   - Subtitle: A1 to C1 Academic IELTS Preparation & SRS Platform
-   - Category: Full-Stack Web
-   - Stack: React 19, TypeScript, Vite, TailwindCSS v4, Web Speech API, SRS Engine, Canvas Confetti
-   - Architecture: Four-skill IELTS academic suite (Listening, Reading, Writing, Speaking) integrating native Web Speech synthesis for audio shadowing, SuperMemo-inspired Spaced Repetition (SRS) vocabulary deck, Daily Adventure map, and persistent Mistake Bank.
+Prasyarat: Node.js 20.9+ dan npm.
 
-6. **Renshuu**
-   - Subtitle: Interactive Japanese Learning & Spaced Repetition (SRS)
-   - Category: Full-Stack Web
-   - Stack: JavaScript, HTML5 Canvas, CSS3, Web Speech API, SVG KanjiVG, SRS Algorithm, LocalStorage
-   - Architecture: Client-side educational web application with animated SVG stroke order tracing, handwriting canvas pad, Spaced Repetition review scheduling, and native browser Web Speech API pronunciation.
-
-7. **Finance Feasibility**
-   - Subtitle: AI-Powered Investment Analysis & Feasibility Platform
-   - Category: Full-Stack Web
-   - Stack: React 19, Node.js, Express, PostgreSQL, Drizzle ORM, Firebase Auth, Google Gemini, TailwindCSS
-   - Architecture: Financial valuation engine automating NPV, IRR, ROI, and Payback Period calculations paired with Google Gemini AI for executive strategic insights.
-
-8. **Finance Management System (FinanceAll)**
-   - Subtitle: Full-Stack Enterprise Financial Dashboard & MVC
-   - Category: Java / Backend
-   - Stack: Java 17, Spring Boot 3.2, Spring Security, Thymeleaf, PostgreSQL, Flyway, Docker
-   - Architecture: Monolithic Spring Boot 3 MVC architecture with multi-role RBAC, Flyway database migrations, and normalized PostgreSQL relational schema.
-
-9. **Universe Interactive (Solar Explorer)**
-   - Subtitle: Astronomy Calculation & Planetary Physics Engine
-   - Category: Full-Stack Web
-   - Stack: HTML5, CSS3, JavaScript, Astronomy API, NASA Data
-   - Architecture: Client-side physics engine calculating planetary rotational velocities and orbital period conversions using authentic NASA orbital parameters.
-
-10. **ALPAY — E-Wallet System**
-    - Subtitle: Console-Based Digital Wallet in Pure C
-    - Category: C Systems
-    - Stack: C Language, Flat File Handling (.txt), RBAC Security, CLI Architecture
-    - Architecture: Low-level procedural system in C managing memory-efficient record locks, authentication state, and sequential transaction ledgers via flat files.
-
----
-
-## Technical Stack
-
-- Framework: Next.js (App Router, Turbopack)
-- Language: TypeScript
-- Styling: Tailwind CSS
-- Icons: Lucide React
-- Fonts: Geist Sans & Geist Mono (via next/font)
-- Deployment: Vercel
-
----
-
-## Architecture & Features
-
-- Static Site Generation (SSG): Case study pages (`/work/[id]`) and sitemaps are pre-rendered at build time for optimal load speed and SEO performance.
-- Accessible Motion: Custom reveal animations and responsive layouts with reduced-motion support.
-- Centralized Data Layer: Single source of truth in `src/data/realPortfolio.ts` for all projects, capabilities, certifications, and career records.
-- SEO & OpenGraph: Automatic dynamic metadata generation, structured sitemap (`sitemap.xml`), and robots configuration.
-
----
-
-## Project Structure
-
-```
-portfolio/
-├── public/
-│   ├── cv/                    # Seven English CV tracks and legacy aliases
-│   └── images/
-│       └── projects/          # Optimized project showcase screenshots
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx         # Root layout with fonts & metadata
-│   │   ├── page.tsx           # Home page with hero, projects, about
-│   │   ├── sitemap.ts         # Automated XML sitemap generation
-│   │   ├── robots.ts          # Search engine crawler policies
-│   │   └── work/[id]/
-│   │       └── page.tsx       # Dynamic SSG project case study pages
-│   ├── components/
-│   │   ├── Reveal.tsx         # Scroll-triggered viewport animations
-│   │   └── SpinningBadge.tsx  # Rotating visual badge component
-│   └── data/
-│       ├── cv.ts              # CV paths and language configurations
-│       └── realPortfolio.ts   # Core dataset for projects and credentials
-├── package.json
-├── tsconfig.json
-└── next.config.ts
+```sh
+git clone https://github.com/a1fariz/portofolio_Alfarizi.git
+cd portofolio_Alfarizi
+npm ci
+npm run dev
 ```
 
----
+Buka `http://localhost:3000`.
 
-## Getting Started
+```sh
+npm run lint
+npm run build
+npm run start
+```
 
-### Prerequisites
+Font Geist diambil melalui `next/font/google` pada build sehingga memerlukan akses jaringan. Jika worker Turbopack bermasalah pada lingkungan lokal, jalankan build pembanding dengan `npm run build -- --webpack`.
 
-- Node.js 20.9 or later
-- npm, pnpm, or yarn
+## Struktur
 
-### Installation
+```text
+src/app/                  Halaman, metadata, sitemap dan manifest
+src/app/work/[id]/        Studi kasus project
+src/components/          Filter project, menu CV dan komponen tampilan
+src/data/realPortfolio.ts Project, pendidikan dan pengalaman
+src/data/cv.ts            Pilihan dan tautan CV
+public/images/           Foto dan gambar project
+public/cv/               PDF CV
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/a1fariz/portofolio_Alfarizi.git
-   cd portofolio_Alfarizi
-   ```
+Next.js App Router, TypeScript, Tailwind CSS dan Lucide React. Halaman project diprerender dengan `generateStaticParams`; tampilan mendukung keyboard dan preferensi reduced motion.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Kontak
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-   Open http://localhost:3000 in your browser.
-
-4. Build for production:
-   ```bash
-   npm run build
-   ```
-
-5. Preview production build:
-   ```bash
-   npm run start
-   ```
-
----
-
-## Contact
-
-- Name: Alfa Rizi
-- Email: alfarizi.developer@gmail.com
-- GitHub: https://github.com/a1fariz
-- LinkedIn: https://www.linkedin.com/in/alfa-rizi-65b483412
+[alfarizi.developer@gmail.com](mailto:alfarizi.developer@gmail.com)

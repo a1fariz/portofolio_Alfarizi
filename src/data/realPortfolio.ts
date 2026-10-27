@@ -34,6 +34,7 @@ export const REAL_PROJECTS: RealProject[] = [
     stack: ["Go", "PostgreSQL", "Dart / Flutter", "SQLite", "net/http", "pgx", "OpenAPI", "GitHub Actions"],
     year: "2026",
     status: "Local implementation complete · CI verified",
+    github: "https://github.com/a1fariz/CatatUang",
     image: "/images/projects/catat-uang.svg",
     description: "An offline-first personal finance application built with Flutter and SQLite, backed by a Go/PostgreSQL API. Optional accounts support explicitly linked, manual synchronization of transactions, recurring bills and payment history through persistent outboxes, idempotent retries and conflict review. Includes encrypted file backups, session management, email verification and password recovery. Local implementation and CI verification are complete; public release remains pending.",
     highlight: "Offline SQLite + explicit sync + encrypted backups + backend and Android CI",
@@ -51,7 +52,7 @@ export const REAL_PROJECTS: RealProject[] = [
     caseStudy: {
       contribution: "Implemented the Flutter/SQLite app, Go/PostgreSQL API, explicit synchronization protocols, account recovery, encrypted backups, operational commands and automated backend/mobile verification.",
       decisions: ["Keep local finance usable without an account; require explicit linking before uploading records.", "Persist synchronization queues and use idempotency keys, version checks and conflict review so interrupted requests can be retried safely.", "Protect bill payments with database transactions, row locks and uniqueness constraints.", "Verify backups and restore on isolated copies; provide cleanup previews before changing retained server data."],
-      evidence: ["The project verification report dated 27 October 2026 records successful Backend and Mobile CI for code 57f956c, including Go race/PostgreSQL, vulnerability checks, container checks and native Android emulator jobs.", "Integration tests exercise two real SQLite ledgers against the Go API, including retry, conflict, payment, reopen and dataset recovery flows.", "An SMTP loopback test covers HTTP recovery requests, outbox delivery, MIME codes, one-time reset and session revocation.", "A development APK is recorded in the release report. The source repository is private; the verification report is local evidence, not a public demo."],
+      evidence: ["The project verification report dated 27 October 2026 records successful Backend and Mobile CI for code 57f956c, including Go race/PostgreSQL, vulnerability checks, container checks and native Android emulator jobs.", "Integration tests exercise two real SQLite ledgers against the Go API, including retry, conflict, payment, reopen and dataset recovery flows.", "An SMTP loopback test covers HTTP recovery requests, outbox delivery, MIME codes, one-time reset and session revocation.", "Source code, the verification report and release gates are available in the public repository. The recorded development APK and CI results do not constitute a public production release."],
       limitations: "Public hosting/HTTPS, provider email delivery, production signing and store release remain pending. Real Android device checks, two-device acceptance and iOS builds still require the corresponding hardware/services. Emulator and CI results do not establish production reliability.",
     },
   },

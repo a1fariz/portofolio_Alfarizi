@@ -18,7 +18,7 @@ This repository houses the source code for Alfa Rizi's personal portfolio websit
 
 ## Featured Go Project
 
-**Catat Uang** — offline-first Flutter/SQLite personal finance app with a Go/PostgreSQL API, explicitly linked transaction/bill synchronization, idempotent payments, encrypted backups, account recovery, and backend/native Android CI. Local implementation is complete; public hosting, production signing, provider email delivery and real-device acceptance remain pending. Repository is private.
+**[Catat Uang](https://github.com/a1fariz/CatatUang)** — offline-first Flutter/SQLite personal finance app with a Go/PostgreSQL API, explicitly linked transaction/bill synchronization, idempotent payments, encrypted backups, account recovery, and backend/native Android CI. Local implementation is complete; public hosting, production signing, provider email delivery and real-device acceptance remain pending. Source code and verification documentation are public.
 
 Run `npm run generate:cv` to regenerate all seven CV tracks and legacy download aliases from `generate-cvs.js`.
 

@@ -1,3 +1,24 @@
+const experienceHtml = (data) => `  <div class="section">
+    <div class="section-title">${data.labels.experience}</div>
+    ${data.experience.map(e => `
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">${e.role}</span>
+          <span class="item-date">${e.period}</span>
+        </div>
+        <div class="item-subtitle">
+          <span>${e.company}</span>
+          <span>${e.location}</span>
+        </div>
+        <ul>
+          ${e.bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('')}
+  </div>
+
+`;
+
 const cvHtmlTemplate = (data) => `
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +39,7 @@ const cvHtmlTemplate = (data) => `
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: #0f172a;
       line-height: 1.22;
-      font-size: 8.3pt;
+      font-size: 9.0pt;
       background: #ffffff;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -28,7 +49,7 @@ const cvHtmlTemplate = (data) => `
       margin-bottom: 5px;
     }
     .header h1 {
-      font-size: 15pt;
+      font-size: 16pt;
       font-weight: 700;
       letter-spacing: 0.4px;
       text-transform: uppercase;
@@ -37,7 +58,7 @@ const cvHtmlTemplate = (data) => `
       line-height: 1.1;
     }
     .header .subtitle {
-      font-size: 8.5pt;
+      font-size: 9.0pt;
       font-weight: 600;
       color: #2563eb;
       margin-bottom: 2px;
@@ -56,7 +77,7 @@ const cvHtmlTemplate = (data) => `
       margin-bottom: 4.5px;
     }
     .section-title {
-      font-size: 8.8pt;
+      font-size: 9.4pt;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.4px;
@@ -68,13 +89,13 @@ const cvHtmlTemplate = (data) => `
     .summary-text {
       text-align: justify;
       color: #1e293b;
-      font-size: 8.0pt;
+      font-size: 8.7pt;
       line-height: 1.22;
     }
     .skills-grid {
       display: table;
       width: 100%;
-      font-size: 8.0pt;
+      font-size: 8.7pt;
       line-height: 1.22;
     }
     .skill-row {
@@ -104,17 +125,17 @@ const cvHtmlTemplate = (data) => `
     }
     .item-title {
       font-weight: 700;
-      font-size: 8.4pt;
+      font-size: 9.0pt;
       color: #0f172a;
     }
     .item-tech {
       font-style: italic;
       font-weight: 500;
       color: #475569;
-      font-size: 7.9pt;
+      font-size: 8.6pt;
     }
     .item-links {
-      font-size: 7.6pt;
+      font-size: 8.2pt;
       color: #1d4ed8;
       margin-top: -0.5px;
       margin-bottom: 1px;
@@ -125,14 +146,14 @@ const cvHtmlTemplate = (data) => `
     }
     .item-date {
       font-weight: 600;
-      font-size: 8.0pt;
+      font-size: 8.7pt;
       color: #475569;
       white-space: nowrap;
     }
     .item-subtitle {
       display: flex;
       justify-content: space-between;
-      font-size: 8.0pt;
+      font-size: 8.7pt;
       font-style: italic;
       color: #334155;
       margin-bottom: 0.5px;
@@ -144,7 +165,7 @@ const cvHtmlTemplate = (data) => `
     li {
       margin-bottom: 0.5px;
       color: #1e293b;
-      font-size: 8.0pt;
+      font-size: 8.7pt;
       line-height: 1.21;
     }
     .cert-grid {
@@ -155,7 +176,7 @@ const cvHtmlTemplate = (data) => `
       margin-top: 1px;
     }
     .cert-item {
-      font-size: 7.9pt;
+      font-size: 8.6pt;
       color: #1e293b;
       line-height: 1.22;
     }
@@ -168,7 +189,7 @@ const cvHtmlTemplate = (data) => `
     }
     .cert-year {
       color: #64748b;
-      font-size: 7.5pt;
+      font-size: 8.1pt;
     }
   </style>
 </head>
@@ -202,6 +223,8 @@ const cvHtmlTemplate = (data) => `
     </div>
   </div>
 
+  ${data.experienceFirst ? experienceHtml(data) : ''}
+
   <div class="section">
     <div class="section-title">${data.labels.projects}</div>
     ${data.projects.map(p => `
@@ -227,24 +250,7 @@ const cvHtmlTemplate = (data) => `
     `).join('')}
   </div>
 
-  <div class="section">
-    <div class="section-title">${data.labels.experience}</div>
-    ${data.experience.map(e => `
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">${e.role}</span>
-          <span class="item-date">${e.period}</span>
-        </div>
-        <div class="item-subtitle">
-          <span>${e.company}</span>
-          <span>${e.location}</span>
-        </div>
-        <ul>
-          ${e.bullets.map(b => `<li>${b}</li>`).join('')}
-        </ul>
-      </div>
-    `).join('')}
-  </div>
+  ${!data.experienceFirst ? experienceHtml(data) : ''}
 
   <div class="section">
     <div class="section-title">${data.labels.education}</div>

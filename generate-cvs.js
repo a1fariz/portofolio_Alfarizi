@@ -115,460 +115,265 @@ const certifications = {
   ],
 };
 
-// ---------- Role-specific content ----------
-const roleContent = {
-  // ===== 1. GENERAL SOFTWARE ENGINEER =====
-  general: {
-    en: {
-      fileName: 'Alfarizi_CV_Software_Engineer.pdf',
-      targetRole: 'Software Engineer',
-      projectsTitle: 'Featured Engineering Projects',
-      summary:
-        'Software Engineer (Informatics Management D3 student, GPA 3.78/4.00; currently writing final project) with proven experience engineering distributed microservices, enterprise modular monoliths, AI/RAG pipelines, and interactive web platforms. Hands-on experience in Go (net/http, pgx), Dart/Flutter, SQLite, Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), and PostgreSQL (PL/pgSQL triggers, views, Flyway), with Docker containerization and automated GitHub Actions CI/CD.',
-      skills: [
-        { category: 'Languages', items: 'Java 17, TypeScript, JavaScript (ES6+), Python 3.12, SQL, C' },
-        { category: 'Backend & Systems', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, FastAPI, Express.js, Double-Entry Escrow' },
-        { category: 'Frontend Development', items: 'Next.js 14/16 (App Router), React 18/19, Tailwind CSS v4, Web Speech API, Web Audio API, Canvas API' },
-        { category: 'Databases & Cache', items: 'PostgreSQL (Triggers, Views, Functions), Redis 7, Flyway Migrations, Drizzle ORM, ChromaDB' },
-        { category: 'DevOps & Tooling', items: 'Docker, Docker Compose, GitHub Actions (CI/CD), ArchUnit, Testcontainers, Git, Linux CLI, OpenAPI' },
-      ],
-      projects: [
-        {
-          title: 'ReLoop — Enterprise Circular-Commerce Platform & Escrow Architecture',
-          tech: 'Java 17, Quarkus 3.15 LTS, Next.js 14, PostgreSQL 16, Redis 7',
-          year: '2026',
-          demo: 'https://reloop.biz.id',
-          github: 'https://github.com/a1fariz/ReLoop',
-          bullets: [
-            'Architected a Quarkus 3.15 modular monolith across 25 bounded contexts with ArchUnit boundary verification and transactional outbox worker.',
-            'Engineered a double-entry escrow ledger (DR=CR) and 15-minute anti-hoarding checkout leases with pessimistic locks (SELECT ... FOR UPDATE).',
-            'Integrated Next.js 14 frontend with TanStack Query and Redis catalog caching, achieving low latency and zero inventory race conditions.',
-          ],
-        },
-        {
-          title: 'ApexGrid — F1 Race Ticket Reservation & Microservices Platform',
-          tech: 'Java 17, Spring Boot 3.2, Spring Cloud Gateway, PostgreSQL, React 18, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/ApexGrid',
-          bullets: [
-            'Architected a 3-service distributed system (Gateway, User, Race) with Spring Cloud Gateway and stateless JWT RBAC security.',
-            'Synchronized ticket inventory via PostgreSQL PL/pgSQL triggers with an automated 30-minute reservation expiry worker.',
-            'Built an interactive React 18 admin analytics panel with OpenAPI/Swagger docs; containerized with Docker Compose.',
-          ],
-        },
-        {
-          title: 'StudyMate AI — Asynchronous RAG Document Knowledge Assistant',
-          tech: 'Python 3.12, FastAPI, ChromaDB, Google Gemini 2.0 Flash, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/StudyMateAI',
-          bullets: [
-            'Built an asynchronous RAG pipeline parsing textbook PDFs via PyMuPDF with ChromaDB vector search and exact page citations.',
-            'Orchestrated Gemini 2.0 Flash for automated summaries, quizzes, and 3D flashcards; enforced a 60 req/min token-bucket rate limiter.',
-          ],
-        },
-        {
-          title: 'Vanguard IELTS — Academic Preparation & SRS Platform',
-          tech: 'React 19, TypeScript, Vite, Tailwind CSS v4, Web Speech API',
-          year: '2026',
-          demo: 'https://vanguard-ielts.vercel.app',
-          github: 'https://github.com/a1fariz/Vanguard-IELTS',
-          bullets: [
-            'Developed a 4-skill IELTS preparation suite (Listening, Reading, Writing, Speaking) covering CEFR A1 to C1 proficiency levels.',
-            'Implemented a SuperMemo-inspired Spaced Repetition (SRS) vocabulary engine and Shadowing Studio with native Web Speech synthesis.',
-          ],
-        },
-      ],
-    },
-    id: {
-      fileName: 'AlfaRizi_CV_ID.pdf',
-      targetRole: 'Software Engineer',
-      projectsTitle: 'Proyek Rekayasa Perangkat Lunak Unggulan',
-      summary:
-        'Software Engineer (mahasiswa D3 Manajemen Informatika, IPK 3.78/4.00; sedang menyusun tugas akhir) berpengalaman membangun arsitektur modular monolith enterprise, microservices terdistribusi, pipeline AI/RAG, dan aplikasi web interaktif. Menguasai secara mendalam Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), dan PostgreSQL (PL/pgSQL triggers, views, Flyway), didukung containerisasi Docker dan CI/CD GitHub Actions.',
-      skills: [
-        { category: 'Bahasa Pemrograman', items: 'Java 17, TypeScript, JavaScript (ES6+), Python 3.12, SQL, C' },
-        { category: 'Backend & Sistem', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, FastAPI, Express.js, Double-Entry Escrow' },
-        { category: 'Frontend', items: 'Next.js 14/16 (App Router), React 18/19, Tailwind CSS v4, Web Speech API, Web Audio API, Canvas API' },
-        { category: 'Database & Caching', items: 'PostgreSQL (Triggers, Views, Functions), Redis 7, Migrasi Flyway, Drizzle ORM, ChromaDB' },
-        { category: 'DevOps & Tools', items: 'Docker, Docker Compose, GitHub Actions (CI/CD), ArchUnit, Testcontainers, Git, Linux CLI, OpenAPI' },
-      ],
-      projects: [
-        {
-          title: 'ReLoop — Platform Circular Commerce Enterprise & Arsitektur Escrow',
-          tech: 'Java 17, Quarkus 3.15 LTS, Next.js 14, PostgreSQL 16, Redis 7',
-          year: '2026',
-          demo: 'https://reloop.biz.id',
-          github: 'https://github.com/a1fariz/ReLoop',
-          bullets: [
-            'Membangun modular monolith Quarkus 3.15 LTS dengan 25 bounded context, verifikasi arsitektur ArchUnit, dan outbox worker transactional.',
-            'Merekayasa buku besar escrow double-entry seimbang (DR=CR) dan sewa checkout anti-hoarding 15 menit berkunci baris (SELECT ... FOR UPDATE).',
-            'Mengintegrasikan frontend Next.js 14 dengan TanStack Query dan caching katalog Redis, memastikan latensi rendah tanpa race condition.',
-          ],
-        },
-        {
-          title: 'ApexGrid — Platform Pemesanan Tiket Balap F1',
-          tech: 'Java 17, Spring Boot 3.2, Spring Cloud Gateway, PostgreSQL, React 18, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/ApexGrid',
-          bullets: [
-            'Merancang sistem 3 microservices terdistribusi (Gateway, User, Race) dengan Spring Cloud Gateway dan keamanan JWT RBAC.',
-            'Mengembangkan sinkronisasi kuota kursi real-time via trigger database PostgreSQL (PL/pgSQL) dan pembatalan otomatis 30 menit.',
-            'Membangun panel analitik admin interaktif dengan React 18 & Tailwind CSS; diorkestrasi menggunakan Docker Compose.',
-          ],
-        },
-        {
-          title: 'StudyMate AI — Asisten Belajar Dokumen Berbasis RAG Asinkron',
-          tech: 'Python 3.12, FastAPI, ChromaDB, Google Gemini 2.0 Flash, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/StudyMateAI',
-          bullets: [
-            'Membangun pipeline RAG asinkron untuk ekstraksi buku teks PDF via PyMuPDF dengan pencarian vektor ChromaDB dan sitasi halaman akurat.',
-            'Mengorkestrasi Gemini 2.0 Flash untuk ringkasan dan flashcard interaktif; mengimplementasikan rate limiter 60 req/menit.',
-          ],
-        },
-        {
-          title: 'Vanguard IELTS — Platform Persiapan IELTS Akademik & SRS',
-          tech: 'React 19, TypeScript, Vite, Tailwind CSS v4, Web Speech API',
-          year: '2026',
-          demo: 'https://vanguard-ielts.vercel.app',
-          github: 'https://github.com/a1fariz/Vanguard-IELTS',
-          bullets: [
-            'Mengembangkan aplikasi persiapan 4 skill resmi IELTS (Listening, Reading, Writing, Speaking) mencakup level CEFR A1 hingga C1.',
-            'Mengimplementasikan mesin Spaced Repetition (SRS) berbasis SuperMemo serta Shadowing Studio bersintesis Web Speech API native.',
-          ],
-        },
-      ],
-    },
-  },
-
-  // ===== 2. BACKEND DEVELOPER =====
-  backend: {
-    en: {
-      fileName: 'Alfarizi_CV_Java_Backend.pdf',
-      targetRole: 'Backend Developer',
-      projectsTitle: 'Featured Backend Projects',
-      summary:
-        'Backend Developer specializing in Java microservices, enterprise modular monoliths, concurrent database design, and robust asynchronous pipelines. Extensive hands-on experience with Quarkus 3.15 LTS, Spring Boot 3.2, and Spring Cloud Gateway, backed by deep PostgreSQL mastery (PL/pgSQL triggers, views, Flyway migrations, pessimistic row locking). Proficient in double-entry escrow accounting, Redis caching, Python FastAPI, Docker, and GitHub Actions CI/CD.',
-      skills: [
-        { category: 'Languages', items: 'Java 17, Python 3.12, SQL, JavaScript (Node.js), C' },
-        { category: 'Frameworks & Architectures', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, Spring Security 6, FastAPI, Express.js' },
-        { category: 'Databases & Persistence', items: 'PostgreSQL, Redis 7, PL/pgSQL (Triggers, Views, Functions), Flyway, Drizzle ORM, Hibernate, ChromaDB' },
-        { category: 'Security & Systems Logic', items: 'Double-Entry Accounting Ledger, Pessimistic Row Locking, JWT (Rotation), RBAC, BCrypt, Rate Limiting' },
-        { category: 'DevOps & Testing', items: 'Docker, Docker Compose, GitHub Actions (CI/CD), ArchUnit, Testcontainers, JUnit 5, Postman, Linux CLI' },
-      ],
-      projects: [
-        {
-          title: 'ReLoop — Enterprise Circular-Commerce Backend & Escrow Engine',
-          tech: 'Java 17, Quarkus 3.15 LTS, PostgreSQL 16, Redis 7, Flyway',
-          year: '2026',
-          demo: 'https://reloop.biz.id',
-          github: 'https://github.com/a1fariz/ReLoop',
-          bullets: [
-            'Architected an enterprise modular monolith on Quarkus 3.15 LTS across 25 bounded contexts with ArchUnit boundary verification.',
-            'Engineered balanced double-entry escrow accounting (DR=CR) for platform commissions, seller payouts, and arbitrated disputes.',
-            'Implemented anti-hoarding checkout leases using pessimistic row locking (SELECT ... FOR UPDATE) and PostgreSQL partial unique index.',
-            'Built an asynchronous transactional outbox dispatcher (FOR UPDATE SKIP LOCKED) and Redis catalog cache layer.',
-          ],
-        },
-        {
-          title: 'ApexGrid — F1 Race Ticket Booking Microservices Backend',
-          tech: 'Java 17, Spring Boot 3.2, Spring Cloud Gateway, PostgreSQL, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/ApexGrid',
-          bullets: [
-            'Engineered a distributed 3-service backend (API Gateway, User Service, Race Service) with Spring Cloud Gateway and JWT RBAC filters.',
-            'Guaranteed zero quota race conditions via PostgreSQL PL/pgSQL triggers and automated 30-minute booking cancellation workers.',
-            'Implemented automated PDF ticket generation with embedded QR codes (ZXing & iText) and asynchronous email notification dispatch.',
-          ],
-        },
-        {
-          title: 'StudyMate AI — Asynchronous RAG Backend Engine',
-          tech: 'Python 3.12, FastAPI, ChromaDB, Sentence-Transformers, PyMuPDF',
-          year: '2026',
-          github: 'https://github.com/a1fariz/StudyMateAI',
-          bullets: [
-            'Designed an asynchronous textbook parsing API using FastAPI, PyMuPDF citation extraction, and LangChain splitters.',
-            'Implemented semantic vector similarity search via ChromaDB embeddings and connected Google Gemini 2.0 Flash for grounded content.',
-            'Built token-bucket rate limiting (60 req/min) and configured GitHub Actions CI/CD workflows executing Ruff and Pytest async suites.',
-          ],
-        },
-        {
-          title: 'Finance Management System (FinanceAll) — Spring Boot MVC',
-          tech: 'Java 17, Spring Boot 3.2, Spring Security, PostgreSQL, Flyway',
-          year: '2026',
-          github: 'https://github.com/a1fariz/financeall_project_java_alfariz',
-          bullets: [
-            'Engineered a personal finance application using Spring Boot 3.2, Spring Data JPA, and Flyway version-controlled migrations.',
-            'Configured Spring Security 6 session authentication, BCrypt encryption, and financial calculation engines (4% Rule, debt payoff).',
-          ],
-        },
-      ],
-    },
-    id: {
-      fileName: 'AlfaRizi_CV_Backend_ID.pdf',
-      targetRole: 'Backend Developer',
-      projectsTitle: 'Proyek Backend Unggulan',
-      summary:
-        'Backend Developer dengan spesialisasi pada microservices Java, modular monolith enterprise, perancangan database konkruen, dan pipeline asinkron andal. Berpengalaman langsung dengan Quarkus 3.15 LTS, Spring Boot 3.2, dan Spring Cloud Gateway, didukung keahlian mendalam PostgreSQL (PL/pgSQL triggers, views, migrasi Flyway, pessimistic row locking). Menguasai akuntansi escrow double-entry, caching Redis, Python FastAPI, Docker, dan CI/CD GitHub Actions.',
-      skills: [
-        { category: 'Bahasa Pemrograman', items: 'Java 17, Python 3.12, SQL, JavaScript (Node.js), C' },
-        { category: 'Framework & Arsitektur', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, Spring Security 6, FastAPI, Express.js' },
-        { category: 'Database & Persistensi', items: 'PostgreSQL, Redis 7, PL/pgSQL (Triggers, Views, Functions), Flyway, Drizzle ORM, Hibernate, ChromaDB' },
-        { category: 'Keamanan & Logika Sistem', items: 'Buku Besar Double-Entry, Pessimistic Row Locking, JWT (Rotasi Token), RBAC, BCrypt, Rate Limiting' },
-        { category: 'DevOps & Pengujian', items: 'Docker, Docker Compose, GitHub Actions (CI/CD), ArchUnit, Testcontainers, JUnit 5, Postman, Linux CLI' },
-      ],
-      projects: [
-        {
-          title: 'ReLoop — Backend Circular Commerce Enterprise & Mesin Escrow',
-          tech: 'Java 17, Quarkus 3.15 LTS, PostgreSQL 16, Redis 7, Flyway',
-          year: '2026',
-          demo: 'https://reloop.biz.id',
-          github: 'https://github.com/a1fariz/ReLoop',
-          bullets: [
-            'Merancang modular monolith enterprise pada Quarkus 3.15 LTS mencakup 25 bounded context dengan pengujian arsitektur ArchUnit.',
-            'Merekayasa akuntansi escrow double-entry seimbang (DR=CR) untuk komisi platform, pencairan dana penjual, dan sengketa.',
-            'Mengimplementasikan sewa checkout anti-hoarding berkunci pesimis (SELECT ... FOR UPDATE) dan partial unique index PostgreSQL.',
-            'Membangun worker dispatcher transactional outbox asinkron (FOR UPDATE SKIP LOCKED) dan caching bertingkat dengan Redis.',
-          ],
-        },
-        {
-          title: 'ApexGrid — Backend Microservices Pemesanan Tiket Balap F1',
-          tech: 'Java 17, Spring Boot 3.2, Spring Cloud Gateway, PostgreSQL, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/ApexGrid',
-          bullets: [
-            'Merekayasa backend 3 service terdistribusi (API Gateway, User Service, Race Service) dengan Spring Cloud Gateway dan filter JWT RBAC.',
-            'Menjamin penguncian inventaris kursi bebas race condition melalui trigger database PostgreSQL PL/pgSQL dan scheduler pembatalan 30 menit.',
-            'Mengembangkan generator tiket PDF otomatis berkode QR (ZXing & iText) serta pelacakan notifikasi email asinkron.',
-          ],
-        },
-        {
-          title: 'StudyMate AI — Mesin Backend RAG Asinkron',
-          tech: 'Python 3.12, FastAPI, ChromaDB, Sentence-Transformers, PyMuPDF',
-          year: '2026',
-          github: 'https://github.com/a1fariz/StudyMateAI',
-          bullets: [
-            'Merancang REST API asinkron untuk retrieval dokumen menggunakan FastAPI, ekstraksi sitasi PyMuPDF, dan splitter LangChain.',
-            'Mengimplementasikan pencarian kesamaan vektor semantik via ChromaDB dan menghubungkan Google Gemini 2.0 Flash.',
-            'Membangun rate limiter token-bucket (60 req/menit) dan pipeline CI/CD GitHub Actions dengan pengujian Pytest async.',
-          ],
-        },
-        {
-          title: 'Finance Management System (FinanceAll) — Spring Boot MVC',
-          tech: 'Java 17, Spring Boot 3.2, Spring Security, PostgreSQL, Flyway',
-          year: '2026',
-          github: 'https://github.com/a1fariz/financeall_project_java_alfariz',
-          bullets: [
-            'Membangun aplikasi web keuangan dengan Spring Boot 3.2, Spring Data JPA, dan evolusi skema database versioned via migrasi Flyway.',
-            'Mengonfigurasi Spring Security 6, hashing BCrypt, dan algoritma kalkulasi finansial (Aturan FI 4%, jadwal pelunasan hutang).',
-          ],
-        },
-      ],
-    },
-  },
-
-  // ===== 3. FULL-STACK DEVELOPER =====
-  fullstack: {
-    en: {
-      fileName: 'Alfarizi_CV_Full_Stack_Developer.pdf',
-      targetRole: 'Full-Stack Developer',
-      projectsTitle: 'Featured Full-Stack Projects',
-      summary:
-        'Full-Stack Developer experienced delivering complete, responsive web applications and high-throughput backends. Proven ability pairing modern frontend frameworks (React 19, Next.js 14/16 App Router, Vite, Tailwind CSS v4) with enterprise backend architectures (Quarkus 3.15, Spring Boot 3.2 microservices, Express.js). Strong focus on interactive UI states, Web Audio/Speech APIs, transactional database integrity on PostgreSQL, and automated CI/CD deployment.',
-      skills: [
-        { category: 'Frontend Development', items: 'Next.js 14/16, React 18/19, TypeScript, Tailwind CSS v4, Web Speech API, Web Audio API, Canvas API' },
-        { category: 'Backend Engineering', items: 'Quarkus 3.15 LTS, Java 17, Spring Boot 3.2, Spring Cloud Gateway, Express.js, FastAPI' },
-        { category: 'Databases & Caching', items: 'PostgreSQL, Redis 7, PL/pgSQL Triggers & Views, Drizzle ORM, Flyway Migrations, ChromaDB' },
-        { category: 'Security & State', items: 'JWT Authentication, Double-Entry Escrow, Anti-Hoarding Leases, RBAC, TanStack Query, BCrypt' },
-        { category: 'DevOps & Tooling', items: 'Docker, Docker Compose, GitHub Actions (CI/CD), Git, Vite, Postman, Linux CLI, OpenAPI' },
-      ],
-      projects: [
-        {
-          title: 'ReLoop — Enterprise Circular Commerce Platform',
-          tech: 'Next.js 14, Quarkus 3.15 LTS, TypeScript, PostgreSQL, Redis, TailwindCSS',
-          year: '2026',
-          demo: 'https://reloop.biz.id',
-          github: 'https://github.com/a1fariz/ReLoop',
-          bullets: [
-            'Built an end-to-end circular electronics marketplace: Next.js 14 (App Router) client backed by Quarkus 3.15 modular monolith.',
-            'Implemented optimistic UI updates via TanStack Query, live checkout lease countdowns, and double-entry escrow dashboard.',
-            'Engineered anti-hoarding checkout leases with pessimistic locks and Redis catalog caching for instant page transitions.',
-          ],
-        },
-        {
-          title: 'Arte — Classical Art Bureau & Interactive Curatorial Archive',
-          tech: 'React 19, Vite, Tailwind CSS, The Met API, Framer Motion, Web Audio API',
-          year: '2026',
-          demo: 'https://www.arte.my.id/',
-          github: 'https://github.com/a1fariz/arte',
-          bullets: [
-            'Developed an interactive art exhibition SPA with 360° circular orbit gallery, infinite marquee, and dual Curator/Visitor roles.',
-            'Engineered accessible exhibition CRUD with focus-trapped dialogs, localStorage persistence, and synthetic Web Audio API feedback.',
-            'Integrated dynamic bilingual (EN/ID) translation and optimized viewport rendering with IntersectionObserver.',
-          ],
-        },
-        {
-          title: 'Vanguard IELTS — Academic Preparation & SRS Platform',
-          tech: 'React 19, TypeScript, Vite, Tailwind CSS v4, Web Speech API, SRS Engine',
-          year: '2026',
-          demo: 'https://vanguard-ielts.vercel.app',
-          github: 'https://github.com/a1fariz/Vanguard-IELTS',
-          bullets: [
-            'Built a comprehensive 4-skill IELTS preparation web platform covering CEFR A1 to C1 with diagnostic placement drills.',
-            'Engineered a SuperMemo-inspired Spaced Repetition (SRS) vocabulary engine, persistent Mistake Bank, and Daily Adventure quests.',
-            'Implemented Shadowing Studio leveraging browser-native Web Speech API audio modeling for speech pronunciation practice.',
-          ],
-        },
-        {
-          title: 'ApexGrid — F1 Race Ticket Booking Platform',
-          tech: 'React 18, Spring Boot Microservices, Spring Cloud Gateway, PostgreSQL, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/ApexGrid',
-          bullets: [
-            'Delivered a full-stack platform with 3 Spring Boot microservices, centralized API Gateway, and glassmorphic React 18 frontend.',
-            'Built real-time seat reservation with instant quota synchronization via PostgreSQL triggers and interactive admin analytics.',
-          ],
-        },
-      ],
-    },
-    id: {
-      fileName: 'AlfaRizi_CV_FullStack_ID.pdf',
-      targetRole: 'Full-Stack Developer',
-      projectsTitle: 'Proyek Full-Stack Unggulan',
-      summary:
-        'Full-Stack Developer berpengalaman merilis aplikasi web interaktif responsif dipadukan dengan backend throughput tinggi. Terbukti memadukan frontend modern (React 19, Next.js 14/16 App Router, Vite, Tailwind CSS v4) dengan arsitektur backend enterprise (Quarkus 3.15, microservices Spring Boot 3.2, Express.js). Fokus kuat pada interaktivitas UI dinamis, Web Audio/Speech API, integritas database transaksional PostgreSQL, dan otomasi deployment CI/CD.',
-      skills: [
-        { category: 'Pengembangan Frontend', items: 'Next.js 14/16, React 18/19, TypeScript, Tailwind CSS v4, Web Speech API, Web Audio API, Canvas API' },
-        { category: 'Rekayasa Backend', items: 'Quarkus 3.15 LTS, Java 17, Spring Boot 3.2, Spring Cloud Gateway, Express.js, FastAPI' },
-        { category: 'Database & Caching', items: 'PostgreSQL, Redis 7, PL/pgSQL Triggers & Views, Drizzle ORM, Migrasi Flyway, ChromaDB' },
-        { category: 'Keamanan & State', items: 'Autentikasi JWT, Double-Entry Escrow, Sewa Anti-Hoarding, RBAC, TanStack Query, BCrypt' },
-        { category: 'DevOps & Tools', items: 'Docker, Docker Compose, GitHub Actions (CI/CD), Git, Vite, Postman, Linux CLI, OpenAPI' },
-      ],
-      projects: [
-        {
-          title: 'ReLoop — Platform Circular Commerce Enterprise',
-          tech: 'Next.js 14, Quarkus 3.15 LTS, TypeScript, PostgreSQL, Redis, TailwindCSS',
-          year: '2026',
-          demo: 'https://reloop.biz.id',
-          github: 'https://github.com/a1fariz/ReLoop',
-          bullets: [
-            'Membangun marketplace elektronik sirkular end-to-end: frontend Next.js 14 didukung modular monolith Quarkus 3.15 LTS.',
-            'Mengimplementasikan pembaruan UI optimistik via TanStack Query, timer sewa checkout, dan dashboard escrow double-entry.',
-            'Merekayasa sewa checkout anti-hoarding berkunci baris pesimis dan caching katalog Redis untuk transisi halaman instan.',
-          ],
-        },
-        {
-          title: 'Arte — Biro Seni Klasik & Arsip Kuratorial Interaktif',
-          tech: 'React 19, Vite, Tailwind CSS, The Met API, Framer Motion, Web Audio API',
-          year: '2026',
-          demo: 'https://www.arte.my.id/',
-          github: 'https://github.com/a1fariz/arte',
-          bullets: [
-            'Mengembangkan platform kurasi pameran seni interaktif dengan galeri orbit sirkular 360° dan peran ganda Kurator/Pengunjung.',
-            'Merekayasa sistem CRUD pameran aksesibel dengan focus trapping, persistensi localStorage, dan feedback sintetik Web Audio API.',
-            'Mengintegrasikan lokalisasi bilingual dinamis (EN/ID) serta optimasi rendering viewport berbasis IntersectionObserver.',
-          ],
-        },
-        {
-          title: 'Vanguard IELTS — Platform Persiapan IELTS Akademik & SRS',
-          tech: 'React 19, TypeScript, Vite, Tailwind CSS v4, Web Speech API, SRS Engine',
-          year: '2026',
-          demo: 'https://vanguard-ielts.vercel.app',
-          github: 'https://github.com/a1fariz/Vanguard-IELTS',
-          bullets: [
-            'Membangun platform persiapan akademik IELTS komprehensif level CEFR A1–C1 dengan 4 laboratorium keahlian resmi.',
-            'Merekayasa mesin retensi kosakata Spaced Repetition (SRS) berbasis SuperMemo, Mistake Bank, dan quest petualangan harian.',
-            'Mengembangkan Shadowing Studio dengan sintesis audio Web Speech API native browser untuk latihan pelafalan ujaran.',
-          ],
-        },
-        {
-          title: 'ApexGrid — Platform Pemesanan Tiket Balap F1',
-          tech: 'React 18, Spring Boot Microservices, Spring Cloud Gateway, PostgreSQL, Docker',
-          year: '2026',
-          github: 'https://github.com/a1fariz/ApexGrid',
-          bullets: [
-            'Merilis platform full-stack lengkap: 3 microservices Spring Boot, API Gateway terpusat, dan antarmuka glassmorphic React 18.',
-            'Membangun sistem reservasi kursi real-time dengan sinkronisasi kuota instan via database trigger dan dashboard analitik admin.',
-          ],
-        },
-      ],
-    },
-  },
-};
-
-roleContent.ai = {
-  en: {
-    ...roleContent.general.en,
-    fileName: 'Alfarizi_CV_AI_Python.pdf',
-    targetRole: 'AI & Python Engineer',
-    projectsTitle: 'Featured AI & Python Projects',
-    summary: 'Entry-level Software Engineer focused on Python backend development and AI applications, with hands-on experience building asynchronous FastAPI services, RAG pipelines, vector search, document processing, and rate limiting.',
-    skills: [
-      { category: 'Languages', items: 'Python 3.12, SQL, TypeScript, JavaScript, Java' },
-      { category: 'AI & Backend', items: 'FastAPI, ChromaDB, Gemini, PyMuPDF, RAG, vector search' },
-      { category: 'Web', items: 'React, Next.js, Vite, Tailwind CSS' },
-      { category: 'Infrastructure & Tools', items: 'Docker, PostgreSQL, Redis, Git, GitHub Actions, Linux' },
+// One project catalog keeps implementation facts consistent across role tracks.
+// Each track chooses its own ordering, emphasis, and project-specific bullets.
+const projectCatalog = {
+  catat: {
+    title: 'Catat Uang - Offline-First Personal Finance',
+    tech: 'Go, PostgreSQL, Flutter / Dart, SQLite',
+    year: '2026',
+    github: 'https://github.com/a1fariz/CatatUang',
+    bullets: [
+      'Built a Go API with account-scoped financial records, revocable sessions, version checks, and idempotent bill payments.',
+      'Implemented opt-in transaction/bill sync through persistent SQLite outboxes, conflict review, encrypted backups, and account recovery.',
+      'Recorded backend PostgreSQL/race and Android emulator CI passed on 27 Oct 2026; public production release remains pending.',
     ],
-    projects: roleContent.general.en.projects.filter((project) => project.title.startsWith('StudyMate AI') || project.title.startsWith('ReLoop')),
+  },
+  reloop: {
+    title: 'ReLoop - Circular Commerce & Escrow',
+    tech: 'Java 17, Quarkus, PostgreSQL, Redis, Next.js',
+    year: '2026',
+    github: 'https://github.com/a1fariz/ReLoop',
+    demo: 'https://reloop.biz.id',
+    bullets: [
+      'Developed a modular monolith with ArchUnit boundary checks, double-entry escrow journals, and a transactional outbox worker.',
+      'Used pessimistic row locks, a partial unique index, and 15-minute checkout leases to coordinate access to inventory.',
+      'Integrated the Next.js client with TanStack Query, checkout countdowns, and Redis-backed catalog caching.',
+    ],
+  },
+  apex: {
+    title: 'ApexGrid - Race Ticket Reservation',
+    tech: 'Java, Spring Boot, Spring Cloud Gateway, PostgreSQL, React',
+    year: '2026',
+    github: 'https://github.com/a1fariz/ApexGrid',
+    bullets: [
+      'Built gateway, user, and race-ticket services with JWT/RBAC and a React administration interface.',
+      'Implemented PostgreSQL inventory triggers and a worker that expires unpaid reservations after 30 minutes.',
+      'Added PDF tickets with QR codes, API documentation, and Docker Compose configuration.',
+    ],
+  },
+  study: {
+    title: 'StudyMate AI - RAG Study Assistant',
+    tech: 'Python, FastAPI, ChromaDB, PyMuPDF, Gemini',
+    year: '2026',
+    github: 'https://github.com/a1fariz/StudyMateAI',
+    bullets: [
+      'Implemented PDF extraction, chunking, vector indexing, and retrieval with source-page citations for generated answers.',
+      'Integrated Gemini for summaries, quizzes, flashcards, and study plans; added authentication, rate limiting, and automated checks.',
+    ],
+  },
+  arte: {
+    title: 'Arte - Interactive Art Archive',
+    tech: 'React, Vite, Tailwind CSS, The Met API, Web Audio API',
+    year: '2026',
+    github: 'https://github.com/a1fariz/arte',
+    demo: 'https://www.arte.my.id/',
+    bullets: [
+      'Built interactive art galleries, catalog search/filtering, and Curator/Visitor interface flows using The Met collection API.',
+      'Implemented validated curation forms, focus-trapped dialogs, localStorage persistence, bilingual content, and browser audio feedback.',
+    ],
+  },
+  ielts: {
+    title: 'Vanguard IELTS - Practice & Vocabulary Review',
+    tech: 'React, TypeScript, Vite, Tailwind CSS, Web Speech API',
+    year: '2026',
+    github: 'https://github.com/a1fariz/Vanguard-IELTS',
+    demo: 'https://vanguard-ielts.alfarizi.my.id',
+    bullets: [
+      'Developed listening, reading, writing, and speaking practice interfaces with progress and mistake-review flows.',
+      'Implemented spaced-repetition vocabulary review and a shadowing studio using browser speech synthesis.',
+    ],
+  },
+  finance: {
+    title: 'Finance Feasibility - Valuation & AI Reports',
+    tech: 'React, Express, PostgreSQL, Drizzle ORM, Gemini',
+    year: '2026',
+    github: 'https://github.com/a1fariz/finance-feasibility',
+    demo: 'https://finance-feasibility.alfarizi.my.id',
+    bullets: [
+      'Built investment-scenario interfaces and calculations for NPV, IRR, ROI, and payback period.',
+      'Integrated Gemini-generated report narratives with a React client, Express API, PostgreSQL persistence, and Firebase authentication.',
+    ],
+  },
+  financeall: {
+    title: 'FinanceAll - Personal Finance MVC',
+    tech: 'Java, Spring Boot, Thymeleaf, PostgreSQL, Flyway',
+    year: '2026',
+    github: 'https://github.com/a1fariz/financeall_project_java_alfariz',
+    bullets: [
+      'Built Spring MVC finance flows for transactions, savings goals, and a financial dashboard backed by PostgreSQL.',
+      'Implemented role-based account flows, BCrypt password hashing, and versioned schema changes with Flyway.',
+    ],
   },
 };
 
-// Keep the project stack grounded in project-golang's implemented features.
-for (const [role, translations] of Object.entries(roleContent)) {
-  for (const [lang, content] of Object.entries(translations)) {
-    const tooling = content.skills.find(skill => /Tools|Tooling|Testing/.test(skill.category));
-    if (tooling && !tooling.items.includes('IntelliJ IDEA')) tooling.items += ', IntelliJ IDEA';
-
-    content.skills.push({
-      category: lang === 'id' ? 'Go & Pengembangan Mobile' : 'Go & Mobile Development',
-      items: 'Go (Golang), Dart, Flutter, net/http, pgx, PostgreSQL, SQLite (sqflite)',
-    });
-    content.projects.unshift({
-      title: lang === 'id' ? 'Catat Uang - Aplikasi Keuangan Pribadi' : 'Catat Uang - Personal Finance Application',
-      tech: 'Go, Dart, Flutter, PostgreSQL, SQLite',
-      year: '2026',
-      bullets: lang === 'id' ? [
-        'Mengembangkan aplikasi Flutter yang dapat digunakan offline dengan transaksi, tagihan, penyimpanan SQLite, dan pengingat lokal.',
-        'Membangun REST API Go dengan PostgreSQL, registrasi/login, sesi yang dapat dicabut, CRUD transaksi/tagihan, dan pembayaran idempotent.',
-        'Mengimplementasikan sinkronisasi manual transaksi/tagihan dengan outbox SQLite, retry idempotent, peninjauan konflik, backup terenkripsi, dan pemulihan akun; CI backend/Android lulus.',
-      ] : [
-        'Developed an offline-capable Flutter app with transactions, bills, SQLite storage, and local reminders.',
-        'Built a Go REST API with PostgreSQL, registration/login, revocable sessions, transaction/bill CRUD, and idempotent payments.',
-        'Implemented opt-in transaction/bill sync with SQLite outboxes, idempotent retries, conflict review, encrypted backups and account recovery; backend/Android CI passed.',
-      ],
-    });
-  }
+function project(id, overrides = {}) {
+  return { ...projectCatalog[id], ...overrides };
 }
 
-roleContent.java = { en: { ...roleContent.backend.en, fileName: 'Alfarizi_CV_Java_Backend.pdf', targetRole: 'Java Backend Developer' } };
-roleContent.backend = { en: {
-  ...roleContent.backend.en,
-  fileName: 'Alfarizi_Junior_Backend_EN.pdf',
-  targetRole: 'Junior Backend Developer | Go & Java',
-  summary: 'Junior backend developer building Go and Java APIs with PostgreSQL. Implemented an offline-first Flutter finance app with explicit synchronization, idempotent payments, revocable sessions, encrypted backups and account recovery. Hands-on experience with Quarkus, Spring Boot, database transactions and automated integration testing. D3 Informatics Management student; currently writing final project.',
-  projects: roleContent.backend.en.projects.slice(0, 3),
-} };
-roleContent.frontend = { en: {
-  ...roleContent.fullstack.en, fileName: 'Alfarizi_Frontend.pdf', targetRole: 'Frontend Developer',
-  summary: 'Frontend developer building responsive React, Next.js and TypeScript applications, with additional Flutter experience. Projects include interactive art and learning interfaces and an offline-first finance app with SQLite, explicit synchronization, encrypted backups and account flows.',
-} };
-roleContent.master = { en: {
-  ...roleContent.general.en, fileName: 'Alfarizi_Master_Resume.pdf', targetRole: 'Software Engineer | Go, Java & Full Stack',
-} };
+const backendSkills = [
+  { category: 'Languages', items: 'Go, Java, SQL; additional Python and TypeScript experience' },
+  { category: 'API Development', items: 'net/http, pgx, Quarkus, Spring Boot, Spring Cloud Gateway, OpenAPI' },
+  { category: 'Data & Consistency', items: 'PostgreSQL, SQLite, Redis, Flyway, database transactions, row locks, idempotency' },
+  { category: 'Auth & Verification', items: 'Argon2id / BCrypt, revocable sessions, JWT / RBAC, race detection, integration tests' },
+  { category: 'Delivery & Tools', items: 'Docker, GitHub Actions, JUnit, ArchUnit, Testcontainers, Git, IntelliJ IDEA' },
+];
 
-const cvDataList = Object.values(roleContent).map(({ en }) => ({
-  fileName: en.fileName,
+const webSkills = [
+  { category: 'Web Development', items: 'TypeScript, JavaScript, React, Next.js App Router, Vite, Tailwind CSS' },
+  { category: 'UI & State', items: 'Responsive layouts, validated forms, focus management, TanStack Query, localStorage' },
+  { category: 'Browser APIs', items: 'Web Speech, Web Audio, Canvas, IntersectionObserver, REST API integration' },
+  { category: 'Additional Clients', items: 'Flutter / Dart, SQLite, offline state and synchronization interfaces' },
+  { category: 'Tools', items: 'Git, npm, Docker, GitHub Actions, browser inspection' },
+];
+
+const softwareSkills = [
+  { category: 'Languages', items: 'Go, Java, TypeScript / JavaScript, Python, Dart, SQL' },
+  { category: 'Backend & Data', items: 'net/http, pgx, Quarkus, Spring Boot, FastAPI, PostgreSQL, SQLite, Redis' },
+  { category: 'Web & Mobile', items: 'React, Next.js, Vite, Tailwind CSS, Flutter, REST API integration' },
+  { category: 'AI Applications', items: 'RAG, ChromaDB, Gemini integration, PyMuPDF, vector search' },
+  { category: 'Verification & Tools', items: 'Integration tests, Go race detector, JUnit, ArchUnit, Docker, GitHub Actions, Git' },
+];
+
+const roleContent = {
+  general: {
+    fileName: 'Alfarizi_CV_Software_Engineer.pdf',
+    alias: 'Alfarizi_Software.pdf',
+    targetRole: 'Software Developer',
+    projectsTitle: 'Selected Software Projects',
+    summary: 'Software developer with project experience across Go/Java APIs, React/Next.js web interfaces, Flutter mobile applications, and Python AI integrations. Focused on clear application flows, database consistency, and automated verification. D3 Informatics Management student at Universitas Nasional PASIM, GPA 3.78/4.00; currently writing final project.',
+    skills: softwareSkills,
+    projects: [project('catat'), project('reloop', { bullets: projectCatalog.reloop.bullets.slice(0, 2) }), project('arte'), project('study')],
+  },
+  backend: {
+    fileName: 'Alfarizi_Junior_Backend_EN.pdf',
+    targetRole: 'Junior Backend Developer | Go & Java',
+    projectsTitle: 'Selected Backend Projects',
+    summary: 'Junior backend developer building Go and Java APIs with PostgreSQL. Project work includes account isolation, revocable sessions, idempotent payments, versioned synchronization, and database integration tests. D3 Informatics Management student; currently writing final project.',
+    skills: backendSkills,
+    projects: [project('catat'), project('reloop'), project('apex')],
+  },
+  java: {
+    fileName: 'Alfarizi_CV_Java_Backend.pdf',
+    alias: 'Alfarizi_Java.pdf',
+    targetRole: 'Java Backend Developer',
+    projectsTitle: 'Selected Java & Database Projects',
+    summary: 'Java backend developer with Quarkus and Spring Boot project experience: modular service boundaries, JWT/RBAC, double-entry journal logic, inventory coordination, and PostgreSQL schema migrations. Additional Go API and Flutter experience. D3 Informatics Management student; currently writing final project.',
+    skills: [
+      { category: 'Java Backend', items: 'Java 17, Quarkus, Spring Boot, Spring Cloud Gateway, Hibernate / JPA' },
+      { category: 'Database Engineering', items: 'PostgreSQL, Flyway, SQL triggers/views, row locks, Redis, transactional outbox' },
+      { category: 'Verification', items: 'JUnit, ArchUnit, Testcontainers, API integration testing' },
+      { category: 'Additional Stack', items: 'Go, net/http, pgx, Flutter / Dart, SQLite' },
+      { category: 'Tools', items: 'Docker, Docker Compose, GitHub Actions, Git, IntelliJ IDEA, OpenAPI' },
+    ],
+    projects: [project('reloop'), project('apex'), project('financeall'), project('catat', { bullets: [projectCatalog.catat.bullets[0], projectCatalog.catat.bullets[2]] })],
+  },
+  fullstack: {
+    fileName: 'Alfarizi_CV_Full_Stack_Developer.pdf',
+    alias: 'Alfarizi_FullStack.pdf',
+    targetRole: 'Full-Stack Developer',
+    projectsTitle: 'Selected Full-Stack Projects',
+    summary: 'Full-stack developer connecting React/Next.js interfaces with Java, Go, and Express APIs. Project experience includes account flows, financial dashboards, database migrations, client state, and offline synchronization. D3 Informatics Management student; currently writing final project.',
+    skills: [
+      ...webSkills.slice(0, 2),
+      { category: 'APIs & Data', items: 'Java / Quarkus / Spring Boot, Go / net/http, Express, PostgreSQL, Redis, SQLite' },
+      { category: 'Application Flows', items: 'Authentication, authorization, optimistic UI, transactions, Flutter offline synchronization' },
+      { category: 'Delivery', items: 'Docker Compose, GitHub Actions, Git, OpenAPI, integration testing' },
+    ],
+    projects: [project('reloop'), project('apex', { bullets: projectCatalog.apex.bullets.slice(0, 2) }), project('finance'), project('catat', { bullets: projectCatalog.catat.bullets.slice(0, 2) })],
+  },
+  frontend: {
+    fileName: 'Alfarizi_Frontend.pdf',
+    targetRole: 'Frontend Developer',
+    projectsTitle: 'Selected Interface & Client Projects',
+    summary: 'Frontend developer building React, Next.js, and TypeScript interfaces, with additional Flutter experience. Implemented catalog filtering, validated forms, keyboard-focus handling, client state, browser audio/speech features, and offline account/sync flows. D3 Informatics Management student; currently writing final project.',
+    skills: webSkills,
+    projects: [
+      project('arte'),
+      project('ielts'),
+      project('reloop', { tech: 'Next.js, TypeScript, TanStack Query, Tailwind CSS', bullets: [
+        'Connected marketplace views to a Quarkus API using TanStack Query and a shared client authentication flow.',
+        'Built checkout lease countdowns, optimistic client updates, and dashboard views for commerce and escrow data.',
+      ] }),
+      project('catat', { tech: 'Flutter / Dart, SQLite, REST API integration', bullets: [
+        'Developed offline transaction/bill screens, local reminders, and optional account interfaces in Flutter.',
+        'Built sync consent, conflict-review, recovery, and encrypted-backup flows while keeping local finance usable without signing in.',
+      ] }),
+    ],
+  },
+  ai: {
+    fileName: 'Alfarizi_CV_AI_Python.pdf',
+    alias: 'Alfarizi_AI.pdf',
+    targetRole: 'Software Developer | Python & AI Applications',
+    projectsTitle: 'Selected AI Applications & API Projects',
+    summary: 'Software developer focused on Python/FastAPI services and practical AI integrations. Built document ingestion and retrieval flows, vector search, source-page citations, and Gemini-powered study/report tools. Additional Go/Java and full-stack project experience. D3 Informatics Management student; currently writing final project.',
+    skills: [
+      { category: 'Python & APIs', items: 'Python, FastAPI, asynchronous request handling, authentication, rate limiting' },
+      { category: 'AI Applications', items: 'RAG, ChromaDB, sentence-transformers, PyMuPDF, Gemini API integration' },
+      { category: 'Data & Web', items: 'SQL, PostgreSQL, SQLite, React, TypeScript, Express' },
+      { category: 'Verification & Tools', items: 'Pytest, Ruff, Docker, GitHub Actions, Git; Go backend integration testing' },
+    ],
+    projects: [project('study'), project('finance'), project('catat', { title: 'Catat Uang - Additional Backend Engineering', bullets: [projectCatalog.catat.bullets[0], projectCatalog.catat.bullets[2]] })],
+  },
+  master: {
+    fileName: 'Alfarizi_Master_Resume.pdf',
+    targetRole: 'Software Developer | Backend, Web, Mobile & AI Applications',
+    projectsTitle: 'Selected Development Portfolio',
+    summary: 'Software developer with hands-on project experience across backend APIs, web interfaces, Flutter mobile applications, and AI integrations. Works with Go, Java, TypeScript, Python, Dart, and relational databases. D3 Informatics Management student at Universitas Nasional PASIM, GPA 3.78/4.00; currently writing final project.',
+    skills: softwareSkills,
+    projects: ['catat', 'reloop', 'apex', 'study', 'arte', 'ielts'].map(id => project(id, { bullets: projectCatalog[id].bullets.slice(0, 2) })),
+  },
+  mobile: {
+    fileName: 'Alfarizi_Mobile.pdf',
+    targetRole: 'Junior Flutter / Mobile Developer',
+    projectsTitle: 'Selected Mobile Application',
+    summary: 'Junior mobile developer building Flutter/Dart applications with SQLite persistence and Go API integration. Implemented offline finance screens, optional accounts, explicit synchronization, local reminders, encrypted backups, and recovery interfaces. D3 Informatics Management student; currently writing final project.',
+    skills: [
+      { category: 'Mobile Development', items: 'Flutter, Dart, asynchronous UI state, forms, REST API integration' },
+      { category: 'Offline Data', items: 'SQLite / sqflite, persistent outboxes, idempotent retries, conflict and dataset recovery' },
+      { category: 'Platform Integration', items: 'Session storage, encrypted file backups, local reminder scheduling' },
+      { category: 'Verification', items: 'Flutter unit/widget tests, Android emulator integration tests, GitHub Actions' },
+      { category: 'Additional Stack', items: 'Go, net/http, pgx, PostgreSQL, Git, Android development builds' },
+    ],
+    projects: [project('catat', { tech: 'Flutter / Dart, SQLite, Go API, Android', bullets: [
+      'Implemented transaction/bill entry, financial lists, payment history, settings, and local reminders with SQLite persistence.',
+      'Kept finance flows usable offline and without an account; added explicit account linking and manual synchronization.',
+      'Persisted sync outboxes and built conflict review, dataset recovery, password recovery, and session-management interfaces.',
+      'Added encrypted backup/restore flows and verified local storage/account behavior with unit, widget, and Android emulator tests.',
+      'Produced a development APK. Production signing, real-device acceptance, store release, and iOS builds remain pending.',
+    ] })],
+  },
+  support: {
+    fileName: 'Alfarizi_ITSupport.pdf',
+    targetRole: 'IT Support / Technical Operations',
+    projectsTitle: 'Additional Technical Project',
+    experienceFirst: true,
+    summary: 'IT support and technical operations candidate with internship experience at PT Resika Cemerlang (Pasim Group). Coordinated a five-person intern team, supported workstation maintenance and hardware diagnostics, and validated medical-device asset records. Also develops software projects. D3 Informatics Management student; currently writing final project.',
+    skills: [
+      { category: 'Workstation Support', items: 'Hardware diagnostics, OS security patching, software configuration, antivirus updates' },
+      { category: 'Operations', items: 'Support-ticket handling, team coordination, maintenance follow-up' },
+      { category: 'Data Quality', items: 'Technical specification checks, asset-record validation, database integrity review' },
+      { category: 'Additional Technical Skills', items: 'SQL, Git, Linux CLI; Go / Java / Flutter application development' },
+    ],
+    projects: [project('catat', { bullets: [
+      'Built an offline finance application and Go API, working with local storage, account flows, and application troubleshooting.',
+      'Documented setup, verification results, backup/restore procedures, and release prerequisites for project review.',
+    ] })],
+  },
+};
+
+const cvDataList = Object.values(roleContent).map(content => ({
+  fileName: content.fileName,
+  alias: content.alias,
   data: {
     ...contact,
-    targetRole: en.targetRole,
+    targetRole: content.targetRole,
+    experienceFirst: content.experienceFirst,
     location: locationByLang.en,
-    labels: {
-      ...baseLabels.en,
-      projects: en.projectsTitle,
-    },
-    summary: en.summary,
-    skills: en.skills,
-    projects: en.projects,
+    labels: { ...baseLabels.en, projects: content.projectsTitle },
+    summary: content.summary,
+    skills: content.skills,
+    projects: content.projects,
     experience: experience.en,
     education: education.en,
     certifications: certifications.en,
@@ -577,55 +382,40 @@ const cvDataList = Object.values(roleContent).map(({ en }) => ({
 
 async function generateAllPdfs() {
   console.log('Launching browser via Playwright...');
-  const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
-
-  for (const item of cvDataList) {
-    const htmlContent = cvHtmlTemplate(item.data);
-    const tempHtmlPath = path.join(__dirname, `temp_${item.fileName}.html`);
-    fs.writeFileSync(tempHtmlPath, htmlContent, 'utf8');
-
-    const page = await browser.newPage();
-    await page.goto(`file://${tempHtmlPath}`, { waitUntil: 'networkidle' });
-
-    const outputPath = path.join(outputDir, item.fileName);
-    await page.pdf({
-      path: outputPath,
-      format: 'A4',
-      printBackground: true,
-      margin: {
-        top: '0.28in',
-        bottom: '0.28in',
-        left: '0.42in',
-        right: '0.42in',
-      },
-    });
-
-    const downloadNames = {
-      'Alfarizi_CV_Software_Engineer.pdf': 'Alfarizi_Software.pdf',
-      'Alfarizi_CV_Java_Backend.pdf': 'Alfarizi_Java.pdf',
-      'Alfarizi_CV_Full_Stack_Developer.pdf': 'Alfarizi_FullStack.pdf',
-      'Alfarizi_CV_AI_Python.pdf': 'Alfarizi_AI.pdf',
-    };
-    if (downloadNames[item.fileName]) {
-      fs.copyFileSync(outputPath, path.join(outputDir, downloadNames[item.fileName]));
-    }
-
-    // Check page count by reading generated PDF
-    const pdfBuffer = fs.readFileSync(outputPath);
-    const pdfString = pdfBuffer.toString('latin1');
-    const pageMatches = pdfString.match(/\/Type\s*\/Page\b/g);
-    const pageCount = pageMatches ? pageMatches.length : 1;
-
-    console.log(`Generated: ${item.fileName} (${pageCount} page${pageCount > 1 ? 's' : ''})`);
-    await page.close();
-    fs.unlinkSync(tempHtmlPath);
+  const launchOptions = { headless: true };
+  if (process.env.CHROME_PATH) launchOptions.executablePath = process.env.CHROME_PATH;
+  else if (process.platform === 'win32' && fs.existsSync('C:/Program Files/Google/Chrome/Application/chrome.exe')) {
+    launchOptions.executablePath = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
   }
-
-  await browser.close();
-  console.log('All PDF resumes generated successfully!');
+  const browser = await chromium.launch(launchOptions);
+  try {
+    for (const item of cvDataList) {
+      const page = await browser.newPage();
+      try {
+        await page.setContent(cvHtmlTemplate(item.data), { waitUntil: 'load' });
+        await page.evaluate(() => document.fonts.ready);
+        const outputPath = path.join(outputDir, item.fileName);
+        const pdfBuffer = await page.pdf({
+          path: outputPath,
+          format: 'A4',
+          printBackground: true,
+          margin: { top: '0.28in', bottom: '0.28in', left: '0.42in', right: '0.42in' },
+        });
+        const pageCount = (pdfBuffer.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length;
+        if (pageCount !== 1) throw new Error(`${item.fileName}: expected one page, generated ${pageCount}`);
+        if (item.alias) fs.copyFileSync(outputPath, path.join(outputDir, item.alias));
+        console.log(`Generated: ${item.fileName} (${pageCount} page)`);
+      } finally {
+        await page.close();
+      }
+    }
+  } finally {
+    await browser.close();
+  }
+  console.log('All nine role-specific resumes and four legacy aliases generated successfully.');
 }
 
-generateAllPdfs().catch((err) => {
+generateAllPdfs().catch(err => {
   console.error('Error generating PDFs:', err);
-  process.exit(1);
+  process.exitCode = 1;
 });

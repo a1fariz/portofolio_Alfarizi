@@ -395,8 +395,8 @@ export const EDUCATION_RECORDS = [
   {
     title: "Associate Degree in Informatics Management (D3)",
     org: "Universitas Nasional PASIM",
-    period: "Coursework completed",
-    desc: "GPA 3.78 / 4.0 — preparing for final thesis defense; Bandung, Indonesia",
+    period: "Sedang menyusun tugas akhir",
+    desc: "GPA 3.78 / 4.0 — currently writing final project; Bandung, Indonesia",
   },
   {
     title: "PUB Intensive Technical Scholarship",

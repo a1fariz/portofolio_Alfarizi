@@ -1,10 +1,14 @@
 # Alfa Rizi — Software Engineering Portfolio
 
-Personal software engineering portfolio and architectural case study platform built with Next.js App Router, TypeScript, and Tailwind CSS. Showcases production services, microservices platforms, asynchronous RAG pipelines, and full-stack web applications.
+Personal software engineering portfolio and architectural case study platform built with Next.js App Router, TypeScript, and Tailwind CSS. Features Go and Java backend projects, architecture decisions, testing evidence, AI/RAG pipelines, and full-stack applications.
 
 Live Website: https://alfarizi.my.id
 
 ---
+
+## Education status
+
+Mahasiswa D3 Manajemen Informatika, Universitas Nasional PASIM — **sedang menyusun tugas akhir**.
 
 ## Overview
 
@@ -107,7 +111,7 @@ Run `npm run generate:cv` to regenerate all seven CV tracks and legacy download 
 ```
 portfolio/
 ├── public/
-│   ├── cv/                    # PDF CV variants (EN / ID)
+│   ├── cv/                    # Seven English CV tracks and legacy aliases
 │   └── images/
 │       └── projects/          # Optimized project showcase screenshots
 ├── src/
@@ -135,15 +139,15 @@ portfolio/
 
 ### Prerequisites
 
-- Node.js 18.17 or later
+- Node.js 20.9 or later
 - npm, pnpm, or yarn
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/a1fariz/portfolio.git
-   cd portfolio
+   git clone https://github.com/a1fariz/portofolio_Alfarizi.git
+   cd portofolio_Alfarizi
    ```
 
 2. Install dependencies:

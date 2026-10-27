@@ -76,7 +76,7 @@ const education = {
       institution: 'Universitas Nasional PASIM',
       degree: 'Associate Degree in Informatics Management (D3) — GPA: 3.78 / 4.00',
       location: 'Bandung, Indonesia',
-      period: 'Coursework completed; preparing for final thesis defense',
+      period: 'Currently writing final project',
       bullets: [
         'PUB Intensive Technical Scholarship (2024 – Present): Logic & C, Data Structures, Relational Databases, Advanced Java Development, and React Development.',
         'Intensive React Front-End Development Training (Sep 2026); Fundamental Back-End Programming with Java and Git & GitHub Training (Jan 2026).',
@@ -89,7 +89,7 @@ const education = {
       institution: 'Universitas Nasional PASIM',
       degree: 'D3 Manajemen Informatika — IPK: 3.78 / 4.00',
       location: 'Bandung, Indonesia',
-      period: 'Perkuliahan selesai; sedang mempersiapkan sidang tugas akhir',
+      period: 'Sedang menyusun tugas akhir',
       bullets: [
         'Penerima Beasiswa Pelatihan Intensif PUB (2024 – Sekarang): Logika Pemrograman, Struktur Data, Database Relasional, Java Lanjutan, dan Pengembangan React.',
         'Pelatihan Intensif React Front-End (Sep 2026); Fundamental Back-End Programming dengan Java dan Git & GitHub (Jan 2026).',
@@ -124,7 +124,7 @@ const roleContent = {
       targetRole: 'Software Engineer',
       projectsTitle: 'Featured Engineering Projects',
       summary:
-        'Software Engineer (Informatics Management D3 student, GPA 3.78/4.00; coursework completed, preparing for final thesis defense) with proven experience engineering distributed microservices, enterprise modular monoliths, AI/RAG pipelines, and interactive web platforms. Hands-on experience in Go (net/http, pgx), Dart/Flutter, SQLite, Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), and PostgreSQL (PL/pgSQL triggers, views, Flyway), with Docker containerization and automated GitHub Actions CI/CD.',
+        'Software Engineer (Informatics Management D3 student, GPA 3.78/4.00; currently writing final project) with proven experience engineering distributed microservices, enterprise modular monoliths, AI/RAG pipelines, and interactive web platforms. Hands-on experience in Go (net/http, pgx), Dart/Flutter, SQLite, Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), and PostgreSQL (PL/pgSQL triggers, views, Flyway), with Docker containerization and automated GitHub Actions CI/CD.',
       skills: [
         { category: 'Languages', items: 'Java 17, TypeScript, JavaScript (ES6+), Python 3.12, SQL, C' },
         { category: 'Backend & Systems', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, FastAPI, Express.js, Double-Entry Escrow' },
@@ -184,7 +184,7 @@ const roleContent = {
       targetRole: 'Software Engineer',
       projectsTitle: 'Proyek Rekayasa Perangkat Lunak Unggulan',
       summary:
-        'Software Engineer (lulusan D3 Manajemen Informatika, IPK 3.78/4.00; perkuliahan selesai dan sedang mempersiapkan sidang tugas akhir) berpengalaman membangun arsitektur modular monolith enterprise, microservices terdistribusi, pipeline AI/RAG, dan aplikasi web interaktif. Menguasai secara mendalam Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), dan PostgreSQL (PL/pgSQL triggers, views, Flyway), didukung containerisasi Docker dan CI/CD GitHub Actions.',
+        'Software Engineer (mahasiswa D3 Manajemen Informatika, IPK 3.78/4.00; sedang menyusun tugas akhir) berpengalaman membangun arsitektur modular monolith enterprise, microservices terdistribusi, pipeline AI/RAG, dan aplikasi web interaktif. Menguasai secara mendalam Java (Quarkus 3.15, Spring Boot 3.2, Spring Cloud Gateway), TypeScript/JavaScript (Next.js 14/16, React 19), Python (FastAPI, ChromaDB), dan PostgreSQL (PL/pgSQL triggers, views, Flyway), didukung containerisasi Docker dan CI/CD GitHub Actions.',
       skills: [
         { category: 'Bahasa Pemrograman', items: 'Java 17, TypeScript, JavaScript (ES6+), Python 3.12, SQL, C' },
         { category: 'Backend & Sistem', items: 'Quarkus 3.15 LTS, Spring Boot 3.2, Spring Cloud Gateway, FastAPI, Express.js, Double-Entry Escrow' },
@@ -545,7 +545,7 @@ roleContent.backend = { en: {
   ...roleContent.backend.en,
   fileName: 'Alfarizi_Junior_Backend_EN.pdf',
   targetRole: 'Junior Backend Developer | Go & Java',
-  summary: 'Junior backend developer building Go and Java APIs with PostgreSQL. Implemented an offline-first Flutter finance app with explicit synchronization, idempotent payments, revocable sessions, encrypted backups and account recovery. Hands-on experience with Quarkus, Spring Boot, database transactions and automated integration testing. D3 Informatics Management coursework completed; preparing for final thesis defense.',
+  summary: 'Junior backend developer building Go and Java APIs with PostgreSQL. Implemented an offline-first Flutter finance app with explicit synchronization, idempotent payments, revocable sessions, encrypted backups and account recovery. Hands-on experience with Quarkus, Spring Boot, database transactions and automated integration testing. D3 Informatics Management student; currently writing final project.',
   projects: roleContent.backend.en.projects.slice(0, 3),
 } };
 roleContent.frontend = { en: {

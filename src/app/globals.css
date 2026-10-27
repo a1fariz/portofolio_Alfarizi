@@ -143,18 +143,21 @@ body {
   animation: spin-slow 24s linear infinite;
 }
 
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #18392d;
+  outline-offset: 4px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .mask-line > span,
-  .fade-up {
-    animation-duration: 0.01ms;
-    animation-delay: 0s;
-  }
+  .fade-up,
   .draw-line {
-    animation-duration: 0.01ms;
-    animation-delay: 0s;
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
   .spin-slow,
   [data-reveal] {

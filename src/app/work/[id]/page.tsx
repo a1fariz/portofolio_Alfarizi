@@ -166,6 +166,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </section>
 
         {/* Narrative & Architecture Breakdown */}
+        {project.caseStudy && (
+          <section className="mx-auto max-w-[1440px] space-y-8 px-6 py-12 md:px-12">
+            <div className="max-w-3xl">
+              <h2 className="text-2xl font-bold">My contribution</h2>
+              <p className="mt-3 leading-relaxed text-neutral-700">{project.caseStudy.contribution}</p>
+            </div>
+            <div className="grid gap-8 md:grid-cols-2">
+              <div><h2 className="text-xl font-bold">Engineering decisions</h2><ul className="mt-3 list-disc space-y-3 pl-5 leading-relaxed text-neutral-700">{project.caseStudy.decisions.map(item => <li key={item}>{item}</li>)}</ul></div>
+              <div><h2 className="text-xl font-bold">Testing &amp; evidence</h2><ul className="mt-3 list-disc space-y-3 pl-5 leading-relaxed text-neutral-700">{project.caseStudy.evidence.map(item => <li key={item}>{item}</li>)}</ul></div>
+            </div>
+            <div className="rounded-2xl border border-black/10 p-6"><h2 className="font-bold">Current limitations &amp; next steps</h2><p className="mt-3 leading-relaxed text-neutral-700">{project.caseStudy.limitations}</p></div>
+          </section>
+        )}
         <section className="py-12 px-6 md:px-12">
           <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left: Narrative Overview */}
@@ -268,7 +281,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <Reveal>
               <div>
                 <span className="font-mono text-xs uppercase tracking-widest text-neutral-500">
-                  Next Production Case
+                    Next Project
                 </span>
                 <h3 className="text-3xl sm:text-5xl font-bold text-black uppercase mt-1">
                   {nextProject.title}

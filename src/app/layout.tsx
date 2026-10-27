@@ -19,17 +19,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://alfarizi.my.id"),
   title: {
-    default: "Alfa Rizi — Junior Backend Developer & Software Engineer",
+    default: "Alfa Rizi — Junior Backend Developer | Go & Java",
     template: "%s | Alfa Rizi",
   },
   description:
-    "Building quiet, powerful systems. Portfolio of Alfa Rizi featuring Spring Boot microservices, LangChain RAG pipelines, and high-performance web systems.",
+    "Go and Java backend portfolio: REST APIs, PostgreSQL transactions, authentication, and integration testing. Explore Catat Uang, ReLoop, and ApexGrid.",
   keywords: [
     "Alfa Rizi",
     "Backend Developer",
     "Java Spring Boot",
     "Software Engineer",
-    "LangChain RAG",
+    "Go Golang",
     "PostgreSQL",
     "Microservices",
   ],
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://alfarizi.my.id",
-    title: "Alfa Rizi — Junior Backend Developer & Software Engineer",
+    title: "Alfa Rizi — Junior Backend Developer | Go & Java",
     description:
-      "Building quiet, powerful systems. Distributed microservices, RAG AI vector stores, and clean editorial web architecture.",
+      "Explore Go and Java backend projects, architecture decisions, and testing evidence.",
     siteName: "Alfa Rizi Portfolio",
     images: [
       {
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alfa Rizi — Junior Backend Developer & Software Engineer",
+    title: "Alfa Rizi — Junior Backend Developer | Go & Java",
     description:
-      "Building quiet, powerful systems. Spring Boot microservices & LangChain RAG pipelines.",
+      "Go and Java backend projects with PostgreSQL, authentication, and integration testing.",
     images: ["/images/profile.jpg"],
     creator: "@alfarizi",
   },
@@ -83,7 +83,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Alfa Rizi",
-  jobTitle: "Junior Backend Developer & Software Engineer",
+  jobTitle: "Junior Backend Developer",
   url: "https://alfarizi.my.id",
   image: "https://alfarizi.my.id/images/profile.jpg",
   sameAs: [
@@ -91,6 +91,8 @@ const jsonLd = {
     "https://www.linkedin.com/in/alfa-rizi-65b483412",
   ],
   knowsAbout: [
+    "Go",
+    "Flutter",
     "Java 17",
     "Spring Boot 3",
     "PostgreSQL",

@@ -2,7 +2,13 @@ export interface RealProject {
   id: string;
   title: string;
   subtitle: string;
-  category: "Java / Backend" | "AI & RAG" | "Full-Stack Web" | "C Systems";
+  category: "Go / Backend" | "Java / Backend" | "AI & RAG" | "Full-Stack Web" | "C Systems";
+  caseStudy?: {
+    contribution: string;
+    decisions: string[];
+    evidence: string[];
+    limitations: string;
+  };
   stack: string[];
   year: string;
   status: string;
@@ -20,6 +26,35 @@ export interface RealProject {
 }
 
 export const REAL_PROJECTS: RealProject[] = [
+  {
+    id: "catat-uang",
+    title: "Catat Uang",
+    subtitle: "Offline-first Flutter finance app with a Go synchronization API",
+    category: "Go / Backend",
+    stack: ["Go", "PostgreSQL", "Dart / Flutter", "SQLite", "net/http", "pgx", "OpenAPI", "GitHub Actions"],
+    year: "2026",
+    status: "Local implementation complete · CI verified",
+    image: "/images/projects/catat-uang.svg",
+    description: "An offline-first personal finance application built with Flutter and SQLite, backed by a Go/PostgreSQL API. Optional accounts support explicitly linked, manual synchronization of transactions, recurring bills and payment history through persistent outboxes, idempotent retries and conflict review. Includes encrypted file backups, session management, email verification and password recovery. Local implementation and CI verification are complete; public release remains pending.",
+    highlight: "Offline SQLite + explicit sync + encrypted backups + backend and Android CI",
+    architecture: {
+      summary: "SQLite remains the mobile ledger. Users explicitly link local data to an account before manual synchronization through the Go API; account login alone does not upload financial records.",
+      flow: ["Flutter → SQLite ledger and persistent sync outbox", "Explicit account linking → manual transaction / bill synchronization", "Go net/http → account isolation, version checks and idempotent operations", "pgx → PostgreSQL transactions, row locks and payment history", "Encrypted email outbox → SMTP worker; encrypted file backup → atomic local restore"],
+      components: [
+        { title: "Offline ledger and synchronization", desc: "Persistent SQLite queues, safe retries, version conflicts and dataset recovery for transactions, bills and payments." },
+        { title: "Account security and recovery", desc: "Argon2id password hashing, revocable sessions, password changes, email verification and single-use password recovery through an SMTP outbox." },
+        { title: "Atomic financial operations", desc: "Database transactions, row locks, unique constraints and idempotency keys protect payment consistency during retries and concurrency." },
+        { title: "Backup and operations", desc: "Encrypted mobile backups with atomic restore; server backup integrity/age checks, isolated restore verification, health checks and cleanup previews." },
+      ],
+    },
+    metrics: ["Backend race / PostgreSQL CI", "Android emulator integration CI", "SQLite ↔ Go integration tests"],
+    caseStudy: {
+      contribution: "Implemented the Flutter/SQLite app, Go/PostgreSQL API, explicit synchronization protocols, account recovery, encrypted backups, operational commands and automated backend/mobile verification.",
+      decisions: ["Keep local finance usable without an account; require explicit linking before uploading records.", "Persist synchronization queues and use idempotency keys, version checks and conflict review so interrupted requests can be retried safely.", "Protect bill payments with database transactions, row locks and uniqueness constraints.", "Verify backups and restore on isolated copies; provide cleanup previews before changing retained server data."],
+      evidence: ["The project verification report dated 27 October 2026 records successful Backend and Mobile CI for code 57f956c, including Go race/PostgreSQL, vulnerability checks, container checks and native Android emulator jobs.", "Integration tests exercise two real SQLite ledgers against the Go API, including retry, conflict, payment, reopen and dataset recovery flows.", "An SMTP loopback test covers HTTP recovery requests, outbox delivery, MIME codes, one-time reset and session revocation.", "A development APK is recorded in the release report. The source repository is private; the verification report is local evidence, not a public demo."],
+      limitations: "Public hosting/HTTPS, provider email delivery, production signing and store release remain pending. Real Android device checks, two-device acceptance and iOS builds still require the corresponding hardware/services. Emulator and CI results do not establish production reliability.",
+    },
+  },
   {
     id: "reloop",
     title: "ReLoop",
@@ -49,7 +84,13 @@ export const REAL_PROJECTS: RealProject[] = [
         { title: "Anti-Hoarding Checkout Leases", desc: "Two-stage reservation acquiring pessimistic row locks (`SELECT ... FOR UPDATE`) with 15-minute leases enforced by PostgreSQL partial unique indices." },
       ],
     },
-    metrics: ["25 Bounded Contexts", "100% Balanced Double-Entry DR=CR", "15-Min Anti-Hoarding Leases", "Firebase Google OAuth"],
+    metrics: ["25 bounded contexts", "Double-entry escrow ledger", "15-minute checkout leases"],
+    caseStudy: {
+      contribution: "Developed commerce backend modules, escrow accounting and reservation logic in a Quarkus modular monolith, with a Next.js client.",
+      decisions: ["Keep domain modules in one application with ArchUnit boundary checks to make module dependencies explicit.", "Use pessimistic row locks and expiring reservations to coordinate checkout access to limited inventory.", "Represent escrow movements as debit/credit journal entries rather than updating a balance without an accounting trail."],
+      evidence: ["The implementation is organized into 25 bounded contexts with architecture verification checks.", "Checkout leases are configured for 15 minutes. This is a system rule, not a performance benchmark.", "Repository and demo links are provided for implementation review."],
+      limitations: "No latency, throughput or availability benchmark is claimed here. Production-scale reliability requires documented load tests and operational evidence.",
+    },
   },
   {
     id: "apexgrid",
@@ -61,10 +102,10 @@ export const REAL_PROJECTS: RealProject[] = [
     status: "In Deployment & Maintenance",
     github: "https://github.com/a1fariz/ApexGrid",
     image: "/images/projects/apexgrid.png",
-    description: "Production-ready distributed microservices platform featuring 3 independent Spring Boot services (API Gateway, User Service, Race Service) orchestrated via Spring Cloud Gateway. Real-time race ticket inventory synchronized through PostgreSQL database triggers, a 30-minute auto-expiry reservation scheduler, shared RBAC security (USER/ADMIN), Swagger UI, and a full Admin Panel with analytics dashboard via database views.",
+    description: "Race-ticket reservation project with 3 Spring Boot services (API Gateway, User Service, Race Service) connected through Spring Cloud Gateway. Ticket inventory uses PostgreSQL database triggers and a 30-minute reservation-expiry scheduler. JWT and role-based access control protect user/admin flows; Swagger UI documents the API, and database views support an admin analytics panel.",
     highlight: "Microservices architecture + RBAC + real-time quota system",
     architecture: {
-      summary: "Distributed microservices system designed for high concurrency with zero quota race conditions and centralized JWT gateway validation.",
+      summary: "Distributed microservices system with PostgreSQL inventory triggers, reservation expiry and centralized JWT gateway validation.",
       flow: [
         "React 18 Glassmorphic UI Client",
         "Spring Cloud Gateway (Centralized Routing & JWT Filter)",
@@ -77,7 +118,13 @@ export const REAL_PROJECTS: RealProject[] = [
         { title: "Analytics & Views", desc: "Complex PostgreSQL DB views feed real-time sales and reservation metrics to the React Admin Panel." },
       ],
     },
-    metrics: ["3 Independent Microservices", "< 40ms Gateway Response", "100% ACID Seat Locking"],
+    metrics: ["3 backend services", "30-minute reservation expiry", "PostgreSQL inventory triggers"],
+    caseStudy: {
+      contribution: "Developed the gateway, user and race-ticket services, authentication flows, reservation logic and React admin interface.",
+      decisions: ["Route client requests through Spring Cloud Gateway to centralize entry to the user and race services.", "Use PostgreSQL inventory triggers and a reservation-expiry worker to keep booking state and ticket availability coordinated."],
+      evidence: ["The repository contains 3 service responsibilities: gateway, users and race-ticket reservations.", "Reservations expire after 30 minutes; the worker releases expired bookings.", "JWT and role-based authorization distinguish user and admin flows."],
+      limitations: "Gateway latency and production concurrency have not been substantiated with a benchmark here. Service boundaries demonstrate the architecture, not an availability guarantee.",
+    },
   },
   {
     id: "studymate-ai",
@@ -311,7 +358,7 @@ export const REAL_PROJECTS: RealProject[] = [
 export const TECH_CAPABILITIES = [
   {
     category: "Backend & Systems",
-    items: ["Java 17 / Quarkus 3.15 LTS (Modular Monolith)", "Spring Boot 3.2 & Spring Cloud Gateway", "Double-Entry Escrow Accounting", "PostgreSQL & Redis Cache", "Docker & CI/CD Pipelines"],
+    items: ["Go / net/http / pgx", "Flutter / Dart / SQLite", "Java 17 / Quarkus 3.15 LTS (Modular Monolith)", "Spring Boot 3.2 & Spring Cloud Gateway", "Double-Entry Escrow Accounting", "PostgreSQL & Redis Cache", "Docker & CI/CD Pipelines"],
   },
   {
     category: "AI & Vector Search",
@@ -348,8 +395,8 @@ export const EDUCATION_RECORDS = [
   {
     title: "Associate Degree in Informatics Management (D3)",
     org: "Universitas Nasional PASIM",
-    period: "Expected May 2027",
-    desc: "GPA 3.78 / 4.0 — Bandung, Indonesia",
+    period: "Coursework completed",
+    desc: "GPA 3.78 / 4.0 — preparing for final thesis defense; Bandung, Indonesia",
   },
   {
     title: "PUB Intensive Technical Scholarship",
@@ -363,7 +410,7 @@ export const EXPERIENCE_RECORDS = [
   {
     role: "Lead Intern — IT & Business Operations",
     org: "PT Resika Cemerlang",
-    period: "2025 – Present",
+    period: "2025 – Sep 2026",
     desc: "Directed a 5-person intern team in live IT operations. Managed SLA ticket handling, weekly laptop maintenance (security patching, antivirus), and medical device specification quality control. Delivered weekly operational reports to senior management.",
   },
 ];

@@ -222,6 +222,25 @@ export const REAL_PROJECTS: RealProject[] = [
       ],
     },
     metrics: ["33+ Curated Open Access Masterpieces", "Procedural Web Audio feedback", "LocalStorage curation state"],
+    caseStudy: {
+      contribution: "Built the React gallery, artwork create/edit forms, curator and visitor views, bilingual interface, and browser-based persistence for a React training final project.",
+      decisions: [
+        "Share gallery and language state through React Context so catalog filters, artwork details and editing views use the same data.",
+        "Keep curation in localStorage for a self-contained demo; the curator switch changes the interface and is not a server-enforced permission boundary.",
+        "Pause gallery motion outside the viewport and provide keyboard-operable lightbox and confirmation dialogs.",
+      ],
+      evidence: [
+        "GalleryContext contains artwork state, curator/visitor switching, local saves and dataset reset; ArtworkForm implements create/edit validation.",
+        "Lightbox and ConfirmDialog contain keyboard and focus handling; CircularGallery uses IntersectionObserver to pause off-screen motion.",
+        "The repository README includes desktop/mobile screenshots, form-validation examples and a recorded project presentation. These are implementation evidence, not an automated accessibility audit.",
+      ],
+      limitations: "Curation and preferences belong to the current browser and can be lost when site data is cleared. There is no shared backend, account authentication or server-enforced curator authorization. Museum image availability depends on external hosting.",
+      links: [
+        { label: "Screenshots and presentation", url: "https://github.com/a1fariz/arte#readme" },
+        { label: "Gallery state", url: "https://github.com/a1fariz/arte/blob/main/src/context/GalleryContext.jsx" },
+        { label: "Artwork form", url: "https://github.com/a1fariz/arte/blob/main/src/pages/ArtworkForm.jsx" },
+      ],
+    },
   },
   {
     id: "vanguard-ielts",
@@ -251,6 +270,25 @@ export const REAL_PROJECTS: RealProject[] = [
       ],
     },
     metrics: ["4-Skill Comprehensive Coverage", "CEFR A1–C1 Level Progression", "SuperMemo-Inspired SRS Retention"],
+    caseStudy: {
+      contribution: "Built the React/TypeScript practice interface, vocabulary review scheduling, daily progression, mistake tracking and browser speech tools across listening, reading, writing and speaking modules.",
+      decisions: [
+        "Separate review scheduling into a typed SRS service that calculates the next interval from a learner's rating, review history and ease factor.",
+        "Persist cards and study statistics in localStorage so practice can resume in the same browser without requiring an account.",
+        "Use browser speech synthesis for shadowing and pronunciation playback, with voice selection based on available English voices.",
+      ],
+      evidence: [
+        "srsEngine.ts implements rating-based interval updates, next-review dates and local storage of cards and user statistics.",
+        "App.tsx connects practice results to progression and the mistake bank; separate lab components provide the four skill interfaces.",
+        "speech.ts handles voice selection and speech synthesis. Source links allow implementation review; no measured learning-outcome or automated test result is claimed here.",
+      ],
+      limitations: "Progress is local to the browser, with no cross-device account synchronization. Voice quality and availability vary by browser and operating system. Placement and practice feedback are learning aids, not an official IELTS assessment or a guarantee of a band score.",
+      links: [
+        { label: "Modules and setup", url: "https://github.com/a1fariz/Vanguard-IELTS#readme" },
+        { label: "Review scheduling", url: "https://github.com/a1fariz/Vanguard-IELTS/blob/main/src/services/srsEngine.ts" },
+        { label: "Browser speech", url: "https://github.com/a1fariz/Vanguard-IELTS/blob/main/src/utils/speech.ts" },
+      ],
+    },
   },
   {
     id: "renshuu",
@@ -443,7 +481,7 @@ export const EDUCATION_RECORDS = [
   {
     title: "Associate Degree in Informatics Management (D3)",
     org: "Universitas Nasional PASIM",
-    period: "Sedang menyusun tugas akhir",
+    period: "Final project in progress",
     desc: "GPA 3.78 / 4.0 — currently writing final project; Bandung, Indonesia",
   },
   {

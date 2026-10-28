@@ -32,6 +32,10 @@ Halaman utama menampilkan enam project lintas bidang. Filter membantu memilih pr
 
 Project lainnya tersedia lewat **All projects**. Konfigurasi CI, aturan bisnis dan jumlah modul tidak digunakan sebagai pengganti benchmark production.
 
+## Screenshot dan rekaman aplikasi
+
+CatatUang menggunakan tiga screenshot Android asli dan rekaman demo offline dua menit dengan data fiktif. Gambar asli disimpan tanpa pengeditan piksel di `public/images/projects/catat-uang/`; video dan provenance/checksum tersedia di `public/videos/`. Rekaman tidak menunjukkan sinkronisasi cloud atau penerimaan perangkat fisik. Halaman studi kasus menyertakan pemutar video, screenshot berukuran penuh, serta tautan hasil capture CI.
+
 ## Sembilan pilihan CV
 
 Software Developer, Master Resume, Full Stack, Frontend, Go/Java Backend, Java Backend, AI/Python, Flutter/Mobile dan IT Support. Masing-masing memakai ringkasan, urutan project dan keahlian sesuai posisi. Tautan lama tetap dipertahankan.

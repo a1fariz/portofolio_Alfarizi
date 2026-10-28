@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
+import ProjectVisual from "@/components/ProjectVisual";
 import Link from "next/link";
 import { RealProject } from "@/data/realPortfolio";
 
@@ -69,13 +69,7 @@ export default function ProjectList({ projects }: { projects: RealProject[] }) {
               className="group block p-3 transition-colors hover:bg-black/[0.02]"
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-neutral-200">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 480px"
-                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
-                />
+                <ProjectVisual project={project} />
               </div>
               <div className="p-4">
                 <div className="flex items-baseline justify-between gap-4">
@@ -104,6 +98,7 @@ export default function ProjectList({ projects }: { projects: RealProject[] }) {
             </Link>
             <div className="mt-auto flex flex-wrap gap-4 border-t border-black/5 px-7 py-4 text-xs font-semibold">
               <Link href={`/work/${project.id}`} className="underline underline-offset-4" aria-label={`Read ${project.title} case study`}>Case study ↗</Link>
+              {project.recording && <Link href={`/work/${project.id}#demo`} className="underline underline-offset-4" aria-label={`Watch ${project.title} demo`}>Watch demo ↗</Link>}
               {project.github && <a href={project.github} target="_blank" rel="noreferrer" className="underline underline-offset-4" aria-label={`${project.title} GitHub repository`}>GitHub ↗</a>}
               {project.demo && <a href={project.demo} target="_blank" rel="noreferrer" className="underline underline-offset-4" aria-label={`${project.title} live demo`}>Live demo ↗</a>}
             </div>

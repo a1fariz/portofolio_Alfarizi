@@ -5,6 +5,7 @@ import Link from "next/link";
 import { REAL_PROJECTS } from "@/data/realPortfolio";
 import { ArrowLeft, ArrowUpRight, Code2, ExternalLink, Cpu } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import ProjectVisual from "@/components/ProjectVisual";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -35,8 +36,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [
         {
           url: project.image,
-          width: 1200,
-          height: 630,
+          width: project.screenshots ? 1080 : 1200,
+          height: project.screenshots ? 1920 : 630,
           alt: project.title,
         },
       ],
@@ -118,14 +119,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <Reveal>
               {/* Full-Bleed High Res Image */}
               <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden bg-neutral-200 border border-black/5 shadow-md">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  priority
-                  sizes="(max-width: 1440px) 100vw, 1440px"
-                  className="object-cover"
-                />
+                <ProjectVisual project={project} priority />
               </div>
             </Reveal>
 
@@ -164,6 +158,48 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </Reveal>
           </div>
         </section>
+
+        {project.recording && (
+          <section id="demo" className="mx-auto max-w-5xl scroll-mt-28 px-6 py-12 md:px-12" aria-labelledby="recording-heading">
+            <h2 id="recording-heading" className="text-2xl font-bold">See the app in use</h2>
+            <div className="mt-6 grid items-start gap-8 md:grid-cols-2">
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster={project.image}
+                aria-label={`${project.title} Android demo recording`}
+                className="mx-auto aspect-[9/16] w-full max-w-[360px] rounded-2xl border border-black/10 bg-black"
+              >
+                <source src={project.recording.src} type="video/mp4" />
+                <track kind="captions" src={project.recording.captions} srcLang="en" label="English notes" default />
+                Your browser does not support this video. <a href={project.recording.src}>Download the demo recording.</a>
+              </video>
+              <div className="space-y-5 leading-relaxed text-neutral-700">
+                <p>{project.recording.description}</p>
+                <ul className="list-disc space-y-2 pl-5">
+                  <li>Sample transactions and recurring bills in the real Flutter interface.</li>
+                  <li>Offline entry and data retained after closing and reopening the app.</li>
+                  <li>Backup settings and guidance for starting with an empty ledger.</li>
+                </ul>
+                <p className="flex flex-wrap gap-4 text-sm font-semibold">
+                  <a href={project.recording.src} download className="underline underline-offset-4">Download video ↗</a>
+                  <a href={project.recording.evidenceUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4">Capture evidence ↗</a>
+                </p>
+              </div>
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {project.screenshots?.map(shot => (
+                <figure key={shot.src}>
+                  <a href={shot.src} target="_blank" rel="noreferrer" aria-label={`Open full screenshot: ${shot.caption}`}>
+                    <Image src={shot.src} alt={shot.alt} width={1080} height={1920} sizes="(max-width: 640px) 80vw, 300px" className="mx-auto h-auto w-full max-w-[260px] rounded-xl border border-black/10" />
+                  </a>
+                  <figcaption className="mt-3 text-center text-sm text-neutral-600">{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Narrative & Architecture Breakdown */}
         {project.caseStudy && (

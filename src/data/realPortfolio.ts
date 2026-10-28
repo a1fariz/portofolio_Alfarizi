@@ -16,6 +16,8 @@ export interface RealProject {
   github?: string;
   demo?: string;
   image: string;
+  screenshots?: { src: string; alt: string; caption: string }[];
+  recording?: { src: string; captions: string; description: string; evidenceUrl: string };
   description: string;
   highlight: string;
   architecture: {
@@ -36,7 +38,18 @@ export const REAL_PROJECTS: RealProject[] = [
     year: "2026",
     status: "Local implementation complete · CI verified",
     github: "https://github.com/a1fariz/CatatUang",
-    image: "/images/projects/catat-uang.svg",
+    image: "/images/projects/catat-uang/transactions.png",
+    screenshots: [
+      { src: "/images/projects/catat-uang/transactions.png", alt: "Catat Uang Android demo showing the local transaction ledger with sample data", caption: "Transactions and period summary" },
+      { src: "/images/projects/catat-uang/bills.png", alt: "Catat Uang Android demo showing a sample recurring household internet bill", caption: "Recurring bills" },
+      { src: "/images/projects/catat-uang/first-entry.png", alt: "Catat Uang Android demo showing the first-transaction guide", caption: "First-entry guidance" },
+    ],
+    recording: {
+      src: "/videos/catat-uang-demo.mp4",
+      captions: "/videos/catat-uang-demo.vtt",
+      description: "Two-minute recording from the Android emulator with fictional sample data and no audio. It shows offline transactions, bills, backup settings, reopening the app, and first-entry guidance. This offline demo build does not demonstrate cloud synchronization, physical-device acceptance, or a production release.",
+      evidenceUrl: "https://github.com/a1fariz/CatatUang/actions/runs/40560535481",
+    },
     description: "An offline-first personal finance application built with Flutter and SQLite, backed by a Go/PostgreSQL API. Optional accounts support explicitly linked, manual synchronization of transactions, recurring bills and payment history through persistent outboxes, idempotent retries and conflict review. Includes encrypted file backups, session management, email verification and password recovery. Local implementation and CI verification are complete; public release remains pending.",
     highlight: "Offline SQLite + explicit sync + encrypted backups + backend and Android CI",
     architecture: {

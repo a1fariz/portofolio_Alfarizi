@@ -1,0 +1,53 @@
+{
+  "sourceRepository": "https://github.com/a1fariz/CatatUang",
+  "sourceCommit": "51c4000fd4a54aeefb8cf8d7286855b9d32f6cb8",
+  "sourceRun": "https://github.com/a1fariz/CatatUang/actions/runs/40560535481",
+  "capturedAtUTC": "2026-10-27T18:43:12.219973Z",
+  "platform": "Android emulator",
+  "content": "Fictional sample data. Offline Android demo. No audio.",
+  "video": {
+    "programs": [],
+    "streams": [
+      {
+        "width": 720,
+        "height": 1280
+      }
+    ],
+    "format": {
+      "duration": "120.000000"
+    }
+  },
+  "notDemonstrated": [
+    "physical Android",
+    "SAF export/restore",
+    "notification delivery",
+    "two physical device synchronization",
+    "cloud synchronization in demo APK"
+  ],
+  "files": [
+    {
+      "sourceFile": "02-catatan-contoh.png",
+      "path": "/images/projects/catat-uang/transactions.png",
+      "sha256": "6655f5c1ecf1ef10de214d8fbe62b464b1ff3e604f0adc6ca3e59f2b1e85c188",
+      "unchangedFromCapture": true
+    },
+    {
+      "sourceFile": "04-tagihan-contoh.png",
+      "path": "/images/projects/catat-uang/bills.png",
+      "sha256": "42ca6f16b24deee6f3c2a1d424214e6093183c66535765d55ebbb1c085d9f598",
+      "unchangedFromCapture": true
+    },
+    {
+      "sourceFile": "08-panduan-pertama.png",
+      "path": "/images/projects/catat-uang/first-entry.png",
+      "sha256": "8b0b84bfad2a3803f2afe3e7d534dc350e9582f3127a6bf1cea701b3339fabd7",
+      "unchangedFromCapture": true
+    },
+    {
+      "sourceFile": "catat-uang-demo-2menit.mp4",
+      "path": "/videos/catat-uang-demo.mp4",
+      "sha256": "3ca86e539ab497aef3be9c889b4a62a37020f76761840021a1e6bbf5994d8959",
+      "unchangedFromCapture": true
+    }
+  ]
+}

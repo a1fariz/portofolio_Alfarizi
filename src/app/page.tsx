@@ -229,24 +229,14 @@ function Footer() {
             {EMAIL}
           </a>
           <CopyEmail email={EMAIL} />
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-wider">
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 font-mono text-xs uppercase tracking-wider">
             <a href={GITHUB} target="_blank" rel="noreferrer" className="text-neutral-600 transition-colors hover:text-black">
               GitHub
             </a>
             <a href={LINKEDIN} target="_blank" rel="noreferrer" className="text-neutral-600 transition-colors hover:text-black">
               LinkedIn
             </a>
-            {cvVariants.map((cv) => (
-              <a
-                key={cv.id}
-                href={cv.paths.en}
-                target="_blank"
-                rel="noreferrer"
-                className="text-neutral-600 transition-colors hover:text-black"
-              >
-                CV — {cv.label}
-              </a>
-            ))}
+            <CvDropdown variants={cvVariants} variant="footer" />
           </div>
           <p className="mt-16 font-mono text-xs text-neutral-400">
             © {new Date().getFullYear()} Alfa Rizi. Built with Next.js.

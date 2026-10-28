@@ -76,7 +76,6 @@ function Hero() {
           >
             Explore Projects
           </a>
-          <CvDropdown variants={cvVariants} variant="hero" />
           <a
             href="#contact"
             className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest transition-colors hover:border-black"

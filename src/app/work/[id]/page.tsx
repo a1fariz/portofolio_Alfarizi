@@ -6,6 +6,7 @@ import { REAL_PROJECTS } from "@/data/realPortfolio";
 import { ArrowLeft, ArrowUpRight, Code2, ExternalLink, Cpu } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import ProjectVisual from "@/components/ProjectVisual";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -72,7 +73,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
             <div className="flex items-center gap-4">
               <span className="font-mono text-xs text-neutral-400 hidden sm:inline">
-                Case 0{currentIndex + 1} / 0{REAL_PROJECTS.length}
+                Case {String(currentIndex + 1).padStart(2, "0")} / {String(REAL_PROJECTS.length).padStart(2, "0")}
               </span>
               <span className="px-3 py-1 rounded-full bg-white border border-black/5 font-mono text-[10px] uppercase font-bold text-black">
                 {project.category}
@@ -226,10 +227,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <Reveal>
                 <div className="space-y-2">
                   <span className="font-mono text-xs uppercase tracking-widest text-neutral-500">
-                    Engineering Scope
+                    Project overview
                   </span>
                   <h2 className="text-2xl sm:text-4xl font-bold text-black uppercase">
-                    Problem &amp; System Purpose
+                    The problem it solves
                   </h2>
                 </div>
               </Reveal>
@@ -264,36 +265,20 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <Cpu className="w-5 h-5 text-black shrink-0" />
                   <div>
                     <h3 className="text-base sm:text-lg font-bold text-black uppercase">
-                      Architecture Blueprint
+                      How it works
                     </h3>
-                    <p className="font-mono text-xs text-neutral-500">
+                    <p className="mt-2 text-sm leading-relaxed text-neutral-600">
                       {project.architecture.summary}
                     </p>
                   </div>
                 </div>
 
-                {/* Flow Sequence */}
-                <div className="space-y-3">
-                  <span className="font-mono text-xs uppercase tracking-wider text-black font-bold block">
-                    Execution Data Pipeline
-                  </span>
-                  <div className="space-y-2 font-mono text-xs text-neutral-600">
-                    {project.architecture.flow.map((step, idx) => (
-                      <div
-                        key={idx}
-                        className="p-3 rounded-xl bg-[#f4f3ef] border border-black/5 flex items-start gap-3"
-                      >
-                        <span className="text-black font-bold">0{idx + 1}.</span>
-                        <span className="break-words">{step}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <ArchitectureDiagram steps={project.architecture.flow} />
 
                 {/* Subsystem Components */}
                 <div className="space-y-3 pt-2 border-t border-black/5">
                   <span className="font-mono text-xs uppercase tracking-wider text-black font-bold block">
-                    Subsystem Decomposition
+                    Key components
                   </span>
                   <div className="space-y-3 font-mono text-xs">
                     {project.architecture.components.map((comp, idx) => (

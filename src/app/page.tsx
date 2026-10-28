@@ -12,6 +12,7 @@ import Reveal from "@/components/Reveal";
 import SpinningBadge from "@/components/SpinningBadge";
 import CvDropdown from "@/components/CvDropdown";
 import ProjectList from "@/components/ProjectList";
+import CopyEmail from "@/components/CopyEmail";
 
 const EMAIL = "alfarizi.developer@gmail.com";
 const GITHUB = "https://github.com/a1fariz";
@@ -27,7 +28,7 @@ function Nav() {
         <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-wider sm:gap-6">
           <a href="#projects" className="hidden text-neutral-600 transition-colors hover:text-black sm:inline">Projects</a>
           <a href="#about" className="hidden text-neutral-600 transition-colors hover:text-black sm:inline">About</a>
-          <a href={`mailto:${EMAIL}`} className="text-neutral-600 transition-colors hover:text-black">Contact</a>
+          <a href="#contact" className="text-neutral-600 transition-colors hover:text-black">Contact</a>
           <CvDropdown variants={cvVariants} />
         </div>
       </nav>
@@ -68,7 +69,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="fade-up mt-10 flex flex-wrap items-center gap-4" style={{ animationDelay: "0.75s" }}>
+        <div className="fade-up mt-10 flex flex-wrap items-start gap-4" style={{ animationDelay: "0.75s" }}>
           <a
             href="#projects"
             className="rounded-full bg-[#141414] px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-[#f4f3ef] transition-colors hover:bg-neutral-800"
@@ -77,7 +78,7 @@ function Hero() {
           </a>
           <CvDropdown variants={cvVariants} variant="hero" />
           <a
-            href={`mailto:${EMAIL}`}
+            href="#contact"
             className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest transition-colors hover:border-black"
           >
             Contact Me
@@ -219,6 +220,7 @@ function Footer() {
           >
             {EMAIL}
           </a>
+          <CopyEmail email={EMAIL} />
           <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-wider">
             <a href={GITHUB} target="_blank" rel="noreferrer" className="text-neutral-600 transition-colors hover:text-black">
               GitHub

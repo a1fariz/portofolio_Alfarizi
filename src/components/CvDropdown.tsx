@@ -62,8 +62,10 @@ export default function CvDropdown({
       {open && (
         <div
           role="menu"
-          className={`absolute z-50 mt-2 w-72 rounded-xl border border-black/10 bg-[#f4f3ef] p-1.5 shadow-xl backdrop-blur-md ${
-            menuAlign === "left" ? "left-0 origin-top-left" : "right-0 origin-top-right"
+          className={`mt-2 w-72 rounded-xl border border-black/10 bg-[#f4f3ef] p-1.5 shadow-xl backdrop-blur-md ${
+            variant === "hero"
+              ? "relative"
+              : `absolute z-50 ${menuAlign === "left" ? "left-0 origin-top-left" : "right-0 origin-top-right"}`
           }`}
         >
           <div className="px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-widest text-neutral-400">

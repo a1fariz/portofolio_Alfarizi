@@ -39,9 +39,15 @@ function Nav() {
 function Hero() {
   return (
     <section className="mx-auto max-w-5xl px-6 pb-20 pt-16 sm:pt-24">
-      <p className="fade-up font-mono text-xs uppercase tracking-widest text-neutral-500" style={{ animationDelay: "0.1s" }}>
-        Web · Backend · Mobile · AI Applications
-      </p>
+      <div className="fade-up flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6" style={{ animationDelay: "0.1s" }}>
+        <p className="font-mono text-xs uppercase tracking-widest text-neutral-500">
+          Web · Backend · Mobile · AI Applications
+        </p>
+        <a href="#contact" className="group inline-flex shrink-0 items-center gap-2 border-b border-black/30 pb-1 text-sm font-semibold text-neutral-900 transition-colors hover:border-black hover:text-black">
+          Available for work
+          <ArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </a>
+      </div>
 
       <h1 className="mt-6 text-[clamp(2.6rem,9vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]">
         <span className="mask-line">
@@ -84,13 +90,6 @@ function Hero() {
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
-        <a href="#contact" className="fade-up group mt-6 inline-flex max-w-full items-start gap-3 border-l border-black/15 pl-4 text-neutral-500" style={{ animationDelay: "0.85s" }}>
-          <span>
-            <span className="block font-mono text-[10px] uppercase tracking-[0.18em]">Available for work</span>
-            <span className="mt-1 block text-sm leading-relaxed transition-colors group-hover:text-black">Roles, internships &amp; project opportunities</span>
-          </span>
-          <ArrowUpRight aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </a>
       </div>
     </section>
   );

@@ -446,7 +446,12 @@ export const EXPERIENCE_RECORDS = [
     role: "Lead Intern — IT & Business Operations",
     org: "PT Resika Cemerlang",
     period: "2025 – Sep 2026",
-    desc: "Directed a 5-person intern team in live IT operations. Managed SLA ticket handling, weekly laptop maintenance (security patching, antivirus), and medical device specification quality control. Delivered weekly operational reports to senior management.",
+    desc: "Led a five-person intern team supporting day-to-day IT operations and validating medical-device asset records at PT Resika Cemerlang.",
+    highlights: [
+      "Workstation maintenance: coordinated hardware checks, OS security patches, software configuration and antivirus updates.",
+      "Support operations: tracked maintenance tickets, followed up on team tasks and prepared weekly operational reports.",
+      "Data quality: checked technical specifications in medical-device asset records for accuracy and consistency.",
+    ],
   },
 ];
 

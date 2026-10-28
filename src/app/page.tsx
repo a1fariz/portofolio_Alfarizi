@@ -42,6 +42,10 @@ function Hero() {
       <p className="fade-up font-mono text-xs uppercase tracking-widest text-neutral-500" style={{ animationDelay: "0.1s" }}>
         Web · Backend · Mobile · AI Applications
       </p>
+      <a href="#contact" className="fade-up mt-5 inline-flex max-w-full items-start gap-2 rounded-2xl border border-[#c9d9cf] bg-[#edf3ee] px-3 py-2 text-xs leading-relaxed text-[#27523b]" style={{ animationDelay: "0.15s" }}>
+        <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b7753]" />
+        Open to junior roles, internships &amp; project opportunities
+      </a>
 
       <h1 className="mt-6 text-[clamp(2.6rem,9vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]">
         <span className="mask-line">
@@ -164,6 +168,9 @@ function About() {
                   <div>
                     <p className="font-bold">{rec.role} · {rec.org}</p>
                     <p className="mt-1 text-sm font-light leading-relaxed text-neutral-600">{rec.desc}</p>
+                    <ul className="mt-3 list-disc space-y-2 pl-4 text-sm leading-relaxed text-neutral-600">
+                      {rec.highlights.map(item => <li key={item}>{item}</li>)}
+                    </ul>
                   </div>
                 </div>
               ))}

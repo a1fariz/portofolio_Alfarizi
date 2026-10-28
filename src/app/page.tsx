@@ -42,10 +42,6 @@ function Hero() {
       <p className="fade-up font-mono text-xs uppercase tracking-widest text-neutral-500" style={{ animationDelay: "0.1s" }}>
         Web · Backend · Mobile · AI Applications
       </p>
-      <a href="#contact" className="fade-up mt-5 inline-flex max-w-full items-start gap-2 rounded-2xl border border-[#c9d9cf] bg-[#edf3ee] px-3 py-2 text-xs leading-relaxed text-[#27523b]" style={{ animationDelay: "0.15s" }}>
-        <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b7753]" />
-        Open to junior roles, internships &amp; project opportunities
-      </a>
 
       <h1 className="mt-6 text-[clamp(2.6rem,9vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]">
         <span className="mask-line">
@@ -88,6 +84,13 @@ function Hero() {
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
+        <a href="#contact" className="fade-up group mt-6 inline-flex max-w-full items-start gap-3 border-l border-black/15 pl-4 text-neutral-500" style={{ animationDelay: "0.85s" }}>
+          <span>
+            <span className="block font-mono text-[10px] uppercase tracking-[0.18em]">Available for work</span>
+            <span className="mt-1 block text-sm leading-relaxed transition-colors group-hover:text-black">Roles, internships &amp; project opportunities</span>
+          </span>
+          <ArrowUpRight aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </a>
       </div>
     </section>
   );

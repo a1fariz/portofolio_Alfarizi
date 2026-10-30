@@ -10,6 +10,7 @@ Mahasiswa D3 Manajemen Informatika, Universitas Nasional PASIM — **sedang meny
 
 | Bidang | Contoh pekerjaan |
 | --- | --- |
+| C++ / Gameplay | Turnforge: BFS, giliran, AI deterministik, Bertahan dan prakiraan aksi musuh |
 | Backend | Catat Uang, ReLoop, ApexGrid, FinanceAll |
 | Full stack | ReLoop, ApexGrid, Finance Feasibility, FinanceAll |
 | Frontend | Arte, Vanguard IELTS, Renshuu, Solar Explorer |
@@ -17,12 +18,13 @@ Mahasiswa D3 Manajemen Informatika, Universitas Nasional PASIM — **sedang meny
 | Flutter/mobile | Catat Uang |
 | IT support | Pengalaman magang dukungan hardware/OS dan validasi data di PT Resika Cemerlang |
 
-Halaman utama menampilkan enam project lintas bidang. Filter membantu memilih project yang relevan; studi kasus menjelaskan kontribusi, keputusan teknis, bukti dan batas implementasi.
+Halaman utama menampilkan tujuh project lintas bidang. Filter membantu memilih project yang relevan; studi kasus menjelaskan kontribusi, keputusan teknis, bukti dan batas implementasi.
 
 ## Project dan bukti
 
 | Project | Ringkasan | Tinjau |
 | --- | --- | --- |
+| Turnforge | Game taktis C++17/raylib, preview musuh read-only, 24 skenario aturan dan demo 66 detik | [Source dan build Windows](https://github.com/a1fariz/turnforge) |
 | Catat Uang | Flutter/SQLite, API Go/PostgreSQL, sinkronisasi eksplisit, pembayaran idempotent dan backup terenkripsi | [Source dan verifikasi](https://github.com/a1fariz/CatatUang) |
 | ReLoop | Quarkus/Next.js, ledger double-entry, checkout lease dan outbox | [Source dan panduan tes](https://github.com/a1fariz/ReLoop) |
 | ApexGrid | React dan layanan Spring Boot untuk reservasi tiket | [Source dan arsitektur](https://github.com/a1fariz/ApexGrid) |
@@ -35,6 +37,8 @@ Project lainnya tersedia lewat **All projects**. Konfigurasi CI, aturan bisnis d
 ## Screenshot dan rekaman aplikasi
 
 CatatUang menggunakan tiga screenshot Android asli dan rekaman demo offline dua menit dengan data fiktif. Gambar asli disimpan tanpa pengeditan piksel di `public/images/projects/catat-uang/`; video dan provenance/checksum tersedia di `public/videos/`. Rekaman tidak menunjukkan sinkronisasi cloud atau penerimaan perangkat fisik. Halaman studi kasus menyertakan pemutar video, screenshot berukuran penuh, serta tautan hasil capture CI.
+
+Turnforge menampilkan dua screenshot landscape asli dan replay otomatis satu pertandingan. Pemutar memakai video H.264 720p/30 FPS, caption WebVTT dan provenance/checksum. Angka FPS video terpisah dari pengukuran performa game; studi kasus menjelaskan bantuan AI dan pekerjaan validasi yang masih tersisa.
 
 ## Sembilan pilihan CV
 
@@ -66,6 +70,8 @@ npm run start
 ```
 
 Font Geist diambil melalui `next/font/google` pada build sehingga memerlukan akses jaringan. Jika worker Turbopack bermasalah pada lingkungan lokal, jalankan build pembanding dengan `npm run build -- --webpack`.
+
+Setelah server berjalan, cek filter Game Dev, video landscape, tampilan HP dan regresi video portrait dengan `node scripts/verify-turnforge.cjs http://localhost:3000`. Skrip memakai Chrome lokal; atur `CHROME_PATH` bila diperlukan. Screenshot dan hasil pemeriksaan disimpan di `.next/turnforge-qa/`.
 
 ## Struktur
 

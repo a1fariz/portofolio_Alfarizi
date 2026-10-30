@@ -5,13 +5,14 @@ import ProjectVisual from "@/components/ProjectVisual";
 import Link from "next/link";
 import { RealProject } from "@/data/realPortfolio";
 
-const SELECTED_IDS = new Set(["catat-uang", "reloop", "apexgrid", "studymate-ai", "arte", "vanguard-ielts"]);
+const SELECTED_IDS = new Set(["turnforge", "catat-uang", "reloop", "apexgrid", "studymate-ai", "arte", "vanguard-ielts"]);
 const ROLE_PROJECTS: Record<string, Set<string>> = {
   Backend: new Set(["catat-uang", "reloop", "apexgrid", "finance-management"]),
   "Full Stack": new Set(["reloop", "apexgrid", "finance-feasibility", "finance-management"]),
   Frontend: new Set(["arte", "vanguard-ielts", "renshuu", "universe-interactive"]),
   "AI & Python": new Set(["studymate-ai", "finance-feasibility"]),
   Mobile: new Set(["catat-uang"]),
+  "Game Dev": new Set(["turnforge"]),
 };
 
 export default function ProjectList({ projects }: { projects: RealProject[] }) {
@@ -100,6 +101,7 @@ export default function ProjectList({ projects }: { projects: RealProject[] }) {
               <Link href={`/work/${project.id}`} className="underline underline-offset-4" aria-label={`Read ${project.title} case study`}>Case study ↗</Link>
               {project.recording && <Link href={`/work/${project.id}#demo`} className="underline underline-offset-4" aria-label={`Watch ${project.title} demo`}>Watch demo ↗</Link>}
               {project.github && <a href={project.github} target="_blank" rel="noreferrer" className="underline underline-offset-4" aria-label={`${project.title} GitHub repository`}>GitHub ↗</a>}
+              {project.download && <a href={project.download.url} className="underline underline-offset-4">{project.download.label} ↗</a>}
               {project.demo && <a href={project.demo} target="_blank" rel="noreferrer" className="underline underline-offset-4" aria-label={`${project.title} live demo`}>Live demo ↗</a>}
             </div>
           </article>

@@ -37,8 +37,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [
         {
           url: project.image,
-          width: project.screenshots ? 1080 : 1200,
-          height: project.screenshots ? 1920 : 630,
+          width: project.mediaLayout === "landscape" ? 1280 : project.screenshots ? 1080 : 1200,
+          height: project.mediaLayout === "landscape" ? 720 : project.screenshots ? 1920 : 630,
           alt: project.title,
         },
       ],
@@ -150,6 +150,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       <span>Live Platform</span>
                     </a>
                   )}
+                  {project.download && (
+                    <a href={project.download.url} className="flex items-center gap-2 rounded-full bg-[#141414] px-5 py-2.5 font-mono text-xs font-bold uppercase text-[#f4f3ef] shadow-sm transition-all hover:bg-neutral-800">
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      <span>{project.download.label}</span>
+                    </a>
+                  )}
                 </div>
 
                 <div className="font-mono text-xs text-neutral-500">
@@ -162,15 +168,15 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
         {project.recording && (
           <section id="demo" className="mx-auto max-w-5xl scroll-mt-28 px-6 py-12 md:px-12" aria-labelledby="recording-heading">
-            <h2 id="recording-heading" className="text-2xl font-bold">See the app in use</h2>
-            <div className="mt-6 grid items-start gap-8 md:grid-cols-2">
+            <h2 id="recording-heading" className="text-2xl font-bold">{project.mediaLayout === "landscape" ? "Watch the gameplay" : "See the app in use"}</h2>
+            <div className={`mt-6 grid items-start gap-8 ${project.mediaLayout === "landscape" ? "" : "md:grid-cols-2"}`}>
               <video
                 controls
                 playsInline
                 preload="metadata"
                 poster={project.image}
-                aria-label={`${project.title} Android demo recording`}
-                className="mx-auto aspect-[9/16] w-full max-w-[360px] rounded-2xl border border-black/10 bg-black"
+                aria-label={`${project.title} demo recording`}
+                className={`mx-auto w-full rounded-2xl border border-black/10 bg-black ${project.mediaLayout === "landscape" ? "aspect-video" : "aspect-[9/16] max-w-[360px]"}`}
               >
                 <source src={project.recording.src} type="video/mp4" />
                 <track kind="captions" src={project.recording.captions} srcLang="en" label="English notes" default />
@@ -179,9 +185,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div className="space-y-5 leading-relaxed text-neutral-700">
                 <p>{project.recording.description}</p>
                 <ul className="list-disc space-y-2 pl-5">
-                  <li>Sample transactions and recurring bills in the real Flutter interface.</li>
-                  <li>Offline entry and data retained after closing and reopening the app.</li>
-                  <li>Backup settings and guidance for starting with an empty ledger.</li>
+                  {project.recording.highlights.map(item => <li key={item}>{item}</li>)}
                 </ul>
                 <p className="flex flex-wrap gap-4 text-sm font-semibold">
                   <a href={project.recording.src} download className="underline underline-offset-4">Download video ↗</a>
@@ -189,11 +193,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 </p>
               </div>
             </div>
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div className={`mt-10 grid grid-cols-1 gap-6 ${project.mediaLayout === "landscape" ? "sm:grid-cols-2" : "sm:grid-cols-3"}`}>
               {project.screenshots?.map(shot => (
                 <figure key={shot.src}>
                   <a href={shot.src} target="_blank" rel="noreferrer" aria-label={`Open full screenshot: ${shot.caption}`}>
-                    <Image src={shot.src} alt={shot.alt} width={1080} height={1920} sizes="(max-width: 640px) 80vw, 300px" className="mx-auto h-auto w-full max-w-[260px] rounded-xl border border-black/10" />
+                    <Image src={shot.src} alt={shot.alt} width={project.mediaLayout === "landscape" ? 1280 : 1080} height={project.mediaLayout === "landscape" ? 720 : 1920} sizes={project.mediaLayout === "landscape" ? "(max-width: 640px) 90vw, 460px" : "(max-width: 640px) 80vw, 300px"} className={`mx-auto h-auto w-full rounded-xl border border-black/10 ${project.mediaLayout === "landscape" ? "" : "max-w-[260px]"}`} />
                   </a>
                   <figcaption className="mt-3 text-center text-sm text-neutral-600">{shot.caption}</figcaption>
                 </figure>

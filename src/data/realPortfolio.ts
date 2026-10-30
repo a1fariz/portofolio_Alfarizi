@@ -2,7 +2,7 @@ export interface RealProject {
   id: string;
   title: string;
   subtitle: string;
-  category: "Go / Backend" | "Java / Backend" | "AI & RAG" | "Full-Stack Web" | "C Systems";
+  category: "Go / Backend" | "Java / Backend" | "AI & RAG" | "Full-Stack Web" | "C Systems" | "C++ / Gameplay";
   caseStudy?: {
     contribution: string;
     decisions: string[];
@@ -15,9 +15,11 @@ export interface RealProject {
   status: string;
   github?: string;
   demo?: string;
+  download?: { label: string; url: string };
+  mediaLayout?: "portrait" | "landscape";
   image: string;
   screenshots?: { src: string; alt: string; caption: string }[];
-  recording?: { src: string; captions: string; description: string; evidenceUrl: string };
+  recording?: { src: string; captions: string; description: string; evidenceUrl: string; highlights: string[] };
   description: string;
   highlight: string;
   architecture: {
@@ -29,6 +31,74 @@ export interface RealProject {
 }
 
 export const REAL_PROJECTS: RealProject[] = [
+  {
+    id: "turnforge",
+    title: "Turnforge",
+    subtitle: "C++ turn-based tactics with deterministic enemy AI",
+    category: "C++ / Gameplay",
+    stack: ["C++17", "raylib 5.5", "BFS", "CMake", "CTest"],
+    year: "2026",
+    status: "Playable Windows build · automated checks passed",
+    github: "https://github.com/a1fariz/turnforge",
+    download: { label: "Download Windows ZIP", url: "https://github.com/a1fariz/turnforge/releases/download/v0.5.1/Turnforge-Windows.zip" },
+    mediaLayout: "landscape",
+    image: "/images/projects/turnforge/preview.png",
+    screenshots: [
+      { src: "/images/projects/turnforge/preview.png", alt: "Turnforge enemy movement arrows and a forecast of four incoming HP damage", caption: "Enemy intentions before ending the turn: 4 HP at risk" },
+      { src: "/images/projects/turnforge/guard.png", alt: "Turnforge player shield and updated forecast of two incoming HP damage", caption: "The same position after Guard: forecast reduced to 2 HP" },
+    ],
+    recording: {
+      src: "/videos/turnforge-demo.mp4",
+      captions: "/videos/turnforge-demo.vtt",
+      description: "A 66-second scripted replay of one complete match from the default map and stats. It uses the normal input controller to show invalid movement, BFS, enemy intentions, Guard, combat and victory. The silent 720p/30 FPS video is rendered offline; its frame rate is separate from live game performance and it does not represent human playtesting.",
+      evidenceUrl: "https://github.com/a1fariz/turnforge/blob/main/docs/demo.md",
+      highlights: [
+        "Movement and rejected wall clicks preserve the documented turn rules.",
+        "Guard changes the forecast and reduces an actual enemy hit from 2 HP to 1 HP.",
+        "Four attacks finish the match in round 6 with 3 HP remaining.",
+      ],
+    },
+    description: "A small offline tactical game built with C++17 and raylib. A knight faces a pursuing goblin and a flanking bandit on an 8×8 arena. BFS validates movement around walls and living units, while a read-only simulation forecasts enemy movement and HP loss before End Turn. The core is independent of rendering and covered by rule, stress, input and package checks.",
+    highlight: "BFS movement · distinct enemy tactics · Guard · read-only turn preview",
+    architecture: {
+      summary: "A standalone C++ rules model drives the raylib presentation. Enemy previews reuse the live AI on a copied match state, so movement, occupancy, damage and action order stay consistent with actual turns.",
+      flow: [
+        "Mouse / keyboard → validated move, attack or Guard",
+        "Game state → BFS, occupancy and ordered enemy turns",
+        "Copied game state → read-only next-turn forecast",
+        "Model + forecast → raylib sprites, animation and HUD",
+      ],
+      components: [
+        { title: "Rules and pathfinding", desc: "An 8×8 grid, living-unit occupancy, orthogonal BFS, action budgets and immediate win/loss transitions." },
+        { title: "Deterministic enemy AI", desc: "Goblin pursues directly; bandit prefers another attack side within a two-step detour budget and falls back to direct pursuit when alone." },
+        { title: "Forecast and presentation", desc: "A copied enemy turn predicts movement and HP loss without changing the live game; sprites animate the resulting model state." },
+        { title: "Verification and delivery", desc: "CTest rules and seeded stress checks, replayed input events, render captures and a self-contained Windows ZIP." },
+      ],
+    },
+    metrics: ["24 gameplay scenarios · 352 checks", "500 seeded stress sessions", "66-second scripted replay"],
+    caseStudy: {
+      contribution: "A portfolio project developed with AI assistance across C++ implementation, UI, verification tooling and generated character artwork. The public source and reports document the implemented behavior, engineering choices and remaining validation work.",
+      decisions: [
+        "Keep gameplay rules independent of raylib so they can be tested without opening a graphics window.",
+        "Use BFS on the small uniform-cost grid and derive occupancy from living units.",
+        "Reuse the real enemy-turn implementation on a copied state for an accurate, read-only forecast.",
+        "Finish one offline arena and a reproducible Windows package before expanding the feature set.",
+      ],
+      evidence: [
+        "The rule suite passes 24 scenarios and 352 checks in Release and Debug, including preview immutability, actual-turn agreement, Guard and lethal-hit cancellation.",
+        "A separate seeded suite passes 500 sessions, 64,433 actions and 1,126,045 checks. It is correctness coverage, not a player win-rate study.",
+        "Recording QA passes 20 command-line/asset cases and the input/render verifier; the demo is fully decoded and checked as 1,980 video frames.",
+        "The Windows ZIP runs after extraction outside the source tree with PATH restricted to Windows system directories.",
+      ],
+      limitations: "One fixed map, one player and two melee enemies; no audio, saving or networking. Live performance is not established by the offline video: hidden-window runs varied from about 39 to 58 FPS and the 60 FPS target has not been met consistently. Human input/playtesting, visible-window benchmarking and broader balance remain pending.",
+      links: [
+        { label: "Windows release", url: "https://github.com/a1fariz/turnforge/releases/tag/v0.5.1" },
+        { label: "Gameplay and preview verification", url: "https://github.com/a1fariz/turnforge/blob/main/docs/preview-verification.md" },
+        { label: "Recording and current QA notes", url: "https://github.com/a1fariz/turnforge/blob/main/docs/demo.md" },
+        { label: "Pathfinding and turn management", url: "https://github.com/a1fariz/turnforge/blob/main/docs/technical-note.md" },
+      ],
+    },
+  },
   {
     id: "catat-uang",
     title: "Catat Uang",
@@ -49,6 +119,11 @@ export const REAL_PROJECTS: RealProject[] = [
       captions: "/videos/catat-uang-demo.vtt",
       description: "Two-minute recording from the Android emulator with fictional sample data and no audio. It shows offline transactions, bills, backup settings, reopening the app, and first-entry guidance. This offline demo build does not demonstrate cloud synchronization, physical-device acceptance, or a production release.",
       evidenceUrl: "https://github.com/a1fariz/CatatUang/actions/runs/40560535481",
+      highlights: [
+        "Sample transactions and recurring bills in the real Flutter interface.",
+        "Offline entry and data retained after closing and reopening the app.",
+        "Backup settings and guidance for starting with an empty ledger.",
+      ],
     },
     description: "An offline-first personal finance application built with Flutter and SQLite, backed by a Go/PostgreSQL API. Optional accounts support explicitly linked, manual synchronization of transactions, recurring bills and payment history through persistent outboxes, idempotent retries and conflict review. Includes encrypted file backups, session management, email verification and password recovery. Local implementation and CI verification are complete; public release remains pending.",
     highlight: "Offline SQLite + explicit sync + encrypted backups + backend and Android CI",

@@ -67,8 +67,8 @@ function Hero() {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <p className="fade-up max-w-md text-base font-light leading-relaxed text-neutral-700 sm:text-lg" style={{ animationDelay: "0.55s" }}>
             I&apos;m Alfa Rizi. I build web interfaces, backend APIs, Flutter apps,
-            and AI-powered tools. Explore projects across React, Go, Java, and
-            Python, then choose the CV that fits the role you&apos;re hiring for.
+            AI-powered tools, and C++ gameplay projects. Explore work across React,
+            Go, Java, Python, and C++, then choose the CV that fits the role you&apos;re hiring for.
           </p>
           <div className="fade-up" style={{ animationDelay: "0.65s" }}>
             <SpinningBadge />

@@ -1,0 +1,21 @@
+{
+  "project": "Turnforge",
+  "version": "0.5.1",
+  "source": "https://github.com/a1fariz/turnforge",
+  "recordedSourceCommit": "59844eb40f9304bbd5c6b7862659a23be71a8860",
+  "video": "/videos/turnforge-demo.mp4",
+  "videoSha256": "B14B59740ED6A4B4D542A8DD7E6F6C99352F7120B2A9AC83F846B1B4686FD281",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "durationSeconds": 66,
+  "fullyDecodedFrames": 1980,
+  "method": "Offline fixed-step scripted replay through the live input controller",
+  "hasAudio": false,
+  "result": {
+    "round": 6,
+    "remainingHp": 3
+  },
+  "verification": "https://github.com/a1fariz/turnforge/blob/main/docs/demo.md",
+  "attribution": "Implementation, UI, verification tooling and generated character artwork developed with AI assistance."
+}

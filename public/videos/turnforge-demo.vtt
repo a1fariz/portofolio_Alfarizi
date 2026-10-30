@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00.000 --> 00:03.000
+Turnforge: a scripted replay of one complete C++ tactical match.
+
+00:03.000 --> 00:06.000
+A wall click is rejected. Movement and attack actions remain available.
+
+00:06.000 --> 00:11.000
+Preview a reachable BFS route, then move three tiles.
+
+00:11.000 --> 00:16.000
+The goblin pursues; the bandit approaches from another side.
+
+00:16.000 --> 00:20.000
+The next enemy turn is forecast to remove 2 HP.
+
+00:20.000 --> 00:24.000
+Guard changes the forecast to 1 HP.
+
+00:24.000 --> 00:30.000
+The enemy hit removes 1 HP. Guard expires at the next player turn.
+
+00:30.000 --> 00:39.000
+Attack the bandit, then let the enemies resolve their turns.
+
+00:39.000 --> 00:48.000
+Finish the injured bandit. Its tile becomes free.
+
+00:48.000 --> 00:57.000
+Focus the remaining attacks on the goblin.
+
+00:57.000 --> 01:06.000
+Victory in round 6 with 3 HP remaining.

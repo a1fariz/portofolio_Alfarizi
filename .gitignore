@@ -40,5 +40,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Local credentials, private keys and diagnostic logs
+*.key
+*.p12
+*.pfx
+auth.json
+credentials*.json
+secrets*.json
+debug.log
+
 generate-cvs.js
 generate-cv-template.js

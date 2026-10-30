@@ -29,9 +29,9 @@ async function main() {
       });
       video.muted = true;
       await video.play();
-      await new Promise(resolve => setTimeout(resolve, 400));
-      video.pause();
     });
+    await page.waitForFunction(() => document.querySelector('video')?.currentTime > 0.1, null, { timeout: 15000 });
+    await page.locator('video').evaluate(video => video.pause());
     const media = await page.locator('video').evaluate(video => ({ width: video.videoWidth, height: video.videoHeight, duration: video.duration, currentTime: video.currentTime, ratio: video.clientWidth / video.clientHeight }));
     assert.equal(media.width, 1280);
     assert.equal(media.height, 720);

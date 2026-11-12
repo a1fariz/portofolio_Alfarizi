@@ -4,7 +4,7 @@ Portfolio untuk frontend, backend, full-stack web, Flutter/mobile, dan aplikasi 
 
 **[Buka portfolio](https://alfarizi.my.id)** · [GitHub](https://github.com/a1fariz) · [LinkedIn](https://www.linkedin.com/in/alfa-rizi-65b483412)
 
-Mahasiswa D3 Manajemen Informatika, Universitas Nasional PASIM — **sedang menyusun tugas akhir**.
+Mahasiswa D3 Manajemen Informatika, Universitas Nasional PASIM — **menunggu sidang akhir**, perkiraan lulus 2026.
 
 ## Jelajahi sesuai kebutuhan
 

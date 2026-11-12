@@ -556,13 +556,13 @@ export const EDUCATION_RECORDS = [
   {
     title: "Associate Degree in Informatics Management (D3)",
     org: "Universitas Nasional PASIM",
-    period: "Final project in progress",
-    desc: "GPA 3.78 / 4.0 — currently writing final project; Bandung, Indonesia",
+    period: "Expected graduation: 2026",
+    desc: "GPA 3.78 / 4.0 — awaiting final defense; Bandung, Indonesia",
   },
   {
     title: "PUB Intensive Technical Scholarship",
     org: "Pemberdayaan Umat Berkelanjutan",
-    period: "2024 – Present",
+    period: "2024–2026",
     desc: "Logic & C · Data Structures & Relational Databases · Web (HTML/CSS/JS) · Java Development · Git & GitHub · Advanced Java Development · React Development",
   },
 ];

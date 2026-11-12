@@ -556,7 +556,7 @@ export const EDUCATION_RECORDS = [
   {
     title: "Associate Degree in Informatics Management (D3)",
     org: "Universitas Nasional PASIM",
-    period: "Expected graduation: 2026",
+    period: "2026",
     desc: "GPA 3.78 / 4.0 — awaiting final defense; Bandung, Indonesia",
   },
   {

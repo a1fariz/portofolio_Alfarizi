@@ -76,7 +76,7 @@ const education = {
       institution: 'Universitas Nasional PASIM',
       degree: 'Associate Degree in Informatics Management (D3) — GPA: 3.78 / 4.00',
       location: 'Bandung, Indonesia',
-      period: 'Expected graduation: 2026',
+      period: '2026',
       bullets: [
         'PUB Intensive Technical Scholarship (2024-2026): Logic & C, Data Structures, Relational Databases, Advanced Java Development, and React Development.',
         'Intensive React Front-End Development Training (Sep 2026); Fundamental Back-End Programming with Java and Git & GitHub Training (Jan 2026).',
@@ -89,7 +89,7 @@ const education = {
       institution: 'Universitas Nasional PASIM',
       degree: 'D3 Manajemen Informatika — IPK: 3.78 / 4.00',
       location: 'Bandung, Indonesia',
-      period: 'Perkiraan lulus: 2026',
+      period: '2026',
       bullets: [
         'Penerima Beasiswa Pelatihan Intensif PUB (2024-2026): Logika Pemrograman, Struktur Data, Database Relasional, Java Lanjutan, dan Pengembangan React.',
         'Pelatihan Intensif React Front-End (Sep 2026); Fundamental Back-End Programming dengan Java dan Git & GitHub (Jan 2026).',
